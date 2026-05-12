@@ -26,18 +26,29 @@ body {
      background-color: #FFF6F6;
 }
 
+.nav{
+    gap:24px
+}
+
+.nav a{
+    text-decoration:none
+}
+
 .topo-bootstrap {
     height: 82px;  
 }
 
-.Logo img {
+.logo img {
     width: 80px;
     height: 80px;
-    
 }
 
-.TextoLogo{
+.logo a{
+    text-decoration: none;
+}
 
+.logo h3{
+    padding-top: 15px;
 }
 
 

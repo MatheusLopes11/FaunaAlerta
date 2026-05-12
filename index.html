@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FaunaAlerta</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/png" href="img/Logo.ico">
     
@@ -16,34 +17,43 @@
 
         <div class="container">
 
-            <div class="row topo-bootstrap">
+            <div class="row topo-bootstrap align-items-center">
 
-                <!--DIV PARA IMAGEM LOGO-->
-                <div class="Logo">
-                    <img src="img/Logo1.png" alt="Logo">
+                <!--Logo-->
+                <div class="col-3">
+                    <div class="logo d-flex align-items-center">
+                      <a class="logo d-flex align-items-center" href="index.html" aria-label="Ir para página inicial">
+                        <img src="img/Logo1.png" alt="Logo">
+                        <h3>FaunaAlerta</h3>
+                      </a>
+                    </div>
                 </div>
 
-                <!--TEXTO DA LOGO-->
-                <div class="TextoLogo">
-                    <h3>FaunaAlerta</h3>
-                </div>
-
-                <!--LINKS-->
-                <div class="">
-                    <nav>
-
+                <!--Menu Nav-->
+                <div class="col-6" >
+                    <nav class="nav d-flex align-items-center justify-content-end justify-content-space-between" aria-label="Menu principal">
+                        <a class="ativo" href="index.html">Principal</a>
+                        <a href="#">Denúncia</a>
+                        <a href="#">Sobre</a>
                     </nav>
                 </div>
+                
+    
 
-                <!--ICONE USUARIO-->
-                <div clas="IconeUsuario">
-
+                <!--BOTAO USUARIO-->
+                <div class="col-3 d-flex justify-content-end">
+                    <div>
+                            <a href="#">
+                            <i class="bi bi-person " width="16" height="16"></i>
+                            </a>
+                    </div>
                 </div>
 
             </div>
 
         </div>
     
+        
     </header>
     
     <main>
