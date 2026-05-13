@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaunaAlerta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="img/Logo.ico">
+    
+</head>
+
+<body>
+    <header class="Topo">
+
+        <div class="container">
+
+            <div class="row topo-bootstrap align-items-center">
+
+                <!--Logo-->
+                <div class="col-3">
+                    <div class="logo d-flex align-items-center">
+                      <a class="logo d-flex align-items-center" href="index.html" aria-label="Ir para página inicial">
+                        <img src="img/Logo1.png" alt="Logo">
+                        <h3>FaunaAlerta</h3>
+                      </a>
+                    </div>
+                </div>
+
+                <!--Menu Nav-->
+                <div class="col-6" >
+                    <nav class="nav d-flex align-items-center justify-content-end justify-content-space-between" aria-label="Menu principal">
+                        <a class="ativo" href="index.html">Principal</a>
+                        <a href="#">Denúncia</a>
+                        <a href="#">Sobre</a>
+                    </nav>
+                </div>
+                
+    
+
+                <!--BOTAO USUARIO-->
+                <div class="col-3 d-flex justify-content-end">
+                    <div>
+                            <a href="#">
+                            <i class="bi bi-person " width="16" height="16"></i>
+                            </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    
+        
+    </header>
+    
+    <main>
+        <!--Cria uma barra de rolagem, nossa pagina tera conteudo longo isso sera necessario-->
+        <div style="height: 200px; overflow-y: auto; border: 1px solid black;">
+  
+        </div>
+    </main>
+
+    <footer class = "footer">
+        <!--Container do footer-->
+       
+        <div class = "footer-container">
+           
+            <!--Coluna da logo-->
+            <div class = "footer-coluna">
+                <img src="img/Logo1.png" class = "FaunaAlertaLogo">
+                <p><strong class="Logo-nome">Fauna<br>Alerta</strong></p>
+            </div>
+           
+            <!--Coluna dos contatos-->
+            <div class = "footer-coluna" style="flex-direction: column;">
+                <div style = "display: flex; flex-direction: row;">
+                    <p style="color: #000000">Telefone <br> Email</p>
+                    <p style="color: #D47E09"> (11)9999-999 <br>FaunaAlerta@email.com</p>
+                </div>
+                <div class = "icones">
+                    <img src="img/twitter-x-icone.png" style = "width: 40px; height: 40px;">
+                    <img src="img/facebook.png" style = "width: 40px; height: 40px">
+                    <img src="img/instagram.png" style = "width: 40px; height: 40px">
+                </div>
+            </div>
+            
+            <!--Coluna de navegacao-->
+            <div class="footer-coluna" style="color: #000000; max-width: 20%; align-items: flex-start; justify-content: flex-start;">
+                <p>Principal<br>Denúncias<br>Sobre Nós <br>Login</p>
+            </div>
+        
+        </div>
+    </footer>
+</body>
+</html>
