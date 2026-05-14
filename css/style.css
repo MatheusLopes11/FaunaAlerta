@@ -16,11 +16,23 @@ OBJETIVO: Reproduzir o layout visual apresentado em aula.
 
 /* BODY
    Define fonte padrão, cor do texto e fundo geral do site. */
+html, body {
+    height: 100%;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #D5D1CA;
     color: #fe0000;
-   }
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
 
 .Topo{
      background-color: #FFF6F6;
@@ -52,6 +64,7 @@ body {
 }
 
 
+  
 
 /* Botão Esquerdo */
 
