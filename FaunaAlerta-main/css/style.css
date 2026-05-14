@@ -19,8 +19,21 @@ OBJETIVO: Reproduzir o layout visual apresentado em aula.
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #D5D1CA;
-    color: #fe0000;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
    }
+
+main{
+    flex: 1;
+}
+
+.texto-logo{
+    font-family: 'Archivo Black', sans-serif;
+    color: #D47E09;
+    
+}
 
 .Topo{
      background-color: #FFF6F6;
@@ -51,6 +64,80 @@ body {
     padding-top: 15px;
 }
 
+.menu-btn{
+
+    color: black !important;
+
+    border: 2px solid #D47E09;
+    border-radius: 20px;
+
+    padding: 6px 18px !important;
+
+    transition: 0.3s;
+
+    font-size: 14px;
+
+    font-family: Afacad Flux;
+}
+
+.user-btn{
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    color: #0d6efd;
+
+    transition: 0.3s;
+}
+
+/* Hover */
+
+.user-btn:hover{
+
+    background-color: #D47E09;
+    color: white;
+
+}
+
+/* Clique */
+
+.user-btn:active{
+
+    background-color: #D47E09;
+    color: black;
+
+}
+
+/* Hover */
+
+.menu-btn:hover{
+
+    background-color: #D47E09;
+    color: white !important;
+
+}
+
+/* Página ativa */
+
+.menu-btn.active{
+
+
+    color: black !important;
+    text-decoration: underline;
+}
+
+.bi{
+    color:black
+}
+
 
 
 /* Botão Esquerdo */
@@ -67,108 +154,71 @@ justify-content: flex-end;
 padding-right: 40px;
 }
 
-/*container do footer(Wagner)*/
-/*Tablet( ate 768px)*/
-@media(max-width: 768px) {
-    .footer{
-        position:relative;  /*no tablet position: fixed pode cobrir o conteudo, substitui por relative*/
-    }
-    .footer-container{
-        flex-direction: column;         /*transforma o conteiner do footer em coluna*/
-        align-items: center;            /*centraliza os itens*/
-    }
-        .footer-coluna {
-        max-width: 100%;        /* cada coluna ocupa a largura toda */
-        align-items: center;    /*centraliza os itens*/
-        margin: 1% 0;          /*redefine as margins*/
-    }
-
-    .footer-coluna p {
-        text-align: center;
-        padding: 0 2%;
-    }
-
-    .icones {
-        justify-content: center;
-        padding: 0 2%;
-    }
-}
-
-/* Mobile pequeno (ate 480px)*/
-@media (max-width: 480px) {
-    .footer-coluna p {
-        font-size: 3%;    /*diminui o tamanho da fonte*/
-    }
-
-    .Logo-nome {
-        font-size: 200%;    /*reduz o nome da logo de 300 para 200%*/
-    }
-
-    .FaunaAlertaLogo {
-        width: 12%;        /*define a largura como 60px um numero fixo de pixeis e melhor do que usar %*/
-        height: auto;       /*sempre prefira height: auto para nao distorcer */
-    }
-
-    .icones img {
-        width: 6%;        /*reduzem os icones de 50 para 30*/
-        height:6%;
-    }
-}
-
 .footer{
     background-color: #FFF6F6;
-    padding: 1%px 2%;      /*espacamento interno vertical(10PX) e horizontal (5px).*/
-    bottom: 0;              /*deixa o footer no fim da pagina*/
-    position: fixed;        /*Fixa a posicao do footer na pagina*/
-    width: 100%;           /*faz o footer ter a mesma largura da pagina(possui responsividade, muda se for a tela de um ceulular)*/
-    margin: auto;
+    padding: 30px 0;
 }
 
-.footer-container{
-    display: flex;
-    justify-content: space-between;     /*espaco entre as colunas*/
-    flex-wrap: wrap;                    /*quebra de linhas*/
-    max-width: 100%;                    /*define a largura maxima*/
-    margin: auto;                       /*espacamento externo como padrao*/
+.footer-logo{
+    width: 110px;
 }
-.footer-coluna{
-    display: flex; 
-    flex: 1;                    /*as divs ocupam todo o espaco do container*/              
-    margin: 2%px;               /*espacamento externo(define quanto de distancia entre as coluans)*/
-    max-width: 40%;
+
+.logo-nome{
+    color: #D47E09;
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1;
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.footer p{
+    color: black;
+    margin-bottom: 10px;
+    font-family: Afacad Flux;
+}
+
+.footer p span:hover{
+    text-decoration: underline;
+}
+
+.footer span{
+    color: #D47E09;
+}
+
+.icone-social{
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+.footer-nav{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-nav a{
+    text-decoration: none;
+    color: black;
+    font-family: Afacad Flux;
+}
+
+.footer-nav a:hover{
+    text-decoration: underline;
+    color: #D47E09;
+}
+
+@media (max-width: 768px){
+
+    .logo-nome{
+        font-size: 2rem;
     }
 
-.footer-coluna p{
-    display: flex; 
-    padding: 0px 8%px;  /*espacamento interno do paragrafo*/
-    margin: 10px 0;     /*espacamento externo do paragrafo*/
-    font-size: 4%px;    /*tamanho da fonte*/
-    line-height: 1.8;
-    align-items: center;
-}
+    .footer-logo{
+        width: 80px;
+    }
 
-/*Parte em que parei*/
-.Logo-nome{ 
-    color:#D47E09;      /*cor da fonte*/
-    font-size: 300%;      /*tamanho da fonte*/
-    line-height: 100%;       /*espaco entre "Fauna" e "Alerta"*/ 
-    margin: 0px;          /*espacamento externo tambem define o espaco entre "Fauna" e "Alerta"*/
-}
-
-.FaunaAlertaLogo{
-    width: 40%;             /* largura da logo originalmente era 150px*/   
-    height: 80%;            /*altura da Logo, originalmente era 150px*/
-}
-
-.icones{
-    display: flex;
-    flex-direction: row; 
-    justify-content: space-between;
-    padding: 0px 8%px;
-    gap: 2%px;
-    padding: 10%;
-}
-.body{
-    padding-bottom: 120px;
-    overflow: auto;
+    .footer-nav{
+        margin-top: 20px;
+    }
 }
