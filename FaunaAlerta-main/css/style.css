@@ -1,0 +1,174 @@
+/*
+============================================================
+ARQUIVO: style.css
+PROJETO: Moda Urbana - Atividade HTML5 + CSS3 + Bootstreap Grid
+OBJETIVO: Reproduzir o layout visual apresentado em aula.
+============================================================
+*/
+
+/* RESET BÁSICO
+   Remove margens e espaçamentos padrões do navegador para facilitar o controle do layout. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Faz width/height incluírem padding e border */
+}   
+
+/* BODY
+   Define fonte padrão, cor do texto e fundo geral do site. */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #D5D1CA;
+    color: #fe0000;
+   }
+
+.Topo{
+     background-color: #FFF6F6;
+}
+
+.nav{
+    gap:24px
+}
+
+.nav a{
+    text-decoration:none
+}
+
+.topo-bootstrap {
+    height: 82px;  
+}
+
+.logo img {
+    width: 80px;
+    height: 80px;
+}
+
+.logo a{
+    text-decoration: none;
+}
+
+.logo h3{
+    padding-top: 15px;
+}
+
+
+
+/* Botão Esquerdo */
+
+.carousel-control-prev{
+justify-content: flex-start;
+padding-left: 40px;
+}
+
+/* Botão Direito */
+
+.carousel-control-next{
+justify-content: flex-end;
+padding-right: 40px;
+}
+
+/*container do footer(Wagner)*/
+/*Tablet( ate 768px)*/
+@media(max-width: 768px) {
+    .footer{
+        position:relative;  /*no tablet position: fixed pode cobrir o conteudo, substitui por relative*/
+    }
+    .footer-container{
+        flex-direction: column;         /*transforma o conteiner do footer em coluna*/
+        align-items: center;            /*centraliza os itens*/
+    }
+        .footer-coluna {
+        max-width: 100%;        /* cada coluna ocupa a largura toda */
+        align-items: center;    /*centraliza os itens*/
+        margin: 5px 0;          /*redefine as margins*/
+    }
+
+    .footer-coluna p {
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    .icones {
+        justify-content: center;
+        padding: 0 10px;
+    }
+}
+
+/* Mobile pequeno (ate 480px)*/
+@media (max-width: 480px) {
+    .footer-coluna p {
+        font-size: 14px;    /*diminui o tamanho da fonte*/
+    }
+
+    .Logo-nome {
+        font-size: 200%;    /*reduz o nome da logo de 300 para 200%*/
+    }
+
+    .FaunaAlertaLogo {
+        width: 60px;        /*define a largura como 60px um numero fixo de pixeis e melhor do que usar %*/
+        height: auto;       /*sempre prefira height: auto para nao distorcer */
+    }
+
+    .icones img {
+        width: 30px;        /*reduzem os icones de 50 para 30*/
+        height: 30px;
+    }
+}
+
+.footer{
+    background-color: #FFE680;
+    padding: 5px 10px;      /*espacamento interno vertical(10PX) e horizontal (5px).*/
+    bottom: 0;              /*deixa o footer no fim da pagina*/
+    position: fixed;        /*Fixa a posicao do footer na pagina*/
+    width: 100%;           /*faz o footer ter a mesma largura da pagina(possui responsividade, muda se for a tela de um ceulular)*/
+    margin: auto;
+}
+
+.footer-container{
+    display: flex;
+    justify-content: space-between;     /*espaco entre as colunas*/
+    flex-wrap: wrap;                    /*quebra de linhas*/
+    max-width: 100%;                    /*define a largura maxima*/
+    margin: auto;                       /*espacamento externo como padrao*/
+}
+.footer-coluna{
+    display: flex; 
+    flex: 1;                    /*as divs ocupam todo o espaco do container*/              
+    margin: 10px;               /*espacamento externo(define quanto de distancia entre as coluans)*/
+    max-width: 40%;
+    }
+
+.footer-coluna p{
+    display: flex; 
+    padding: 0px 40px;  /*espacamento interno do paragrafo*/
+    margin: 10px 0;     /*espacamento externo do paragrafo*/
+    font-size: 18px;    /*tamanho da fonte*/
+    line-height: 1.8;
+    align-items: center;
+}
+
+/*Parte em que parei*/
+.Logo-nome{ 
+    color:#D47E09;      /*cor da fonte*/
+    font-size: 300%;      /*tamanho da fonte*/
+    line-height: 1;       /*espaco entre "Fauna" e "Alerta"*/ 
+    margin: 0px;          /*espacamento externo tambem define o espaco entre "Fauna" e "Alerta"*/
+}
+
+.FaunaAlertaLogo{
+    width: 40%;             /* largura da logo originalmente era 150px*/   
+    height: auto;            /*altura da Logo, originalmente era 150px*/
+}
+
+.icones{
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    padding: 0px 40px;
+    gap: 10px;
+    padding: 50px;
+}
+.body{
+    padding-bottom: 120px;
+    overflow: auto;
+}
