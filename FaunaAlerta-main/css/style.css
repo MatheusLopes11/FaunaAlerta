@@ -80,24 +80,24 @@ padding-right: 40px;
         .footer-coluna {
         max-width: 100%;        /* cada coluna ocupa a largura toda */
         align-items: center;    /*centraliza os itens*/
-        margin: 5px 0;          /*redefine as margins*/
+        margin: 1% 0;          /*redefine as margins*/
     }
 
     .footer-coluna p {
         text-align: center;
-        padding: 0 10px;
+        padding: 0 2%;
     }
 
     .icones {
         justify-content: center;
-        padding: 0 10px;
+        padding: 0 2%;
     }
 }
 
 /* Mobile pequeno (ate 480px)*/
 @media (max-width: 480px) {
     .footer-coluna p {
-        font-size: 14px;    /*diminui o tamanho da fonte*/
+        font-size: 3%;    /*diminui o tamanho da fonte*/
     }
 
     .Logo-nome {
@@ -105,19 +105,19 @@ padding-right: 40px;
     }
 
     .FaunaAlertaLogo {
-        width: 60px;        /*define a largura como 60px um numero fixo de pixeis e melhor do que usar %*/
+        width: 12%;        /*define a largura como 60px um numero fixo de pixeis e melhor do que usar %*/
         height: auto;       /*sempre prefira height: auto para nao distorcer */
     }
 
     .icones img {
-        width: 30px;        /*reduzem os icones de 50 para 30*/
-        height: 30px;
+        width: 6%;        /*reduzem os icones de 50 para 30*/
+        height:6%;
     }
 }
 
 .footer{
-    background-color: #FFE680;
-    padding: 5px 10px;      /*espacamento interno vertical(10PX) e horizontal (5px).*/
+    background-color: #FFF6F6;
+    padding: 1%px 2%;      /*espacamento interno vertical(10PX) e horizontal (5px).*/
     bottom: 0;              /*deixa o footer no fim da pagina*/
     position: fixed;        /*Fixa a posicao do footer na pagina*/
     width: 100%;           /*faz o footer ter a mesma largura da pagina(possui responsividade, muda se for a tela de um ceulular)*/
@@ -134,15 +134,15 @@ padding-right: 40px;
 .footer-coluna{
     display: flex; 
     flex: 1;                    /*as divs ocupam todo o espaco do container*/              
-    margin: 10px;               /*espacamento externo(define quanto de distancia entre as coluans)*/
+    margin: 2%px;               /*espacamento externo(define quanto de distancia entre as coluans)*/
     max-width: 40%;
     }
 
 .footer-coluna p{
     display: flex; 
-    padding: 0px 40px;  /*espacamento interno do paragrafo*/
+    padding: 0px 8%px;  /*espacamento interno do paragrafo*/
     margin: 10px 0;     /*espacamento externo do paragrafo*/
-    font-size: 18px;    /*tamanho da fonte*/
+    font-size: 4%px;    /*tamanho da fonte*/
     line-height: 1.8;
     align-items: center;
 }
@@ -151,22 +151,22 @@ padding-right: 40px;
 .Logo-nome{ 
     color:#D47E09;      /*cor da fonte*/
     font-size: 300%;      /*tamanho da fonte*/
-    line-height: 1;       /*espaco entre "Fauna" e "Alerta"*/ 
+    line-height: 100%;       /*espaco entre "Fauna" e "Alerta"*/ 
     margin: 0px;          /*espacamento externo tambem define o espaco entre "Fauna" e "Alerta"*/
 }
 
 .FaunaAlertaLogo{
     width: 40%;             /* largura da logo originalmente era 150px*/   
-    height: auto;            /*altura da Logo, originalmente era 150px*/
+    height: 80%;            /*altura da Logo, originalmente era 150px*/
 }
 
 .icones{
     display: flex;
     flex-direction: row; 
     justify-content: space-between;
-    padding: 0px 40px;
-    gap: 10px;
-    padding: 50px;
+    padding: 0px 8%px;
+    gap: 2%px;
+    padding: 10%;
 }
 .body{
     padding-bottom: 120px;
