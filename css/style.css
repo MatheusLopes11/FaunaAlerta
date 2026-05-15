@@ -29,41 +29,47 @@ main{
     flex: 1;
 }
 
+
+/* ESTILIZAÇÃO DO TEXTO DA LOGO */
 .texto-logo{
     font-family: 'Archivo Black', sans-serif;
     color: #D47E09;
     
 }
 
+
+/* COR */
 .Topo{
      background-color: #FFF6F6;
 }
 
+
+/* ESPAÇAMENTO ENTRE OS ITENS DO MENU */
 .nav{
     gap:24px
 }
 
+
+/* TIRA DECORAÇÃO PADRÃO DO NAVEGADOR */
 .nav a{
     text-decoration:none
 }
 
-.topo-bootstrap {
-    height: 82px;  
-}
 
+/*TAMANHO DA LOGO*/
 .logo img {
     width: 80px;
     height: 80px;
 }
 
+
+/* TIRA DECORAÇÃO PADRÃO DO NAVEGADOR */
 .logo a{
     text-decoration: none;
 }
 
-.logo h3{
-    padding-top: 15px;
-}
 
+/* ESTILIZAÇÃO BOTOES DO MENU */
 .menu-btn{
 
     color: black !important;
@@ -80,6 +86,8 @@ main{
     font-family: Afacad Flux;
 }
 
+
+/*BOTAO USUARIO*/
 .user-btn{
 
     width: 50px;
@@ -128,8 +136,6 @@ main{
 /* Página ativa */
 
 .menu-btn.active{
-
-
     color: black !important;
     text-decoration: underline;
 }
@@ -154,15 +160,21 @@ justify-content: flex-end;
 padding-right: 40px;
 }
 
+
+/*COR DO FOOTER E ESPAÇAMENTO INTERNO DOS ITENS DENTRO DELE*/
 .footer{
     background-color: #FFF6F6;
     padding: 30px 0;
 }
 
+
+/*TAMANHO DA LOGO*/
 .footer-logo{
     width: 110px;
 }
 
+
+/*ESTILIZAÇÃO DO TEXTO DA LOGO*/
 .logo-nome{
     color: #D47E09;
     font-size: 2.5rem;
@@ -171,38 +183,52 @@ padding-right: 40px;
     font-family: 'Archivo Black', sans-serif;
 }
 
+
+/*ESTILIZAÇÃO DO TELEFONE E E-MAIL*/
 .footer p{
     color: black;
     margin-bottom: 10px;
     font-family: Afacad Flux;
 }
 
+
+/*HOVER UNDERLINE*/
 .footer p span:hover{
     text-decoration: underline;
 }
 
+
+/*COR DO TELEFONE E E-MAIL*/
 .footer span{
     color: #D47E09;
 }
 
+
+/*TAMANHO DOS ICONES DAS REDES SOCIAIS*/
 .icone-social{
     width: 35px;
     height: 35px;
     object-fit: contain;
 }
 
+
+/*POSICIONAMENTO DOS LINKS A DIREITA*/
 .footer-nav{
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
+
+/*ESTILIZAÇÃO DOS LINKS A DIREITA*/
 .footer-nav a{
     text-decoration: none;
     color: black;
     font-family: Afacad Flux;
 }
 
+
+/*HOVER DOS LINKS A DIREITA*/
 .footer-nav a:hover{
     text-decoration: underline;
     color: #D47E09;
