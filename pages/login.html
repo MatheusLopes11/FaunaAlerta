@@ -61,7 +61,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link menu-btn active" href="sobre.html">
+                                <a class="nav-link menu-btn" href="sobre.html">
                                     Sobre
                                 </a>
                             </li>
@@ -78,10 +78,41 @@
         
     </nav>        
     </header>
-    
-    <main>
-      
+    <!--Nessa sessão fica o forms para efetuar o Login -->
+    <main class="py-5">
+        <section class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-5">
+                    <h2 class="row justify-content-center">EFETUE O LOGIN</h2>
+                    <div class="card py-5 shadow-sm">
 
+                        <div id="mensagem"></div>
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="email" class="form-control" id="email" placeholder="Nome ou email">
+                        </div>
+
+                        <div>
+                            <label for="senha" class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="senha" placeholder="Senha">
+                        </div>
+
+                        <button class="btn byn-dark w-100" onclick="realizarLogin()">Entrar</button>
+
+                        <p class="text-center mt-3 mb-0">
+                            Não possui conta?
+                        </p>
+
+                        <p class="text-center mt-3 mb-0">
+                            <a href="cadastro.html">Clique aqui</a>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
     </main>
 
     <footer class="footer">
