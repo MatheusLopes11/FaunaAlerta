@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
     <!--LINK COM CSS-->
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/login.css">
 
     <!--ICONE NA ABA DO NAVEGADOR-->
     <link rel="icon" type="image/png" href="../img/Logo.ico">
@@ -27,47 +27,37 @@
 
 <body>
     
-    <div id="header"></div>
+    <div id="header"></div>     
 
-    
-    <main class="py-5">
-
-        <!--Nessa sessão fica o forms para efetuar o Login -->
-        
-        <section class="container">
+    <main class="d-flex align-items-center justify-content-center py-5">
+        <div class="container">
             <div class="row justify-content-center">
-                <div class="col-12 col-md-8 col-lg-5">
-                    <h2 class="row justify-content-center">EFETUE O LOGIN</h2>
-                    <div class="card py-5 shadow-sm">
+                <div class="col-12 col-md-8 col-lg-6">
+                    
+                    <h1 class="text-center mb-4 titulo-cadastro">EFETUE O CADASTRO</h1>
 
-                        <div id="mensagem"></div>
-                        
-                        <div class="mb-3">
-                            <label for="email" class="form-label">E-mail</label>
-                            <input type="email" class="form-control" id="email" placeholder="Nome ou email">
-                        </div>
+                    <div class="card-cadastro p-4 p-sm-5">
+                        <form>
+                            
+                            <div class="mb-4">
+                                <label class="form-label label-cadastro">E-mail</label>
+                                <input type="email" class="form-control input-cadastro" placeholder="E-mail" required>
+                            </div>
 
-                        <div>
-                            <label for="senha" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="senha" placeholder="Senha">
-                        </div>
+                            <div class="mb-5">
+                                <label class="form-label label-cadastro">Senha</label>
+                                <input type="password" class="form-control input-cadastro" placeholder="Senha" required>
+                            </div>
 
-                        <button class="btn byn-dark w-100" onclick="realizarLogin()">Entrar</button>
-
-                        <p class="text-center mt-3 mb-0">
-                            Não possui conta?
-                        </p>
-
-                        <p class="text-center mt-3 mb-0">
-                            <a href="cadastro.html">Clique aqui</a>
-                        </p>
-
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-cadastro-laranja">ENTRAR</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-
-        </section>
-    </main>
+        </div>
+    </main> 
 
     <div id="footer"></div>
 
