@@ -1,11 +1,3 @@
-/*
-============================================================
-ARQUIVO: style.css
-PROJETO: Moda Urbana - Atividade HTML5 + CSS3 + Bootstreap Grid
-OBJETIVO: Reproduzir o layout visual apresentado em aula.
-============================================================
-*/
-
 /* RESET BÁSICO
    Remove margens e espaçamentos padrões do navegador para facilitar o controle do layout. */
 * {
@@ -74,18 +66,43 @@ main{
 
     color: black !important;
 
-    border: 2px solid #D47E09;
+  
     border-radius: 20px;
 
     padding: 6px 18px !important;
 
     transition: 0.3s;
 
-    font-size: 14px;
+    font-size: 18px;
 
     font-family: Afacad Flux;
 }
 
+/* Hover */
+
+.menu-btn:hover{
+
+    background-color: #D47E09;
+    color: white !important;
+
+}
+
+/* Página ativa */
+
+.menu-btn.active{
+    color: black !important;
+    text-decoration: underline;
+}
+
+/* COR DOS ICONES */
+.bi{
+    color:black
+}
+
+/* HOVER PARA OS ICONES */
+.bi:hover{
+    color: white;
+}
 
 /*BOTAO USUARIO*/
 .user-btn{
@@ -124,25 +141,6 @@ main{
 
 }
 
-/* Hover */
-
-.menu-btn:hover{
-
-    background-color: #D47E09;
-    color: white !important;
-
-}
-
-/* Página ativa */
-
-.menu-btn.active{
-    color: black !important;
-    text-decoration: underline;
-}
-
-.bi{
-    color:black
-}
 
 
 
@@ -249,6 +247,10 @@ padding-right: 40px;
     }
 }
 
+.card-oque{
+    background-color: #0d6efd;
+}
+
 /*
     Alterações feitas por Anselmo, apenas para referenciar as mudanças relacionadas ao cadastro
 */
@@ -265,6 +267,8 @@ padding-right: 40px;
     background-color: #FFFFFF;
     border-radius: 12px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+    width: 2000px;
+    height: 200px;
 }
 
 /* Labels dos campos (Nome, E-mail, etc.) */
