@@ -1,4 +1,7 @@
-
+<!-- 
+COMPONENTIZAÇÃO DO HEADER (CRIAR UM ARQUIVO QUE CONTENHA UMA PARTE REDUNDANTE
+E REUTILIZÁ-LA EM OUTRA PÁGINAS ATRAVÉS DE CHAMADAS VIA SCRIPT) 
+-->
 
 <header class="Topo">
         <nav class = "navbar navbar-expand-md">
@@ -17,32 +20,51 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>
 
-                    <!-- Menu -->
-                <div class="collapse navbar-collapse" id="menu">
+                <!-- Menu -->
+                <div class="menuu collapse navbar-collapse" id="menu">
 
+                    <!--CRIA LISTA NÃO-ORDENADA-->
                     <ul class="navbar-nav mx-auto gap-3">
 
+                        <!-- BOTÃO Home -->
                         <li class="nav-item">
-                             <a class="nav-link menu-btn active" href="../index.html">
-                                    Principal
+                            
+                             <a class="nav-link menu-btn" href="../index.html">
+                                    <i class="bi bi-house-door fs-4"></i>
+                                    Home
                              </a>
-                         </li>
+                        </li>
 
-                          <li class="nav-item">
+                        <!--BOTÃO ONGS-->
+                        <li class="nav-item">
+                            
+                             <a class="nav-link menu-btn " href="../index.html">
+                                    <i class="bi bi-heart fs-4"></i>
+                                    ONGs     
+                             </a>
+                        </li>                       
+
+                        <!-- BOTÃO Denúncia -->
+                        <li class="nav-item">
+                              
                               <a class="nav-link menu-btn" href="../pages/denuncia.html">
+                                    <i class="bi bi-megaphone fs-4"></i>
                                     Denúncia
                               </a>
-                         </li>
+                        </li>
 
-                         <li class="nav-item">
+                        <!-- BOTÃO Sobre -->
+                        <li class="nav-item">
+                            
                              <a class="nav-link menu-btn" href="../pages/sobre.html">
+                                    <i class="bi bi-info-circle fs-4"></i>
                                     Sobre
-                            </a>
-                         </li>
+                             </a>
+                        </li>
 
                     </ul>
 
-                        <!-- Usuário -->
+                        <!-- BOTÃO Usuário -->
                         <a href="../pages/login.html" class="user-btn">
                             <i class="bi bi-person fs-3"></i>
                         </a>
