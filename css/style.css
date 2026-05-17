@@ -255,27 +255,16 @@ Estilização da página perfil.html
 ============================================================
 */
 
-/*ALINHAMENTO DA FOTO E NOME DE PERFIL*/
+/*DEFININDO TAMANHO DA FOTO*/
 .box-perfil {
-    padding: 100px;
-    display: flex;
-    align-items: center;
-    gap: 45px;
+    width: 150px; 
+    height: 150px;
 }
 
 /*ESTILIZAÇÃO DO NOME DO USUÁRIO*/
-.box-perfil h1 {
-    font-weight: bold;
-    font-size: 70px;
-    color: #2a2929;
-}
-
-/*ESTILIZAÇÃO DA FOTO DE PERFIL*/
-.foto-perfil {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
+.box-nome h1 {
+    font-size: 3rem; 
+    color: #333;
 }
 
 /*ESTILIZAÇÃO E ALINHAMENTO DO TÍTULO DO HISTÓRICO DE DENÚNCIA */
