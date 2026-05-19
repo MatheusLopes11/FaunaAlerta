@@ -1,13 +1,11 @@
-/* -----------------------------------------------
-   HERO / BANNER
-   ----------------------------------------------- */
+/* BANNER */
 
-.hero-banner {
+.banner {
     width: 100%;
     height: 280px;
 
-    /* Imagem de fundo — substitua pelo caminho real quando disponível */
-    background-image: url('../img/Logo1.png');
+    /* Imagem de fundo */
+    background-image: url('../img/Banner\ monkey.png');
     background-size: cover;
     background-position: center top;
 
@@ -17,7 +15,7 @@
     position: relative;
 }
 
-.hero-overlay {
+.overlay {
     position: absolute;
     inset: 0;
 
@@ -32,7 +30,7 @@
 }
 
 /* Botão "DENUNCIE AQUI" */
-.btn-hero {
+.btn {
     background-color: #7B1E1E;
     color: #ffffff;
 
@@ -48,19 +46,19 @@
     transition: background-color 0.3s, transform 0.2s;
 }
 
-.btn-hero:hover {
+.btn:hover {
     background-color: #9e2a2a;
     color: #ffffff;
     transform: scale(1.03);
 }
 
-.btn-hero:active {
+.btn:active {
     background-color: #5c1515;
     color: #ffffff;
 }
 
 /* -----------------------------------------------
-   TÍTULOS DE SEÇÃO (padrão compartilhado na index)
+   TÍTULOS DE SEÇÃO 
    ----------------------------------------------- */
 
 .section-title {
@@ -75,7 +73,7 @@
    ----------------------------------------------- */
 
 .como-funciona {
-    background-color: #D5D1CA; /* mesma cor do body — integração suave */
+    background-color: #D5D1CA; 
 }
 
 /* Card branco com sombra suave */
@@ -202,11 +200,11 @@
 
 @media (max-width: 768px) {
 
-    .hero-banner {
+    .banner {
         height: 200px;
     }
 
-    .btn-hero {
+    .btn {
         font-size: 1.1rem;
         padding: 12px 28px;
     }
@@ -223,4 +221,10 @@
         font-size: 1.3rem;
     }
 
+}
+
+.fluxo-icon:hover,
+.fluxo-icon .bi:hover {
+    color: #1a1a1a !important;
+    transform: none !important;
 }
