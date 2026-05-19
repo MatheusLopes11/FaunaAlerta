@@ -1,28 +1,31 @@
-/*Aqui é uma lista dos usuarios, que vão ficar armazenadas no sistema local*/
+        //Verificar se já existe uma sessão
 
-var usuarioPadrao = [
-    {
-        nome: "Adm",
-        email: "admin@faunaalerta.com",
-        senha: "0000",
-        perfil: "admin"
-    },
-    {
-        nome: "Denunciante",
-        email: "denunciante@faunaalerta.com",
-        senha: "0000",
-        perfil: "usuario"
-    }
-];
+        verificarLogin()
 
 
+        function fazerLogin() {
+            //Pegar os valores digitados no form
+            let usuario = document.getElementById("usuario").value;
+            let senha = document.getElementById("senha").value;
 
-function iniciarBancoUsuarios() {
-    var dados = localStorage.getItem("usuarios");
+            //Validar usuario
+            if (usuario === "admin" && senha === "123") {
+                //criar a sessão
+                sessionStorage.setItem("usuarioLogado", usuario);
 
-    if (dados == null) {
-        var textoJson = JSON.stringify(usuariosPadrao);
-        localStorage.setItem("usuarios", textoJson)
-    }
+                //Abrir pagina de sistema
+                window.location.href = "perfil.html"
+            }else{
+                alert("Usuário ou senha inválidos!");
+            }
+        }
 
-}
+        function verificarLogin(){
+            //Procurar sessão salva
+            let usuario = sessionStorage.getItem("usuarioLogado");
+
+            //Se existir uma sessão, já vai direto para pagina
+            if (usuario !== null){
+                window.location.href = "perfil.html"
+            }
+        }

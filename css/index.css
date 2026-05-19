@@ -1,0 +1,230 @@
+/* BANNER */
+
+.banner {
+    width: 100%;
+    height: 280px;
+
+    /* Imagem de fundo */
+    background-image: url('../img/Banner\ monkey.png');
+    background-size: cover;
+    background-position: center top;
+
+    /* Fallback: cor da identidade visual caso a imagem não carregue */
+    background-color: #4a7c59;
+
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+
+    /* Gradiente escuro sobre a imagem para garantir legibilidade */
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.55) 0%,
+        rgba(0, 0, 0, 0.15) 100%
+    );
+
+    height: 100%;
+}
+
+/* Botão "DENUNCIE AQUI" */
+.btn {
+    background-color: #7B1E1E;
+    color: #ffffff;
+
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    border: none;
+    border-radius: 8px;
+    padding: 14px 36px;
+
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: #9e2a2a;
+    color: #ffffff;
+    transform: scale(1.03);
+}
+
+.btn:active {
+    background-color: #5c1515;
+    color: #ffffff;
+}
+
+/* -----------------------------------------------
+   TÍTULOS DE SEÇÃO 
+   ----------------------------------------------- */
+
+.section-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.6rem;
+    color: #1a1a1a;
+    letter-spacing: 0.04em;
+}
+
+/* -----------------------------------------------
+   COMO FUNCIONA
+   ----------------------------------------------- */
+
+.como-funciona {
+    background-color: #D5D1CA; 
+}
+
+/* Card branco com sombra suave */
+.funciona-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 32px 40px;
+    max-width: 700px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.funciona-descricao {
+    font-family: 'Afacad Flux', sans-serif;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Wrapper do fluxo visual */
+.fluxo {
+    min-height: 80px;
+}
+
+/* Ícones de pessoa */
+.fluxo-icon {
+    font-size: 3rem;
+    color: #1a1a1a;
+}
+
+/* Linha horizontal */
+.fluxo-linha {
+    position: relative;
+}
+
+.linha {
+    width: 100%;
+    height: 3px;
+    background-color: #1a1a1a;
+    border-radius: 2px;
+}
+
+/* Ícone de alerta centralizado sobre a linha */
+.fluxo-alerta {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: #ffffff;
+    padding: 2px 6px;
+}
+
+.fluxo-alerta .bi {
+    font-size: 1.8rem;
+    color: #D47E09;
+}
+
+/* -----------------------------------------------
+   NOTÍCIAS — Placeholder para carrossel 
+   ----------------------------------------------- */
+
+.noticias {
+    background-color: #ebe7e0;
+}
+
+/* Área reservada com borda tracejada */
+.noticias-placeholder {
+    border: 2px dashed #b0a99f;
+    border-radius: 12px;
+    padding: 48px 24px;
+    background-color: #f5f2ee;
+    color: #888;
+}
+
+.placeholder-texto {
+    font-family: 'Afacad Flux', sans-serif;
+    font-size: 1.1rem;
+    margin: 0;
+    color: #999;
+}
+
+.placeholder-texto .bi {
+    font-size: 1.2rem;
+    color: #bbb;
+}
+
+/* -----------------------------------------------
+   PARCEIROS
+   ----------------------------------------------- */
+
+.parceiros {
+    background-color: #D5D1CA;
+}
+
+.parceiro-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 16px;
+    transition: transform 0.2s;
+}
+
+.parceiro-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Logo de cada parceiro */
+.parceiro-logo {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    filter: grayscale(20%);
+    transition: filter 0.3s;
+}
+
+.parceiro-card:hover .parceiro-logo {
+    filter: grayscale(0%);
+}
+
+/* -----------------------------------------------
+   RESPONSIVIDADE
+   ----------------------------------------------- */
+
+@media (max-width: 768px) {
+
+    .banner {
+        height: 200px;
+    }
+
+    .btn {
+        font-size: 1.1rem;
+        padding: 12px 28px;
+    }
+
+    .funciona-card {
+        padding: 24px 20px;
+    }
+
+    .fluxo-icon {
+        font-size: 2.2rem;
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+}
+
+.fluxo-icon:hover,
+.fluxo-icon .bi:hover {
+    color: #1a1a1a !important;
+    transform: none !important;
+}

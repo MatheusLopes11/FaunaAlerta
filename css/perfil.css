@@ -1,0 +1,103 @@
+/*
+============================================================
+Estilização da página perfil.html
+============================================================
+*/
+
+/*DEFININDO TAMANHO DA FOTO*/
+.box-perfil {
+    width: 150px; 
+    height: 150px;
+}
+
+/*ESTILIZAÇÃO DO NOME DO USUÁRIO*/
+.box-nome h1 {
+    font-size: 3rem; 
+    color: #333;
+}
+
+/*ESTILIZAÇÃO E ALINHAMENTO DO TÍTULO DO HISTÓRICO DE DENÚNCIA */
+.titulo-historico {
+    background-color: #D47E35;
+    width: 100%;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+/*ESTILIZAÇÃO DA FONTE DO TÍTULO DO HISTÓRICO DE DENÚNCIA */
+.titulo-historico h2 {
+    color: #000000;
+    font-weight: 700;
+    padding: 10px;
+}
+
+/*CENTRALIZAR O HISTÓRICO DE DENÚNCIAS NO MEIO DA TELA*/
+.container-historico {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+/*ESTILIZAÇÃO E ALINHAMENTO EM COLUNA DOS CARDS DE DENÚNCIAS*/
+.box-historico {
+    background-color: #ffffff;
+    width: 90%;
+    height: auto;
+    border-radius: 24px;
+    padding-bottom: 40px;
+    display:flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+/*ESTILIZAÇÃO DO CARD DE DENÚNCIA E ALINHAMENTO DO TEXTO*/
+.denuncia-status {
+    background-color: #cccccc;
+    padding: 25px;
+    border-radius: 12px;
+    display: flex;
+    align-items: flex-end;
+    margin: 20px;
+    justify-content: space-between;
+}
+
+/*ESTILIZAÇÃO DO BOTÃO VERIFICAR DENTRO DO CARD DE DENÚNCIA*/
+.botao-verificar {
+    border: none;
+    background-color: #D47E09;
+    color:#000;
+    border-radius: 12px;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+/*ESTILIZAÇÃO DO TIPO DE DENÚNCIA, PRESENTE NO CARD DE DENÚNCIA*/
+.denuncia-status h3{
+    font-weight: 700;
+    color:#000;
+}
+
+/*ESTILIZAÇÃO DAS INFORMAÇÕES RESTANTES DO CARD DE DENÚNCIA*/
+.denuncia-status p{
+    color: #000;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.denuncia-status p span{
+    color: #2a2929;
+}
+
+/*ESTILIZAÇÃO DO BOTÃO DE CARREGAR MAIS DENÚNCIAS*/
+.botao-carregar {
+    background-color: #D47E35;
+    border: none;
+    border-radius: 12px;
+    color: #000000;
+    font-weight: bold;
+    padding: 10px;
+    font-size: 30px;
+    margin: 20px;
+}

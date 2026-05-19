@@ -55,3 +55,18 @@
     background-color: #D47E09;
     color: #FFFFFF;
 }
+
+.nao-possui{
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.clique-aqui{
+    text-decoration:none;
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.clique-aqui a{
+    color: #D47E09;
+    text-decoration:none;
+    font-family: 'Archivo Black', sans-serif;
+}

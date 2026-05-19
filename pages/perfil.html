@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaunaAlerta</title>
+
+    <!--CDN E API DO GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!--FONTES ESPECIFICAS-->
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Archivo+Black&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">    
+   
+    <!--CDN BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!--LINK COM CSS-->
+    <link rel="stylesheet" href="../css/perfil.css">
+
+    <!--ICONE NA ABA DO NAVEGADOR-->
+    <link rel="icon" type="image/png" href="../img/Logo.ico">
+    
+</head>
+
+<body>
+    
+    <div id="header"></div>
+    
+    <main>
+        <section>
+            <!--Foto do usuário-->
+            <div class="container my-5">
+                <div class="d-flex align-items-center gap-4">
+                    <div class="box-perfil">
+                        <img src="../img/foto-perfil.png" alt="Foto de perfil" class="img-fluid rounded-circle object-fit-cover w-100 h-100">
+                    </div>
+
+                    <div class="box-nome">
+
+
+
+                        <!-- Alteração-->
+                        <!--<h1 class="fw-bold m-0">Chico Buarte</h1>-->
+                        <h1 class="fw-bold m-0" id="nome-perfil-usuario">Nome do usuário</h1>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="container-historico">
+            <!--Histórico de denúncias-->
+            <div class="box-historico">
+                <!--Título do histórico de denúncia-->
+                <div class="titulo-historico">
+                    <h2>Histórico de denúncias</h2>
+                </div>
+                <div class="denuncia-status">
+                    <div>
+                        <h3>Maus-tratos</h3>
+                        <p>Data: <span>01/01/2026</span></p>
+                        <p>Status: <span>Em espera</span></p>
+                        <p>Localização: <span>Rua Bonaparte, 101, Diadema, SP</span></p>
+                    </div>
+                    <div>
+                        <button class="botao-verificar">Verificar denúncia</button>
+                    </div>
+                </div>
+
+                <div class="denuncia-status">
+                    <div>
+                        <h3>Maus-tratos</h3>
+                        <p>Data: <span>01/01/2026</span></p>
+                        <p>Status: <span>Em espera</span></p>
+                        <p>Localização: <span>Rua Bonaparte, 101, Diadema, SP</span></p>
+                    </div>
+                    <div>
+                        <button class="botao-verificar">Verificar denúncia</button>
+                    </div>
+                </div>
+
+                <div class="denuncia-status">
+                    <div>
+                        <h3>Maus-tratos</h3>
+                        <p>Data: <span>01/01/2026</span></p>
+                        <p>Status: <span>Em espera</span></p>
+                        <p>Localização: <span>Rua Bonaparte, 101, Diadema, SP</span></p>
+                    </div>
+                    <div>
+                        <button class="botao-verificar">Verificar denúncia</button>
+                    </div>
+                </div>
+                <button class="botao-carregar">Carregar mais</button>
+            </div>
+        </section>
+
+
+    </main>
+
+    <div id="footer"></div>
+
+<!-- SCRIPTS -->
+<script src="../js/components.js"></script>
+</body>
+</html>
