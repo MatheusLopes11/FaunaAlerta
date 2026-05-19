@@ -1,0 +1,248 @@
+/* RESET BÁSICO
+   Remove margens e espaçamentos padrões do navegador para facilitar o controle do layout. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Faz width/height incluírem padding e border */
+}   
+
+/* BODY
+   Define fonte padrão, cor do texto e fundo geral do site. */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #D5D1CA;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+   }
+
+main{
+    flex: 1;
+}
+
+
+/* ESTILIZAÇÃO DO TEXTO DA LOGO */
+.texto-logo{
+    font-family: 'Archivo Black', sans-serif;
+    color: #D47E09;
+    
+}
+
+
+/* COR */
+.Topo{
+     background-color: #FFF6F6;
+}
+
+
+/* ESPAÇAMENTO ENTRE OS ITENS DO MENU */
+.nav{
+    gap:24px
+}
+
+
+/* TIRA DECORAÇÃO PADRÃO DO NAVEGADOR */
+.nav a{
+    text-decoration:none
+}
+
+
+/*TAMANHO DA LOGO*/
+.logo img {
+    width: 80px;
+    height: 80px;
+}
+
+
+/* TIRA DECORAÇÃO PADRÃO DO NAVEGADOR */
+.logo a{
+    text-decoration: none;
+}
+
+
+/* ESTILIZAÇÃO BOTOES DO MENU */
+.menu-btn{
+
+    color: black !important;
+
+  
+    border-radius: 20px;
+
+    padding: 6px 18px !important;
+
+    transition: 0.3s;
+
+    font-size: 18px;
+
+    font-family: Afacad Flux;
+}
+
+/* Hover */
+
+.menu-btn:hover{
+
+    background-color: #D47E09;
+    color: white !important;
+
+}
+
+/* Página ativa */
+
+.menu-btn.active{
+    color: black !important;
+    text-decoration: underline;
+}
+
+/* COR DOS ICONES */
+.bi{
+    color:black
+}
+
+/* HOVER PARA OS ICONES */
+.bi:hover{
+    color: white;
+}
+
+/*BOTAO USUARIO*/
+.user-btn{
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    color: #0d6efd;
+
+    transition: 0.3s;
+}
+
+/* Hover */
+
+.user-btn:hover{
+
+    background-color: #D47E09;
+    color: white;
+
+}
+
+/* Clique */
+
+.user-btn:active{
+
+    background-color: #D47E09;
+    color: black;
+
+}
+
+
+
+
+/* Botão Esquerdo */
+
+.carousel-control-prev{
+justify-content: flex-start;
+padding-left: 40px;
+}
+
+/* Botão Direito */
+
+.carousel-control-next{
+justify-content: flex-end;
+padding-right: 40px;
+}
+
+
+/*COR DO FOOTER E ESPAÇAMENTO INTERNO DOS ITENS DENTRO DELE*/
+.footer{
+    background-color: #FFF6F6;
+    padding: 30px 0;
+}
+
+
+/*TAMANHO DA LOGO*/
+.footer-logo{
+    width: 110px;
+}
+
+
+/*ESTILIZAÇÃO DO TEXTO DA LOGO*/
+.logo-nome{
+    color: #D47E09;
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1;
+    font-family: 'Archivo Black', sans-serif;
+}
+
+
+/*ESTILIZAÇÃO DO TELEFONE E E-MAIL*/
+.footer p{
+    color: black;
+    margin-bottom: 10px;
+    font-family: Afacad Flux;
+}
+
+
+/*HOVER UNDERLINE*/
+.footer p span:hover{
+    text-decoration: underline;
+}
+
+
+/*COR DO TELEFONE E E-MAIL*/
+.footer span{
+    color: #D47E09;
+}
+
+
+/*TAMANHO DOS ICONES DAS REDES SOCIAIS*/
+.icone-social{
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+
+/*POSICIONAMENTO DOS LINKS A DIREITA*/
+.footer-nav{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/*ESTILIZAÇÃO DOS LINKS A DIREITA*/
+.footer-nav a{
+    text-decoration: none;
+    color: black;
+    font-family: Afacad Flux;
+}
+
+
+/*HOVER DOS LINKS A DIREITA*/
+.footer-nav a:hover{
+    text-decoration: underline;
+    color: #D47E09;
+}
+
+@media (max-width: 768px){
+
+    .logo-nome{
+        font-size: 2rem;
+    }
+
+    .footer-logo{
+        width: 80px;
+    }
+
+    .footer-nav{
+        margin-top: 20px;
+    }
+}
