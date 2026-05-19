@@ -29,6 +29,9 @@ main{
     
 }
 
+a{
+    text-decoration: none;
+}
 
 /* COR */
 .Topo{
@@ -99,10 +102,7 @@ main{
     color:black
 }
 
-/* HOVER PARA OS ICONES */
-.bi:hover{
-    color: white;
-}
+
 
 /*BOTAO USUARIO*/
 .user-btn{
