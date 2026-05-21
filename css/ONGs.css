@@ -27,3 +27,13 @@
     border-radius: 100%;
     border-color: black;
 }
+
+.card-Titulo{
+    background-color: #D47E35;
+    color: #D9D9D9;
+    border-radius: 8px;
+}
+
+.card-Conteudo{
+    padding: 5%;
+}
