@@ -1,0 +1,29 @@
+
+/*BARRA DE NAV DE PESQUISA*/
+.formPesquisa{
+    position: relative;
+    color: #D9D9D9;
+}
+.formPesquisa .form-input{
+    background-color: #D9D9D9;
+}
+
+.formPesquisa .bi-search{
+    position: absolute;
+    left: 93%;
+    bottom: 16%;
+}
+
+.btn-secondary {
+    width: 40px;
+    height: 38px;
+}
+
+.btn-secondary .bi-question-circle{
+    color: #FFF6F6;
+}
+
+.containerOngs .img{
+    border-radius: 100%;
+    border-color: black;
+}
