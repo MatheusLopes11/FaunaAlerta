@@ -225,6 +225,18 @@ padding-right: 40px;
     font-family: Afacad Flux;
 }
 
+.icone-social{
+    border-radius: 100%;
+    color: #0d6efd;
+
+    transition: 0.3s;
+}
+
+.icone-social:hover{
+    background-color: #D47E09;
+    color: white;
+}
+
 
 /*HOVER DOS LINKS A DIREITA*/
 .footer-nav a:hover{

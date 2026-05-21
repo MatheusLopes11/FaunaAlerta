@@ -13,6 +13,8 @@
     margin: 0 20%;                          /*deixa espaço nas laterais*/
     font-size: 110%;                        /*tamanho de fonte*/
     flex-direction: column;                 /*deixa os itens alinhados em forma de coluna, um debaixo do outro*/     
+    border-radius: 10px;
+    margin-bottom: 10%;
 }
 
 /* espaçamento entre cada campo do formulario*/
@@ -28,11 +30,20 @@
     font-weight: bold;                      /* deixa em negrito */
     justify-content: center;                /* alinha oo centro*/
     margin: 4%;                             /*espacamento entre outros elementos*/
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.botoes{
+    display: flex;
+    gap: 46vh;
 }
 
 /* aparencia do botao*/
 .botao{
-    margin-top: 3%;                         /*espacamento entre o campo de descricao*/
+    margin-top: 5vh ;                         /*espacamento entre o campo de descricao*/
+    margin-bottom: 5vh;
+    margin-left: 5vh;
+    margin-right: 5vh;
     border: 3px solid #D47E09;              /*define tamanho e cor da borda*/
     color: #D47E09;                         /*cor da fonte*/
     font-family: 'Archivo Black', sans-serif;   /*Qual fonte?*/
