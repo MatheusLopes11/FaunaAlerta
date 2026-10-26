@@ -1,0 +1,14 @@
+info:
+  name: Inserir Alertas-Midias
+  type: http
+
+http:
+  method: POST
+  url: "{{base_url}}/alerta-midias"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
