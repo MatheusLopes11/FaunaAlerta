@@ -1,0 +1,14 @@
+info:
+  name: Listar Midias
+  type: http
+
+http:
+  method: GET
+  url: "{{base_url}}/orgao-mock/midias"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

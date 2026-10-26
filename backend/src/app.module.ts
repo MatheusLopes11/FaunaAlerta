@@ -15,6 +15,16 @@ import { Denuncias } from './denuncias/denuncias.entity.js';
 import { DenunciasModule } from './denuncias/denuncias.module.js';
 import { DenunciaHistorico } from './denuncia_historico/denuncia_historico.entity.js';
 import { DenunciaHistoricoModule } from './denuncia_historico/denuncia_historico.module.js';
+import { Alerta } from './alertas/alertas.entity.js';
+import { AlertaModule } from './alertas/alertas.module.js';
+import { AlertaMidia } from './alerta-media/alerta-media.entity.js';
+import { AlertaMidiaModule } from './alerta-media/alerta-media.module.js';
+import { Ong } from './ong/ong.entity.js';
+import { OngsModule } from './ong/ong.module.js';
+import { DenunciaRecebida } from './orgao mock/denuncia recebida/Denuncia-Recebida.entity.js';
+import { DenunciaRecebidaModule } from './orgao mock/denuncia recebida/denuncia-recebida.module.js';
+import { DenunciaMidiaMock } from './orgao mock/denuncia midias/denuncia-midia.entity.js';
+import { DenunciaMidiaMockModule } from './orgao mock/denuncia midias/denuncia-media.module.js';
 
 @Module({
   imports: [
@@ -22,6 +32,7 @@ import { DenunciaHistoricoModule } from './denuncia_historico/denuncia_historico
       isGlobal: true,
     }),
 
+    // Banco de dados Principal
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -33,7 +44,17 @@ import { DenunciaHistoricoModule } from './denuncia_historico/denuncia_historico
         password: ConfigService.get<string>('DB_PASSWORD'),
         database: ConfigService.get<string>('DB_NAME'),
 
-        entities: [Especies, Usuario, Pesquisador, DocumentosVerificacao, Denuncias, DenunciaHistorico],
+        entities: [
+          Especies,
+          Usuario, 
+          Pesquisador, 
+          DocumentosVerificacao, 
+          Denuncias, 
+          DenunciaHistorico, 
+          Alerta, 
+          AlertaMidia, 
+          Ong,
+        ],
 
         // IMPORTANTE: Quando for mexer em algo no banco de dados
         // mude para false(f minusculo), assim vc evita que as tabelas
@@ -42,12 +63,35 @@ import { DenunciaHistoricoModule } from './denuncia_historico/denuncia_historico
         synchronize: false,
       }),
     }),
+
+    //
+    TypeOrmModule.forRootAsync({
+      name: 'orgaoMock',
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (ConfigService: ConfigService) => ({
+        type: 'mysql',
+        host: ConfigService.get<string>('DB_HOST'),
+        port: ConfigService.get<number>('DB_PORT'),
+        username: ConfigService.get<string>('DB_USER'),
+        password: ConfigService.get<string>('DB_PASSWORD'),
+        database: ConfigService.get<string>('DB_MOCK_NAME'),
+        entities: [DenunciaRecebida, DenunciaMidiaMock],
+        synchoroniza: false,
+      }),
+    }),
+
     EspeciesModule,
     UsuarioModule,
     PesquisadorModule,
     DocumentosVerificacaoModule,
     DenunciasModule,
     DenunciaHistoricoModule,
+    AlertaModule,
+    AlertaMidiaModule,
+    OngsModule,
+    DenunciaRecebidaModule,
+    DenunciaMidiaMockModule,
   ],
   
   controllers: [AppController],
