@@ -4,6 +4,16 @@
     color: #b1470bff;
 }
 
+.menuu{
+    gap:50px;
+}
+
+.menu-btn, .nav a{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 a{
     text-decoration: none;
 }
@@ -164,6 +174,23 @@ padding-right: 40px;
     font-family: Afacad Flux;
 }
 
+.footer .telefone,
+.footer .email{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer .email span {
+    margin-left: 5px;
+}
+
+.footer span {
+    color: #b1470bff;
+    margin-left: 8px;
+}
+
 
 /*HOVER UNDERLINE*/
 .footer p span:hover{
@@ -238,3 +265,25 @@ padding-right: 40px;
     margin-right: 3vh;
 }
 
+/*CSS DO NOVO CARROSSEL*/
+/* Remove o comportamento de bolinha e transforma num botão de seta elegante */
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: rgba(0, 0, 0, 0.5) !important; /* Fundo escuro translúcido para destacar */
+  color: #ffffff !important; /* Cor da seta em branco */
+  width: 45px !important;
+  height: 45px !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  transform: none !important;
+}
+
+/* Cor das setas ao passar o rato (hover) para combinar com a identidade visual do site */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: #D47E09 !important; /* Fica laranja ao passar o rato */
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #D47E09 !important;
+}

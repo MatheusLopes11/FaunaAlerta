@@ -22,7 +22,7 @@ export function Footer() {
           </div>
 
           {/* Contato e Redes Sociais */}
-          <div className="col-12 col-md-4 text-center mb-4 mb-md-0">
+          <div className="divtelefone col-12 col-md-4 text-center mb-4 mb-md-0">
             <p className="telefone mb-1">
               <strong>Telefone</strong>
               <span>(11) 99999-9999</span>
