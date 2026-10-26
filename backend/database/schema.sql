@@ -44,7 +44,7 @@ CREATE TABLE Denuncias(
 		FOREIGN KEY (usuario_id) REFERENCES Usuario(id) ON DELETE SET NULL
 );
 
-CREATE TABLE Denuncia_historico_status(
+CREATE TABLE Denuncia_historico(
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     denuncia_id INT UNSIGNED NOT NULL,
     status_denun ENUM('Recebida', 'Em_validacao', 'Em_resolucao', 'Concluida', 'Rejeitada') NOT NULL DEFAULT 'Recebida',
@@ -69,8 +69,6 @@ CREATE TABLE Alertas(
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     especie_id INT UNSIGNED NULL, 
     usuario_id INT UNSIGNED NULL,
-    latitude DECIMAL(9, 6) NOT NULL,
-    longitude DECIMAL(9, 6) NOT NULL,
     municipio VARCHAR(100) NOT NULL,
     UF CHAR(2) NOT NULL,
     bioma ENUM('AMAZONIA', 'CERRADO', 'MATA ATLANTICA', 'CAATINGA', 'PAMPA', 'PANTANAL') NULL,
@@ -92,7 +90,7 @@ CREATE TABLE Alerta_midias (
     CONSTRAINT fk_alerta_midia FOREIGN KEY (alerta_id)
 		REFERENCES Alertas(id) ON DELETE CASCADE
 );
-
+/*
 CREATE TABLE Noticia(
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     titulo VARCHAR(255) NOT NULL,
@@ -100,6 +98,7 @@ CREATE TABLE Noticia(
     fonte VARCHAR(100) NOT NULL,
     criado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+*/
 
 CREATE TABLE ONG(
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,

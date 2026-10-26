@@ -9,6 +9,12 @@ import { Usuario } from './usuario/usuario.entity.js';
 import { UsuarioModule } from './usuario/usuario.module.js';
 import { Pesquisador } from './pesquisador/pesquisador.entity.js';
 import { PesquisadorModule } from './pesquisador/pesquisador.module.js';
+import { DocumentosVerificacao } from './documentos-verificacao/documentos-verificacao.entity.js';
+import { DocumentosVerificacaoModule } from './documentos-verificacao/documentos-verificacao.module.js';
+import { Denuncias } from './denuncias/denuncias.entity.js';
+import { DenunciasModule } from './denuncias/denuncias.module.js';
+import { DenunciaHistorico } from './denuncia_historico/denuncia_historico.entity.js';
+import { DenunciaHistoricoModule } from './denuncia_historico/denuncia_historico.module.js';
 
 @Module({
   imports: [
@@ -27,7 +33,7 @@ import { PesquisadorModule } from './pesquisador/pesquisador.module.js';
         password: ConfigService.get<string>('DB_PASSWORD'),
         database: ConfigService.get<string>('DB_NAME'),
 
-        entities: [Especies, Usuario, Pesquisador],
+        entities: [Especies, Usuario, Pesquisador, DocumentosVerificacao, Denuncias, DenunciaHistorico],
 
         // IMPORTANTE: Quando for mexer em algo no banco de dados
         // mude para false(f minusculo), assim vc evita que as tabelas
@@ -39,6 +45,9 @@ import { PesquisadorModule } from './pesquisador/pesquisador.module.js';
     EspeciesModule,
     UsuarioModule,
     PesquisadorModule,
+    DocumentosVerificacaoModule,
+    DenunciasModule,
+    DenunciaHistoricoModule,
   ],
   
   controllers: [AppController],
