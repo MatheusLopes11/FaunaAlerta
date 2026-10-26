@@ -60,7 +60,6 @@ export function NavBar() {
                         {/* Botão Usuário (Login) */}
                         <Link to="/login" className="user-btn">
                             <i className="bi bi-person fs-3"></i>
-                            <strong>Perfil</strong>
                         </Link>
 
                     </div>
