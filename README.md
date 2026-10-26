@@ -1,4 +1,4 @@
-# 🐾 FaunaAlerta
+# FaunaAlerta
 
 Plataforma web para **registrar alertas de avistamento de fauna** e **fazer denúncias de crimes ambientais** (caça ilegal, pesca ilegal, maus-tratos, tráfico de animais), conectando cidadãos, pesquisadores, ONGs e órgãos ambientais.
 
@@ -6,7 +6,7 @@ Plataforma web para **registrar alertas de avistamento de fauna** e **fazer den�
 
 ---
 
-## 📌 Sumário
+## Sumário
 
 - [Sobre o projeto](#-sobre-o-projeto)
 - [Funcionalidades](#-funcionalidades)
@@ -24,7 +24,7 @@ Plataforma web para **registrar alertas de avistamento de fauna** e **fazer den�
 
 ---
 
-## 🌿 Sobre o projeto
+## Sobre o projeto
 
 O FaunaAlerta nasce da necessidade de reunir, em um só lugar, informações sobre a fauna brasileira e canais simples para a população reportar ocorrências. A plataforma permite:
 
@@ -39,18 +39,18 @@ O FaunaAlerta nasce da necessidade de reunir, em um só lugar, informações sob
 
 | Funcionalidade | Situação |
 | --- | --- |
-| Páginas institucionais (Home, Sobre, ONGs) | ✅ Interface pronta |
-| Cadastro de usuários (API) | ✅ Implementado (senha com bcrypt) |
-| Cadastro de pesquisadores (API) | ✅ Implementado |
-| Cadastro e listagem de espécies (API) | ✅ Implementado |
-| Formulários de cadastro, login, alerta e denúncia | 🚧 Interface pronta, ainda não integrada à API |
-| Autenticação (login/JWT) e perfis de acesso | ⏳ Planejado |
-| Alertas, denúncias, ONGs e notícias na API | ⏳ Planejado |
-| Painel administrativo e página de perfil | ⏳ Planejado |
+| Páginas institucionais (Home, Sobre, ONGs) |  Interface pronta |
+| Cadastro de usuários (API) |  Implementado (senha com bcrypt) |
+| Cadastro de pesquisadores (API) |  Implementado |
+| Cadastro e listagem de espécies (API) |  Implementado |
+| Formulários de cadastro, login, alerta e denúncia |  Interface pronta, ainda não integrada à API |
+| Autenticação (login/JWT) e perfis de acesso |  Planejado |
+| Alertas, denúncias, ONGs e notícias na API |  Planejado |
+| Painel administrativo e página de perfil |  Planejado |
 
 ---
 
-## 🛠 Tecnologias
+## Tecnologias
 
 **Frontend**
 - [React 18](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
@@ -73,7 +73,7 @@ O FaunaAlerta nasce da necessidade de reunir, em um só lugar, informações sob
 
 ---
 
-## 📁 Estrutura do repositório
+## Estrutura do repositório
 
 ```
 FaunaAlerta/
@@ -101,7 +101,7 @@ FaunaAlerta/
 
 ---
 
-## ✅ Pré-requisitos
+## Pré-requisitos
 
 - [Node.js](https://nodejs.org/) **20.19+** (recomendado: versão LTS mais recente) e npm
 - [MySQL](https://www.mysql.com/) 8+
@@ -110,7 +110,7 @@ FaunaAlerta/
 
 ---
 
-## 🚀 Como rodar localmente
+## Como rodar localmente
 
 ### 1. Clonar o repositório
 
@@ -129,7 +129,7 @@ mysql -u root -p < backend/database/schema.sql
 
 O script cria dois bancos: `FaunaAlerta` (principal) e `Orgao_mock` (simulação do órgão que recebe denúncias).
 
-> ⚠️ O arquivo `backend/database/views.sql` ainda contém erros (nomes de tabelas e colunas incorretos) e **não deve ser executado** por enquanto.
+>  O arquivo `backend/database/views.sql` ainda contém erros (nomes de tabelas e colunas incorretos) e **não deve ser executado** por enquanto.
 
 ### 3. Configurar e rodar o backend
 
@@ -160,7 +160,7 @@ O frontend ficará disponível em `http://localhost:5173`.
 
 ---
 
-## 🔐 Variáveis de ambiente
+## Variáveis de ambiente
 
 Crie o arquivo `backend/.env` com o seguinte conteúdo (ajuste os valores para o seu ambiente):
 
@@ -178,7 +178,7 @@ DB_NAME=FaunaAlerta
 
 ---
 
-## 🔌 API
+## API
 
 Base URL local: `http://localhost:3000`
 
@@ -223,7 +223,7 @@ Mais exemplos prontos estão na coleção do Bruno em `backend/Fauna Alerta API`
 
 ---
 
-## 🗄 Modelo de dados
+## Modelo de dados
 
 Principais tabelas do banco `FaunaAlerta`:
 
@@ -242,7 +242,7 @@ O banco `Orgao_mock` simula o sistema do órgão ambiental que recebe as denúnc
 
 ---
 
-## 🧰 Scripts úteis
+## Scripts úteis
 
 **Backend** (`cd backend`)
 
@@ -267,7 +267,7 @@ O banco `Orgao_mock` simula o sistema do órgão ambiental que recebe as denúnc
 
 ---
 
-## 📍 Status do projeto
+## Status do projeto
 
 Em desenvolvimento. Próximos passos:
 
@@ -281,7 +281,7 @@ Em desenvolvimento. Próximos passos:
 
 ---
 
-## 🤝 Fluxo de trabalho com Git
+## Fluxo de trabalho com Git
 
 1. Crie uma branch a partir da `main` (`git checkout -b minha-feature`).
 2. Faça commits pequenos e com mensagens claras.
@@ -290,7 +290,7 @@ Em desenvolvimento. Próximos passos:
 
 ---
 
-## 👥 Equipe
+## Equipe
 
 
 | Nome | GitHub |
@@ -303,6 +303,6 @@ Em desenvolvimento. Próximos passos:
 | Wagner Acácio da Silva | [@pequetux](https://github.com/pequetux) |
 ---
 
-## 📄 Licença
+## Licença
 
 Projeto acadêmico.
