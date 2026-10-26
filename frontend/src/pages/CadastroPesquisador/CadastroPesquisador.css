@@ -1,0 +1,133 @@
+.main-cadastro {
+    font-family: 'Afacad Flux', sans-serif;
+    background-color: #4e3f37;
+}
+
+.container-cadastro {
+    margin: 20px;
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    background-color: #f7f1ee;
+    overflow: hidden; 
+}
+
+.imagem-cadastro {
+    position: relative;
+    flex: 0 0 40%;
+
+    & img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+    }
+}
+
+.box-cadastros {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: clamp(16px, 3vw, 32px); /* mínimo 16px, máximo 32px */
+}
+
+.titulo-cadastro {
+    font-family: 'Afacad Flux', sans-serif;
+    font-weight: bold;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin: 0;
+}
+
+.campo-cadastro {
+    display: flex;
+    flex-direction: column;
+
+    & label {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #333;
+    }
+
+    & input {
+        padding: 4px 10px;
+        border: 2px solid #333;
+        border-radius: 6px;
+        font-size: 1rem;
+    }
+}
+
+.termos-cadastro {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    & input {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+    }
+
+    & label {
+        font-size: 1rem;
+
+        & strong {
+            color: #14ae5c;
+        }
+    }
+}
+
+.btn-cadastro {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    background-color: #4e3f37;
+    color: #f7f1ee;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.verifica-login {
+    text-align: center;
+    font-size: 1rem;
+    margin: 0;
+
+    & strong {
+       color: #14ae5c;
+       text-decoration: underline; 
+    }
+}
+
+.container-troca-cadastro {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-troca-cdusuario {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    background-color:#d47e35;
+    color: #f7f1ee;
+    font-size: 1.1rem;
+    font-weight: 500;
+    box-shadow: 5px 5px 0px 0px #333;
+    & strong {
+        font-weight: 500;
+        color: #333;
+    }
+}
+
+.container-senha-pesquisador {
+    display: flex;
+}
+
+.erro-cadastro {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #b3261e;
+}

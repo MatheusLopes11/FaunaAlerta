@@ -1,3 +1,7 @@
+.container-home {
+    background-color: #4e3f37;
+}
+
 /* BANNER */
 
 .banner {
@@ -74,6 +78,7 @@
 
 .como-funciona {
     background-color: #D5D1CA; 
+    
 }
 
 /* Card branco com sombra suave */
