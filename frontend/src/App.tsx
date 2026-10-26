@@ -8,7 +8,7 @@ import Admin from './pages/Admin/Admin.tsx'
 import Pesquisador from './pages/Pesquisador/Pesquisador.tsx'
 import Ong from './pages/ONG/Ong.tsx'
 import PagOng from './pages/PagOng/PagOng.tsx'
-
+import CadastroPesquisador from './pages/CadastroPesquisador/CadastroPesquisador.tsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { NavBar } from './components/NavBar.tsx'
 import { Footer } from './components/Footer.tsx'
@@ -29,6 +29,7 @@ export function App() {
           <Route path="/Pesquisador" element={<Pesquisador />} />
           <Route path="/ONG" element={<Ong />} />
           <Route path="/PagOng" element={<PagOng />} />
+          <Route path="/CadastroPesquisador" element={<CadastroPesquisador />} />
         </Routes>
         <Footer/>
     </BrowserRouter>

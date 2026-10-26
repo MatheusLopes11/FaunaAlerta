@@ -19,7 +19,7 @@ function Home() {
         <title>FaunaAlerta</title>
       </Helmet>
       
-      <main>
+      <main className="container-home">
 
         {/* BANNER */}
         <section className="banner">

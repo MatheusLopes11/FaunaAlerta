@@ -20,10 +20,15 @@ function Cadastro() {
                     <div className="box-cadastros">
                         <h1 className="titulo-cadastro">CRIE UMA CONTA</h1>
 
-                        <form className="form-cadastro row g-3">
+                        <form className="form-cadastro row g-2">
                             <div className="campo-cadastro col-md-12">
                                 <label htmlFor="nome">Digite seu nome:</label>
                                 <input name="nome" type="text" id="nome" placeholder="Insira seu nome" required />
+                            </div>
+
+                            <div className="campo-cadastro col-12">
+                                <label htmlFor="email">Digite seu email:</label>
+                                <input name="email" type="email" id="email" placeholder="Insira seu e-mail" required />
                             </div>
 
                             <div className="campo-cadastro col-md-12">
@@ -31,10 +36,7 @@ function Cadastro() {
                                 <input name="telefone" type="tel" id="telefone" placeholder="Insira seu telefone com DDD" required />
                             </div>
 
-                            <div className="campo-cadastro col-12">
-                                <label htmlFor="email">Digite seu email:</label>
-                                <input name="email" type="email" id="email" placeholder="Insira seu e-mail" required />
-                            </div>
+                            
 
                             <div className="campo-cadastro col-md-12">
                                 <label htmlFor="senha">Crie uma senha:</label>
@@ -56,7 +58,10 @@ function Cadastro() {
                                 </p>
                             </div>
                             <div className="col-12">
-                                <button type="submit" className="btn-cadastro">Criar conta</button>
+                                <Link to="/CampoDocumentacao"><button type="submit" className="btn-cadastro">Criar conta</button></Link>
+                            </div>
+                            <div className="col-12 container-troca-cadastro">
+                                <Link to="/CadastroPesquisador"><button type="button" className="btn-troca-cadastro">Cadastre-se como <strong>Pesquisador</strong></button></Link>
                             </div>
                         </form>
                     </div>

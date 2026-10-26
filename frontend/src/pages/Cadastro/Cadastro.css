@@ -4,6 +4,7 @@
 }
 
 .container-cadastro {
+    margin: 20px;
     display: flex;
     width: 100%;
     max-width: 1000px;
@@ -97,5 +98,21 @@
     & strong {
        color: #14ae5c;
        text-decoration: underline; 
+    }
+}
+
+.btn-troca-cadastro {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    background-color:#14ae5c;
+    color: #f7f1ee;
+    font-size: 1.1rem;
+    font-weight: 500;
+    box-shadow: 5px 5px 0px 0px #333;
+    & strong {
+        font-weight: 500;
+        color: #333;
     }
 }
