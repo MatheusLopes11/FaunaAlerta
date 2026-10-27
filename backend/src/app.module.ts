@@ -25,6 +25,7 @@ import { DenunciaRecebida } from './orgao mock/denuncia recebida/Denuncia-Recebi
 import { DenunciaRecebidaModule } from './orgao mock/denuncia recebida/denuncia-recebida.module.js';
 import { DenunciaMidiaMock } from './orgao mock/denuncia midias/denuncia-midia.entity.js';
 import { DenunciaMidiaMockModule } from './orgao mock/denuncia midias/denuncia-media.module.js';
+import { EspecieBioma } from './especies/especie-bioma.entity.js';
 
 @Module({
   imports: [
@@ -46,6 +47,7 @@ import { DenunciaMidiaMockModule } from './orgao mock/denuncia midias/denuncia-m
 
         entities: [
           Especies,
+          EspecieBioma,
           Usuario, 
           Pesquisador, 
           DocumentosVerificacao, 
