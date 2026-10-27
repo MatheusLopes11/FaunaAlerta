@@ -154,7 +154,9 @@ Em outro terminal:
 ```bash
 cd frontend
 npm install
-npm install swiper
+npm install swiper - carrossel
+npm i @nestjs/jwt - implementar jwt
+node -e "console.log(require('crypto').randomBytes(48).toString('hex'))" - gerar hash para jwt no .env
 npm run dev
 ```
 
