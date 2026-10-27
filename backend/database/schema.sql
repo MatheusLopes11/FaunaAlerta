@@ -62,7 +62,22 @@ CREATE TABLE Especies(
     origem ENUM('NATIVA', 'EXOTICA', 'EXOTICA_INVASORA') NOT NULL,
 	status_conservacao ENUM('LC', 'NT', 'VU', 'EN', 'CR', 'EW', 'DD', 'NE') NOT NULL DEFAULT 'NE',
     descricao TEXT NULL,
-	imagem_url VARCHAR(500) NULL
+	imagem_url VARCHAR(500) NULL,
+    grupo ENUM('MAMIFERO','AVE','REPTIL','ANFIBIO','PEIXE','ARACNIDEO','INSETO','OUTRO') NOT NULL DEFAULT 'OUTRO',
+    nivel_risco ENUM('NENHUM','BAIXO','MODERADO','ALTO') NOT NULL DEFAULT 'NENHUM',
+    descricao_risco TEXT NULL,
+    expectativa_vida_min SMALLINT UNSIGNED NULL,
+    expectativa_vida_max SMALLINT UNSIGNED NULL,
+    aparece_em_casas BOOLEAN NOT NULL DEFAULT FALSE,
+    curiosidades TEXT NULL,
+    fonte VARCHAR(255) NULL
+);
+
+CREATE TABLE Especie_biomas (
+	especie_id INT UNSIGNED NOT NULL,
+    bioma ENUM('AMAZONIA','CERRADO','MATA ATLANTICA','CAATINGA','PAMPA','PANTANAL') NOT NULL,
+    PRIMARY KEY (especie_id, bioma),
+    CONSTRAINT fk_especie_bioma FOREIGN KEY (especie_id) REFERENCES Especies(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Alertas(
