@@ -1,0 +1,33 @@
+.especies-page { background-color: #d6d0cb; min-height: 100vh; font-family: 'Afacad Flux', sans-serif; }
+.especies-page h1 { font-family: 'Archivo Black', sans-serif; }
+.especies-sub { font-size: 1.2rem; }
+
+.especies-filtros { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0; align-items: center; }
+.especies-filtros input[type="text"] { flex: 1 1 260px; padding: 8px 12px; border: 2px solid #333; border-radius: 6px; font-size: 1rem; }
+.especies-filtros select { padding: 8px 12px; border: 2px solid #333; border-radius: 6px; background: #fff; font-size: 1rem; }
+.especies-check { display: flex; align-items: center; gap: 6px; font-size: 1.05rem; }
+
+.especies-total { font-weight: 600; }
+.especies-erro { color: #b3261e; font-weight: 600; }
+
+.especie-card { display: block; height: 100%; background: #fff; border-radius: 10px; overflow: hidden; color: #000; box-shadow: 0 2px 8px rgba(0,0,0,.1); transition: transform .2s; }
+.especie-card:hover { transform: translateY(-4px); color: #000; }
+.especie-card img, .especie-sem-foto { width: 100%; height: 180px; object-fit: cover; }
+.especie-sem-foto { display: flex; align-items: center; justify-content: center; background: #e4e0db; color: #777; }
+.especie-sem-foto.grande { height: 320px; border-radius: 10px; }
+.especie-corpo { padding: 12px 14px 16px; }
+.especie-corpo h2 { font-size: 1.3rem; margin: 0; font-weight: 700; }
+.especie-selos { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.selo { color: #fff; font-size: .85rem; padding: 2px 10px; border-radius: 20px; }
+
+.especies-paginacao { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 28px; }
+.especies-paginacao button { padding: 6px 16px; border: none; border-radius: 6px; background: #4e3f37; color: #f7f1ee; }
+.especies-paginacao button:disabled { opacity: .4; }
+
+.especie-voltar { display: inline-block; margin-bottom: 16px; color: #4e3f37; font-weight: 600; }
+.especie-detalhe { background: #fff; border-radius: 12px; padding: 24px; }
+.especie-foto-grande { width: 100%; max-height: 420px; object-fit: cover; border-radius: 10px; }
+.especie-dados { list-style: none; padding: 0; line-height: 1.9; }
+.especie-alerta { margin-top: 24px; padding: 16px 20px; border-left: 6px solid #b3261e; background: #fbeceb; border-radius: 6px; }
+.especie-alerta h2 { font-size: 1.3rem; }
+.especie-fonte { margin-top: 20px; font-size: .9rem; color: #555; }

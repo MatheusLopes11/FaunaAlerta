@@ -1,4 +1,6 @@
 import Home from './pages/Home/Home.tsx'
+import Especies from './pages/Especies/Especies.tsx'
+import EspecieDetalhe from './pages/Especies/EspecieDetalhe.tsx'
 import Sobre from './pages/Sobre/Sobre.tsx'
 import Perfil from './pages/Perfil/Perfil.tsx'
 import Login from './pages/Login/Login.tsx'
@@ -20,6 +22,8 @@ export function App() {
         <NavBar/>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/especies" element={<Especies />} />
+          <Route path="/especies/:id" element={<EspecieDetalhe />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/login" element={<Login />} />

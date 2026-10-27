@@ -31,6 +31,14 @@ export function NavBar() {
                             </Link>
                         </li>
 
+                        {/* Botão Informativa */}
+                        <li className="nav-item">
+                            <Link className="nav-link menu-btn" to="/especies">
+                                <i className="bi bi-book fs-4"></i>
+                                <strong>Espécies</strong>
+                            </Link>
+                        </li>
+
                         {/*Botão Ongs*/}
                         <li className="nav-item">
                         
