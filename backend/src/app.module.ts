@@ -26,6 +26,7 @@ import { DenunciaRecebidaModule } from './orgao mock/denuncia recebida/denuncia-
 import { DenunciaMidiaMock } from './orgao mock/denuncia midias/denuncia-midia.entity.js';
 import { DenunciaMidiaMockModule } from './orgao mock/denuncia midias/denuncia-media.module.js';
 import { EspecieBioma } from './especies/especie-bioma.entity.js';
+import { AuthModule } from './auth/auth.module.js';
 
 @Module({
   imports: [
@@ -83,6 +84,7 @@ import { EspecieBioma } from './especies/especie-bioma.entity.js';
       }),
     }),
 
+    AuthModule,
     EspeciesModule,
     UsuarioModule,
     PesquisadorModule,
