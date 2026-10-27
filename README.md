@@ -136,6 +136,7 @@ O script cria dois bancos: `FaunaAlerta` (principal) e `Orgao_mock` (simulação
 ```bash
 cd backend
 npm install
+npm i @nestjs/mapped-types
 ```
 
 Crie o arquivo `backend/.env` (veja [Variáveis de ambiente](#-variáveis-de-ambiente)) e inicie o servidor:
@@ -153,6 +154,7 @@ Em outro terminal:
 ```bash
 cd frontend
 npm install
+npm install swiper
 npm run dev
 ```
 
