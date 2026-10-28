@@ -1,8 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Logo from '../assets/FaunaAlertaLogo.svg';
 import '../global/global.css'
+import { lerSessao, sair } from '../services/auth'
 
 export function NavBar() {
+    const navigate = useNavigate()
+    useLocation() // faz a barra atualizar quando a rota muda (login e logout)
+    const sessao = lerSessao()
     return (
         <header className="Topo">
             <nav className="navbar navbar-expand-md">
@@ -66,9 +70,25 @@ export function NavBar() {
                         </ul>
 
                         {/* Botão Usuário (Login) */}
-                        <Link to="/login" className="user-btn">
-                            <i className="bi bi-person fs-3"></i>
-                        </Link>
+                        {sessao ? (
+                             <div className="d-flex align-items-center gap-3">
+                             {sessao.usuario.perfil === 'Admin' && (
+                              <Link to="/admin" className="nav-link menu-btn"><strong>Admin</strong></Link>
+                             )}
+                             <span>Olá, {sessao.usuario.nome.split(' ')[0]}</span>
+                            <button
+                              type="button"
+                                 className="menu-btn border-0 bg-transparent"
+                                onClick={() => { sair(); navigate('/') }}
+                                 >
+                         <strong>Sair</strong>
+                            </button>
+                            </div>
+                            ) : (
+                                <Link to="/login" className="user-btn">
+                                    <i className="bi bi-person fs-3"></i>
+                                </Link>
+                            )}
 
                     </div>
                 </div>

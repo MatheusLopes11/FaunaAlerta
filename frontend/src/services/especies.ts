@@ -1,3 +1,5 @@
+import { authHeaders, sair } from './auth'
+
 const API = import.meta.env.VITE_API_URL ?? 'http://localhost:3000'
 
 export type Bioma = 'AMAZONIA' | 'CERRADO' | 'MATA ATLANTICA' | 'CAATINGA' | 'PAMPA' | 'PANTANAL'
@@ -87,4 +89,62 @@ export const GRUPOS: Record<string, string> = {
 
 export function formatarBioma(b: string) {
     return b.charAt(0) + b.slice(1).toLowerCase()
+}
+
+export interface EspeciePayload {
+    nomePopular?: string
+    nomeCientifico?: string
+    origem?: string
+    statusConservacao?: string
+    grupo?: string
+    nivelRisco?: string
+    descricaoRisco?: string
+    expectativaVidaMin?: number
+    expectativaVidaMax?: number
+    apareceEmCasas?: boolean
+    descricao?: string
+    curiosidades?: string
+    imagemUrl?: string
+    fonte?: string
+    biomas?: Bioma[]
+}
+
+async function erroDaResposta(res: Response, padrao: string): Promise<Error> {
+    if (res.status === 401) {
+        sair()
+        return new Error('Sua sessão expirou. Faça login novamente.')
+    }
+    if (res.status === 403) return new Error('Você não tem permissão para esta ação.')
+    try {
+        const j = await res.json()
+        const msg = Array.isArray(j.message) ? j.message.join(' • ') : j.message
+        return new Error(msg ?? padrao)
+    } catch {
+        return new Error(padrao)
+    }
+}
+
+export async function criarEspecie(p: EspeciePayload): Promise<Especie> {
+    const res = await fetch(`${API}/especies`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...authHeaders() },
+        body: JSON.stringify(p),
+    })
+    if (!res.ok) throw await erroDaResposta(res, 'Não foi possível criar a espécie.')
+    return res.json()
+}
+
+export async function atualizarEspecie(id: number, p: EspeciePayload): Promise<Especie> {
+    const res = await fetch(`${API}/especies/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', ...authHeaders() },
+        body: JSON.stringify(p),
+    })
+    if (!res.ok) throw await erroDaResposta(res, 'Não foi possível atualizar a espécie.')
+    return res.json()
+}
+
+export async function excluirEspecie(id: number): Promise<void> {
+    const res = await fetch(`${API}/especies/${id}`, { method: 'DELETE', headers: { ...authHeaders() } })
+    if (!res.ok) throw await erroDaResposta(res, 'Não foi possível excluir a espécie.')
 }
