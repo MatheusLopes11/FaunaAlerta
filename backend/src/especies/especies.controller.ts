@@ -11,6 +11,11 @@ import { Roles } from '../auth/roles.decorator.js';
 export class EspeciesController {
     constructor(private readonly especiesService: EspeciesService) {}
 
+    @Get('mapa/biomas')
+        mapaBiomas() {
+        return this.especiesService.mapaBiomas();
+    }
+    
     @Get()
     findAll(@Query() query: ListEspeciesQueryDto) {
         return this.especiesService.findAll(query);
