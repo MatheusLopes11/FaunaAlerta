@@ -137,6 +137,8 @@ O script cria dois bancos: `FaunaAlerta` (principal) e `Orgao_mock` (simulação
 cd backend
 npm install
 npm i @nestjs/mapped-types
+npm i @nestjs/jwt - implementar jwt
+node -e "console.log(require('crypto').randomBytes(48).toString('hex'))" - gerar hash para jwt no .env
 ```
 
 Crie o arquivo `backend/.env` (veja [Variáveis de ambiente](#-variáveis-de-ambiente)) e inicie o servidor:
@@ -154,9 +156,11 @@ Em outro terminal:
 ```bash
 cd frontend
 npm install
+
 npm install swiper - carrossel
-npm i @nestjs/jwt - implementar jwt
-node -e "console.log(require('crypto').randomBytes(48).toString('hex'))" - gerar hash para jwt no .env
+
+npm i leaflet react-leaflet@4.2.1 - mapa
+npm i -D @types/leaflet - mapa
 npm run dev
 ```
 
