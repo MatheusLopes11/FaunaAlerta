@@ -57,7 +57,6 @@ function Login() {
                                             {enviando ? 'ENTRANDO...' : 'ENTRAR'}
                                         </button>
                                     </div>
-                                    
                                 </form>
                                 <br/>
                                     <p className="nao-possui text-center mt-3 mb-0">
