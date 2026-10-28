@@ -1,0 +1,15 @@
+.mapa-biomas { background-color: #ebe7e0; font-family: 'Afacad Flux', sans-serif; }
+.mapa-sub { font-size: 1.1rem; }
+.mapa-check { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 1.05rem; }
+.mapa-erro { color: #b3261e; font-weight: 600; }
+.mapa-caixa { border: 2px solid #4e3f37; border-radius: 12px; overflow: hidden; }
+.mapa-leaflet { height: 520px; width: 100%; }
+.mapa-legenda { display: flex; align-items: center; gap: 4px; margin-top: 10px; font-size: .95rem; }
+.mapa-legenda i { display: inline-block; width: 36px; height: 14px; border: 1px solid #4e3f37; }
+.mapa-legenda span { margin: 0 6px; }
+.mapa-fonte { font-size: .85rem; color: #555; margin-top: 6px; }
+.mapa-painel { background: #fff; border-radius: 10px; padding: 16px 20px; margin-top: 16px; }
+.mapa-painel h3 { font-family: 'Archivo Black', sans-serif; font-size: 1.3rem; }
+.mapa-painel ul { padding-left: 18px; margin: 0; line-height: 2; }
+.mapa-painel .selo { color: #fff; font-size: .8rem; padding: 2px 10px; border-radius: 20px; }
+@media (max-width: 768px) { .mapa-leaflet { height: 380px; } }

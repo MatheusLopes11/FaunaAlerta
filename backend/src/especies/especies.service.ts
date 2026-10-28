@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FindOptionsWhere, Like, Repository } from 'typeorm';
+import { FindOptionsWhere, In, Like, Repository } from 'typeorm';
 import { Especies } from './especies.entity.js';
 import { EspecieBioma } from './especie-bioma.entity.js';
 import { CreateEspecieDto } from './dto/create-especie.dto.js';
@@ -79,4 +79,30 @@ export class EspeciesService {
         await this.findOne(id);
         await this.especiesRepository.delete(id);
     }
+
+    // MAPA
+    async mapaBiomas() {
+    const BIOMAS = ['AMAZONIA', 'CERRADO', 'MATA ATLANTICA', 'CAATINGA', 'PAMPA', 'PANTANAL'];
+
+    const linhas = await this.biomaRepository.find({
+        where: { especie: { statusConservacao: In(['NT', 'VU', 'EN', 'CR', 'EW']) } },
+        relations: { especie: true },
+    });
+
+    const resultado: Record<string, { id: number; nomePopular: string; nomeCientifico: string; statusConservacao: string; imagemUrl: string | null }[]> = {};
+    for (const b of BIOMAS) resultado[b] = [];
+
+    for (const l of linhas) {
+        resultado[l.bioma].push({
+            id: l.especie.id,
+            nomePopular: l.especie.nomePopular,
+            nomeCientifico: l.especie.nomeCientifico,
+            statusConservacao: l.especie.statusConservacao,
+            imagemUrl: l.especie.imagemUrl,
+        });
+    }
+    for (const b of BIOMAS) resultado[b].sort((a, c) => a.nomePopular.localeCompare(c.nomePopular));
+
+    return resultado;
+}
 }

@@ -8,6 +8,7 @@ import ambientallogo from '../../assets/ambientallogo.png';
 import ICMBioLOGO from '../../assets/ICMBioLOGO.png.png';
 import { NoticiasCarousel } from '../../components/NoticiasCarrossel/NoticiasCarousel';
 import tarantula from '../../assets/tarantula.jpg'
+import { MapaBiomas } from '../../components/MapaBiomas/MapaBiomas'
 
 
 function Home() {
@@ -64,6 +65,9 @@ function Home() {
             </div>
           </div>
         </section>
+
+        {/* ===== MAPA DOS BIOMAS ===== */}
+        <MapaBiomas />
 
         {/* ===== NOTÍCIAS (SWIPER) ===== */}
         <section>

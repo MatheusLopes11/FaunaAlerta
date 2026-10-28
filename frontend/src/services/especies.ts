@@ -87,8 +87,33 @@ export const GRUPOS: Record<string, string> = {
     OUTRO: 'Outros',
 }
 
+export const BIOMA_ROTULO: Record<Bioma, string> = {
+    AMAZONIA: 'Amazônia',
+    CERRADO: 'Cerrado',
+    'MATA ATLANTICA': 'Mata Atlântica',
+    CAATINGA: 'Caatinga',
+    PAMPA: 'Pampa',
+    PANTANAL: 'Pantanal',
+}
+
 export function formatarBioma(b: string) {
-    return b.charAt(0) + b.slice(1).toLowerCase()
+    return BIOMA_ROTULO[b as Bioma] ?? b
+}
+
+export interface EspecieMapa {
+    id: number
+    nomePopular: string
+    nomeCientifico: string
+    statusConservacao: string
+    imagemUrl: string | null
+}
+
+export type MapaBiomasDados = Record<Bioma, EspecieMapa[]>
+
+export async function buscarMapaBiomas(signal?: AbortSignal): Promise<MapaBiomasDados> {
+    const res = await fetch(`${API}/especies/mapa/biomas`, { signal })
+    if (!res.ok) throw new Error('Não foi possível carregar os dados do mapa.')
+    return res.json()
 }
 
 export interface EspeciePayload {
