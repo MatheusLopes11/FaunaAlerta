@@ -287,3 +287,8 @@ padding-right: 40px;
 .swiper-pagination-bullet-active {
   background-color: #D47E09 !important;
 }
+
+.titulo-carrosel {
+    font-weight: bold;
+    
+}

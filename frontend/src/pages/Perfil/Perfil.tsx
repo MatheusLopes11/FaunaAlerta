@@ -12,9 +12,13 @@ function Perfil() {
             </Helmet>
             
             <main className="box-perfil">
-                <div className="container-perfil">
-                    <h1>Histórico</h1>
-                    
+                <div>
+                    <div>
+
+                    </div>
+                    <div>
+                        
+                    </div>
                 </div>
             </main>
         </>

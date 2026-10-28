@@ -1,16 +1,13 @@
-import './Home.css'
-import { Helmet } from 'react-helmet-async'
-import { Link } from 'react-router-dom' 
-import '../../global/global.css'
-import noticiaa1 from '../../assets/noticia1.jpg'
-import noticiaa2 from '../../assets/noticia2.jpeg'
-import noticiaa3 from '../../assets/noticia3.jpg'
-import Logo_IBAMA from '../../assets/Logo_IBAMA.svg.png'
-import logoipe from '../../assets/logoipe.png'
-import ambientallogo from '../../assets/ambientallogo.png'
-import ICMBioLOGO from '../../assets/ICMBioLOGO.png.png'
-// IMPORT 
-import { NoticiasCarousel } from '../../components/NoticiasCarousel';
+import './Home.css';
+import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
+import '../../global/global.css';
+import Logo_IBAMA from '../../assets/Logo_IBAMA.svg.png';
+import logoipe from '../../assets/logoipe.png';
+import ambientallogo from '../../assets/ambientallogo.png';
+import ICMBioLOGO from '../../assets/ICMBioLOGO.png.png';
+import { NoticiasCarousel } from '../../components/NoticiasCarrossel/NoticiasCarousel';
+
 
 function Home() {
 
@@ -34,52 +31,80 @@ function Home() {
         </section>
 
         {/* COMO FUNCIONA */}
-        <section className="como-funciona py-5">
-          <div className="container">
 
-            <h2 className="section-title text-center mb-4">COMO FUNCIONA?</h2>
+        <section className="container-como-funciona">
+          <div className="texto-como-funciona">
+            <h2>O QUE FAZEMOS?</h2>
+            <p>
+              Nós do FaunaAlerta temos como objetivo redirecionar seu alerta para o responsável certo,
+              recebemos sua denúncia e a entregamos diretamente para o Órgão Ambiental de sua cidade.
+              Para mais informações, consulte nossos Termos de Uso!
+            </p>
+          </div>
+          <div className="diagrama">
+            <div className="icones-person">
+              <div className="item">
+                <i className="bi bi-person-exclamation icone"></i>
+                <span>FaunAlerta</span>
+              </div>
 
-            <div className="funciona-card mx-auto">
-              <p className="funciona-descricao text-center mb-4">
-                Somos como se fosse uma ponte para você, facilitando a sua denúncia
-                e garantindo que ela chegue nas autoridades certas
-              </p>
-
-              {/* Fluxo: Usuário → Alerta → Autoridade */}
-              <div className="fluxo d-flex align-items-center justify-content-center gap-3">
-
-                {/* Usuário */}
-                <div className="fluxo-item text-center">
-                  <i className="bi bi-person-fill fluxo-icon"></i>
-                </div>
-
-                {/* Linha + Ícone de alerta */}
-                <div className="fluxo-linha d-flex align-items-center flex-grow-1 position-relative">
-                  <div className="linha"></div>
-                  <div className="fluxo-alerta">
-                    <i className="bi bi-exclamation-circle-fill"></i>
-                  </div>
-                </div>
-
-                {/* Autoridade */}
-                <div className="fluxo-item text-center">
-                  <i className="bi bi-person-badge-fill fluxo-icon"></i>
-                </div>
-
+              <div className="item">
+                <i className="bi bi-bank2 icone"></i>
+                <span>Órgão Ambiental</span>
               </div>
             </div>
-
+            <div className="icones-arrows-triangle">
+              <i className="bi bi-arrow-up-left seta seta-esquerda"></i>
+              <div className="item">
+                <i className="bi bi-exclamation-triangle-fill icone"></i>
+                <span>Sua denúncia</span>
+              </div>
+              <i className="bi bi-arrow-up-right seta"></i>
+            </div>
           </div>
         </section>
 
         {/* ===== NOTÍCIAS (SWIPER) ===== */}
-        <NoticiasCarousel />
+        <section>
+          <div className="container-carrosel mb-4">
+            <NoticiasCarousel />
+          </div>
+        </section>
 
+        {/* ===== MAPA DE GEOLOCALIZAÇÃO ===== */}
+        <section className="container-map">
+          <div className="titulo-map">
+            <h2>LOCALIZE!</h2>
+            <p>
+              Veja os órgãos ambientais, áreas de proteções e ONG's perto de você!
+            </p>
+          </div>
+          <div className="box-map">
+            <h1>O mapa fica aqui!</h1>
+          </div>
+        </section>
+        <section className="container-card">
+          <div className="card-especie-home">
+            <h2>Tarântulas</h2>
+            <p>
+              As tarântulas têm a incrível capacidade de regenerar as patas perdidas após uma muda de pele.
+            </p>
+            <Link to="/Especies"><button type="button" className="btn-especie-home">Saiba mais!</button></Link>
+          </div>
+          <div className="card-pesquisador">
+            <h2>SEJA UM PESQUISADOR</h2>
+            <p>
+              Sabia que sendo um estudante você pode ter acesso a milhares de dados? 
+              Com o FaunaAlerta você pode ter acesso a relátorios gráficos filtrados por espécies e região a sua escolha!
+              <Link to="/CadastroPesquisador"><button type="button" className="btn-cadastro-pesquisador">Clique aqui para ser um <strong>Pesquisador</strong></button></Link>
+            </p>
+          </div>
+        </section>
         {/* ===== PARCEIROS ===== */}
         <section className="parceiros py-5">
           <div className="container">
 
-            <h2 className="section-title text-center mb-4">PARCEIROS</h2>
+            <h2 className="titulo-parceiros text-center mb-4">PARCEIROS</h2>
 
             <div className="row justify-content-center align-items-center g-4">
 
@@ -116,10 +141,8 @@ function Home() {
               </div>
 
             </div>
-
           </div>
         </section>
-
       </main>
     </>
   )

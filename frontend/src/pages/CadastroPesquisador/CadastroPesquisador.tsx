@@ -63,7 +63,7 @@ function CadastroPesquisador() {
                     <div className="box-cadastros">
                         <h1 className="titulo-cadastro">CRIE UMA CONTA</h1>
 
-                        <form className="form-cadastro row g-2" onSubmit={avancar}>
+                        <form className="form-cadastro row g-3" onSubmit={avancar}>
                             <div className="campo-cadastro col-md-12">
                                 <label htmlFor="nome-pesquisador">Digite seu nome:</label>
                                 <input name="nome" type="text" id="nome-pesquisador" placeholder="Insira seu nome" defaultValue={dados.nome} required />
