@@ -1,0 +1,26 @@
+.admin-page { background-color: #d6d0cb; min-height: 100vh; font-family: 'Afacad Flux', sans-serif; }
+.admin-page h1 { font-family: 'Archivo Black', sans-serif; margin-bottom: 20px; }
+
+.adm-erro { color: #b3261e; font-weight: 600; }
+.adm-ok { color: #0d7a3f; font-weight: 600; }
+
+.adm-barra { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+.adm-barra input { flex: 1 1 240px; padding: 8px 12px; border: 2px solid #333; border-radius: 6px; }
+
+.adm-btn { padding: 6px 16px; border: none; border-radius: 6px; background: #4e3f37; color: #f7f1ee; font-weight: 600; }
+.adm-btn:disabled { opacity: .5; }
+.adm-verde { background: #14ae5c; }
+.adm-vermelho { background: #b3261e; }
+.adm-acoes { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.adm-tabela { background: #fff; }
+
+.adm-form { background: #fff; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+.adm-form label { display: flex; flex-direction: column; font-weight: 600; gap: 4px; }
+.adm-form input:not([type="checkbox"]), .adm-form select, .adm-form textarea {
+    padding: 8px 10px; border: 2px solid #333; border-radius: 6px; font-weight: 400; font-size: 1rem;
+}
+.adm-grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.adm-biomas { display: flex; flex-wrap: wrap; gap: 8px 20px; border: 2px solid #333; border-radius: 6px; padding: 10px 14px; }
+.adm-biomas legend { font-size: 1rem; font-weight: 600; width: auto; padding: 0 6px; margin: 0; }
+.adm-biomas label, .adm-check { flex-direction: row !important; align-items: center; gap: 8px !important; font-weight: 400 !important; }

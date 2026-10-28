@@ -14,7 +14,7 @@ export class Usuario {
   @Column({ type: 'varchar', length: 20, nullable: true })
   telefone: string;
 
-  @Column({ name: 'senha_hash', type: 'varchar', length: 255, nullable: false })
+  @Column({ name: 'senha_hash', type: 'varchar', length: 255, nullable: false, select: false })
   senhaHash: string;
 
   @Column({
