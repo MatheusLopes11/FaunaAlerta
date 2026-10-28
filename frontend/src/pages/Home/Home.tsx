@@ -7,6 +7,7 @@ import logoipe from '../../assets/logoipe.png';
 import ambientallogo from '../../assets/ambientallogo.png';
 import ICMBioLOGO from '../../assets/ICMBioLOGO.png.png';
 import { NoticiasCarousel } from '../../components/NoticiasCarrossel/NoticiasCarousel';
+import tarantula from '../../assets/tarantula.jpg'
 
 
 function Home() {
@@ -83,21 +84,37 @@ function Home() {
             <h1>O mapa fica aqui!</h1>
           </div>
         </section>
+
+        {/* ===== CARDS INFORMATIVOS ===== */}
         <section className="container-card">
           <div className="card-especie-home">
-            <h2>Tarântulas</h2>
-            <p>
-              As tarântulas têm a incrível capacidade de regenerar as patas perdidas após uma muda de pele.
-            </p>
-            <Link to="/Especies"><button type="button" className="btn-especie-home">Saiba mais!</button></Link>
+            <div className="img-card">
+              <img src={tarantula} alt="Tarântula" />
+            </div>
+            <div className="card-conteudo">
+              <h2>Tarântulas</h2>
+              <p>
+                As tarântulas têm a incrível capacidade de regenerar as patas perdidas após uma muda de pele.
+              </p>
+              <Link to="/Especies" className="card-link">
+                <button type="button" className="btn-especie-home">Saiba mais!</button>
+              </Link>
+            </div>
           </div>
+
           <div className="card-pesquisador">
-            <h2>SEJA UM PESQUISADOR</h2>
-            <p>
-              Sabia que sendo um estudante você pode ter acesso a milhares de dados? 
-              Com o FaunaAlerta você pode ter acesso a relátorios gráficos filtrados por espécies e região a sua escolha!
-              <Link to="/CadastroPesquisador"><button type="button" className="btn-cadastro-pesquisador">Clique aqui para ser um <strong>Pesquisador</strong></button></Link>
-            </p>
+            <div className="card-conteudo">
+              <h2>SEJA UM PESQUISADOR</h2>
+              <p>
+                Sabia que sendo um estudante você pode ter acesso a milhares de dados?
+                Com o FaunaAlerta você pode ter acesso a relatórios gráficos filtrados por espécies e região a sua escolha!
+              </p>
+              <Link to="/CadastroPesquisador" className="card-link">
+                <button type="button" className="btn-cadastro-pesquisador">
+                  Clique aqui para ser um <strong>Pesquisador</strong>
+                </button>
+              </Link>
+            </div>
           </div>
         </section>
         {/* ===== PARCEIROS ===== */}
