@@ -63,6 +63,13 @@ function Login() {
                                         <Link to="/cadastro"><b>Clique aqui</b></Link>
                                     </p>
                                 </form>
+                                <br/>
+                                    <p className="nao-possui text-center mt-3 mb-0">
+                                        Não possui conta?
+                                    </p>
+                                    <p className="clique-aqui text-center mt-3 mb-0">
+                                        <Link to="/cadastro"><b>Clique aqui</b></Link>
+                                    </p>
                             </div>
                         </div>
                     </div>

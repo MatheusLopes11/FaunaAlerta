@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 export function NoticiasCarousel() {
   return (
     <div className="container my-5">
-      <h2 className="text-center mb-4 logo-nome" style={{ fontSize: '2rem' }}>NOTÍCIAS</h2>
+      <h2 className="text-center mb-4 titulo-carrosel" style={{ fontSize: '50px', color: '#333' }}>NOTÍCIAS</h2>
       
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}

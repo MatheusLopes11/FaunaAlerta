@@ -7,14 +7,21 @@
 
 /* Card branco que envolve o formulário */
 .card-cadastro {
-    background-color: #FFFFFF;
+    background-color: #F7F1EE;
+;
     border-radius: 12px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
 }
 
+.form-login {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
 /* Labels dos campos (Nome, E-mail, etc.) */
-.label-cadastro {
-    font-family: 'Poppins', sans-serif;
+.label-login {
+    font-size: 25px !important;
     font-weight: 600;
     color: #000000;
     font-size: 1.1rem;
@@ -27,7 +34,7 @@
     border: 1px solid #A6A6A6 !important;
     border-radius: 6px;
     padding: 10px 15px;
-    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
     color: #333333;
 }
 
@@ -57,16 +64,30 @@
 }
 
 .nao-possui{
-    font-family: 'Archivo Black', sans-serif;
+    color: #333;
+    font-weight: 600;
+    font-size: 20px;
 }
 
-.clique-aqui{
-    text-decoration:none;
-    font-family: 'Archivo Black', sans-serif;
-}
 
 .clique-aqui a{
     color: #D47E09;
     text-decoration:none;
-    font-family: 'Archivo Black', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    background-color: #14AE5C;
+    color: #f7f1ee;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.btn-login:hover {
+    background-color: #4e3f37;
 }

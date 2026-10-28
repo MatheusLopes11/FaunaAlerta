@@ -44,11 +44,11 @@ span{
 }
 
 .sobre-page{
-    background-color: #d6d0cb;
     min-height: 100vh;
 }
 
 .titulo-secao{
+    margin-top: 20px;
     font-size: 2rem;
     font-weight: 700;
 }

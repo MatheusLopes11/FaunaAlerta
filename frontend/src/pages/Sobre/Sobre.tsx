@@ -15,11 +15,12 @@ function Sobre() {
                 {/* O QUE É NOSSO PROJETO */}
                 <section className="container py-5">
 
-                    <h1 className="titulo-secao text-center mb-5">
-                        O QUE É NOSSO PROJETO?
-                    </h1>
+                    
 
                     <div className="card card-sobre mx-auto shadow-sm">
+                        <h1 className="titulo-secao text-center mb-5">
+                            O QUE É NOSSO PROJETO?
+                        </h1>
                         <div className="card-body">
 
                             <p>
@@ -59,11 +60,12 @@ function Sobre() {
                 {/* QUEM SOMOS */}
                 <section className="container py-5">
 
-                    <h1 className="titulo-secao text-center mb-5">
-                        QUEM SOMOS
-                    </h1>
+                    
 
                     <div className="card card-sobre mx-auto shadow-sm">
+                        <h1 className="titulo-secao text-center mb-5">
+                            QUEM SOMOS
+                        </h1>
                         <div className="card-body">
 
                             <p>

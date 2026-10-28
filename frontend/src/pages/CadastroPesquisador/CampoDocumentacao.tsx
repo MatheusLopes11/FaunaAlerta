@@ -2,7 +2,6 @@ import './CadastroPesquisador.css'
 import type { FormEvent } from 'react'
 import { Helmet } from 'react-helmet-async'
 import '../../global/global.css'
-import { Link } from 'react-router-dom'
 import foto_cadastro from '../../assets/foto_cadastro.jpg'
 import type { DadosEtapa1 } from './CadastroPesquisador'
 
@@ -41,7 +40,7 @@ function CampoDocumentacao({ dadosEtapa1, onVoltar }: Props) {
                     <div className="box-cadastros">
                         <h1 className="titulo-cadastro">CRIE UMA CONTA</h1>
 
-                        <form className="form-cadastro row g-2" onSubmit={enviar}>
+                        <form className="form-cadastro row g-3" onSubmit={enviar}>
                             <div className="campo-cadastro col-md-12">
                                 <label htmlFor="area-pesquisa">Digite sua área de pesquisa:</label>
                                 <input name="areaPesquisa" type="text" id="area-pesquisa" placeholder="Insira sua área de pesquisa" required />
@@ -51,23 +50,19 @@ function CampoDocumentacao({ dadosEtapa1, onVoltar }: Props) {
                                 <label htmlFor="instituicao">Digite sua instituição:</label>
                                 <input name="instituicao" type="text" id="instituicao" placeholder="Insira sua instituição" required />
                             </div>
-
-                            <div className="termos-cadastro col-12">
-                                <input type="checkbox" id="termos" required />
-                                <label htmlFor="termos">Li e aceito os <strong>Termos e Condições</strong> e a <strong>Política de Privacidade</strong></label>
+                            <div className="file-box-cadastro col-md-12">
+                                <input type="file" id="file-cadastro" name=""></input>
+                                <label htmlFor="file-denuncia" className="file-label-cadastro">
+                                    <span className="file-text-cadastro">Escolha um arquivo...</span>
+                                </label>
                             </div>
 
-                            <div className="col-12">
-                                <p className="verifica-login">
-                                    Já tem uma conta? <Link to="/Login"><strong>Faça o login</strong></Link>
-                                </p>
-                            </div>
 
                             <div className="col-12">
                                 <button type="submit" className="btn-cadastro">Criar conta</button>
                             </div>
                             <div className="col-12 container-troca-cadastro">
-                                <button type="button" className="btn-troca-cdusuario" onClick={onVoltar}>
+                                <button type="button" className="btn-volta-cdusuario" onClick={onVoltar}>
                                     Voltar
                                 </button>
                             </div>
