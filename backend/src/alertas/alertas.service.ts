@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Alerta } from './alertas.entity.js';
@@ -17,13 +17,23 @@ export class AlertasService {
     private readonly usuarioRepository: Repository<Usuario>,
   ) {}
 
-  async findAll(): Promise<Alerta[]> {
+  async findAll(solicitanteId: number): Promise<Alerta[]> {
+    const solicitante = await this.usuarioRepository.findOne({ where: { id: solicitanteId } });
+    if (!solicitante || solicitante.statusCadastro !== 'Aprovado') {
+      throw new ForbiddenException('Seu cadastro ainda não foi aprovado.');
+    }
+
     return await this.alertaRepository.find({
-      relations: { especie: true, usuario: true },
+      relations: { especie: true },
+      order: { id: 'DESC' },
     });
   }
 
-  async create(dto: CreateAlertaDto): Promise<Alerta> {
+  async create(dto: CreateAlertaDto, usuarioId?: number): Promise<Alerta> {
+    if ((dto.latitude == null) !== (dto.longitude == null)) {
+      throw new BadRequestException('Informe latitude e longitude juntas.');
+    }
+
     if (dto.especieId) {
       const especie = await this.especieRepository.findOne({ where: { id: dto.especieId } });
       if (!especie) {
@@ -31,14 +41,7 @@ export class AlertasService {
       }
     }
 
-    if (dto.usuarioId) {
-      const usuario = await this.usuarioRepository.findOne({ where: { id: dto.usuarioId } });
-      if (!usuario) {
-        throw new NotFoundException('Usuário associado não encontrado.');
-      }
-    }
-
-    const novoAlerta = this.alertaRepository.create(dto);
+    const novoAlerta = this.alertaRepository.create({ ...dto, usuarioId });
     return await this.alertaRepository.save(novoAlerta);
   }
 }

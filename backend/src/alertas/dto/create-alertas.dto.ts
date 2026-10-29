@@ -1,13 +1,9 @@
-import { IsDateString, IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, MaxLength, MinLength } from 'class-validator';
+import { IsDateString, IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, Max, MaxLength, Min, MinLength } from 'class-validator';
 
 export class CreateAlertaDto {
     @IsNumber()
     @IsOptional()
     especieId?: number;
-
-    @IsNumber()
-    @IsOptional()
-    usuarioId?: number;
 
     @IsString()
     @IsNotEmpty()
@@ -32,7 +28,15 @@ export class CreateAlertaDto {
     @IsOptional()
     descricao?: string;
 
-    @IsEnum(['PENDENTE', 'VERIFICADO', 'REJEITADO'])
+    @IsNumber()
+    @Min(-34.5)
+    @Max(6)
     @IsOptional()
-    situacao?: 'PENDENTE' | 'VERIFICADO' | 'REJEITADO';
+    latitude?: number;
+
+    @IsNumber()
+    @Min(-74.5)
+    @Max(-28)
+    @IsOptional()
+    longitude?: number;
 }
