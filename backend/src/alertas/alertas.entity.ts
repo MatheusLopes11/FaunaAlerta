@@ -2,6 +2,12 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 't
 import { Especies } from '../especies/especies.entity.js';
 import { Usuario } from '../usuario/usuario.entity.js';
 
+// O MySQL devolve DECIMAL como texto. Aqui converte para número.
+const decimalParaNumero = {
+    to: (valor?: number | null) => valor,
+    from: (valor: string | null) => (valor === null ? null : parseFloat(valor)),
+};
+
 @Entity('alertas')
 export class Alerta {
     @PrimaryGeneratedColumn({ type: 'int', unsigned: true })
@@ -46,4 +52,10 @@ export class Alerta {
       default: 'PENDENTE',
     })
     situacao: 'PENDENTE' | 'VERIFICADO' | 'REJEITADO';
+
+    @Column({ type: 'decimal', precision: 10, scale: 7, nullable: true, transformer: decimalParaNumero })
+    latitude: number | null;
+
+    @Column({ type: 'decimal', precision: 10, scale: 7, nullable: true, transformer: decimalParaNumero })
+    longitude: number | null;
 }

@@ -87,6 +87,8 @@ CREATE TABLE Alertas(
     municipio VARCHAR(100) NOT NULL,
     UF CHAR(2) NOT NULL,
     bioma ENUM('AMAZONIA', 'CERRADO', 'MATA ATLANTICA', 'CAATINGA', 'PAMPA', 'PANTANAL') NULL,
+    latitude DECIMAL(10,7) NULL,
+    longitude DECIMAL(10,7) NULL,
     data_avistamento DATE NOT NULL,
     descricao TEXT NULL,
     situacao ENUM('PENDENTE', 'VERIFICADO', 'REJEITADO') NOT NULL DEFAULT 'PENDENTE',

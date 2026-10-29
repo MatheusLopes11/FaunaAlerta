@@ -119,3 +119,6 @@
     border-radius: 6px;
     font-size: 25px !important;
 }
+
+.alerta-erro { color: #b3261e; font-weight: 600; margin: 0; }
+.alerta-sucesso { color: #0d7a3f; font-weight: 600; margin: 0; }
