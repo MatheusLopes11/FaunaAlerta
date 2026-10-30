@@ -292,3 +292,14 @@ padding-right: 40px;
     font-weight: bold;
     
 }
+
+/* MODO PESQUISADOR: header verde escuro */
+.Topo.modo-pesquisador { background-color: #0d4a2f; }
+.Topo.modo-pesquisador .texto-logo,
+.Topo.modo-pesquisador .menu-btn,
+.Topo.modo-pesquisador .nav-link,
+.Topo.modo-pesquisador span { color: #fff !important; }
+.Topo.modo-pesquisador .bi { color: #fff; }
+.Topo.modo-pesquisador .menu-btn:hover { background-color: #D47E09; }
+.Topo.modo-pesquisador .navbar-toggler { border-color: rgba(255, 255, 255, .6); }
+.Topo.modo-pesquisador .navbar-toggler-icon { filter: invert(1); }

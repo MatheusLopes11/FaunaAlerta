@@ -47,3 +47,46 @@ export function authHeaders(): Record<string, string> {
     const sessao = lerSessao()
     return sessao ? { Authorization: `Bearer ${sessao.token}` } : {}
 }
+
+async function lerErro(res: Response, padrao: string): Promise<string> {
+    try {
+        const j = await res.json()
+        return Array.isArray(j.message) ? j.message.join(' • ') : (j.message ?? padrao)
+    } catch {
+        return padrao
+    }
+}
+
+export interface DadosCadastro {
+    nome: string
+    email: string
+    telefone?: string
+    senha: string
+}
+
+export interface DadosPesquisador extends DadosCadastro {
+    instituicao: string
+    areaPesquisa: string
+    linkLattesOrcid?: string
+}
+
+// Cria a conta e já entra no sistema.
+export async function cadastrarUsuario(d: DadosCadastro): Promise<Sessao> {
+    const res = await fetch(`${API}/usuario`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(d),
+    })
+    if (!res.ok) throw new Error(await lerErro(res, 'Não foi possível criar a conta.'))
+    return login(d.email, d.senha)
+}
+
+export async function cadastrarPesquisador(d: DadosPesquisador): Promise<Sessao> {
+    const res = await fetch(`${API}/pesquisador/registro`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(d),
+    })
+    if (!res.ok) throw new Error(await lerErro(res, 'Não foi possível enviar o cadastro.'))
+    return login(d.email, d.senha)
+}

@@ -27,7 +27,7 @@ function Denuncia() {
                     </div>
                     <div>
                         {tipo === "alerta" && <FormAlerta onVoltar={() => setTipo(null)} />}
-                        {tipo === "denuncia" && <FormDenuncia/>}
+                        {tipo === "denuncia" && <FormDenuncia/>}zA
                     </div>
                 </div>
             </main>
