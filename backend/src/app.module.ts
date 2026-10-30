@@ -27,6 +27,7 @@ import { DenunciaMidiaMock } from './orgao mock/denuncia midias/denuncia-midia.e
 import { DenunciaMidiaMockModule } from './orgao mock/denuncia midias/denuncia-media.module.js';
 import { EspecieBioma } from './especies/especie-bioma.entity.js';
 import { AuthModule } from './auth/auth.module.js';
+import { GbifModule } from './gbif/gbif.module.js'
 
 @Module({
   imports: [
@@ -80,12 +81,13 @@ import { AuthModule } from './auth/auth.module.js';
         password: ConfigService.get<string>('DB_PASSWORD'),
         database: ConfigService.get<string>('DB_MOCK_NAME'),
         entities: [DenunciaRecebida, DenunciaMidiaMock],
-        synchoroniza: false,
+        synchronize: false,
       }),
     }),
 
     AuthModule,
     EspeciesModule,
+    GbifModule,
     UsuarioModule,
     PesquisadorModule,
     DocumentosVerificacaoModule,

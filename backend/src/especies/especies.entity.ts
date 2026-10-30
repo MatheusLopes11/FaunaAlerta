@@ -9,7 +9,7 @@ export class Especies {
     @Column({ name: 'nome_popular', type: 'varchar', length: 120, unique: true, nullable: false })
     nomePopular: string;
 
-    @Column({ name: 'nome_cientifico', type: 'varchar', length: 150, unique: true, nullable: false })
+    @Column({ name: 'nome_cientifico', type: 'varchar', length: 150, unique: false, nullable: false })
     nomeCientifico: string;
 
     @Column({ type: 'enum', enum: ['NATIVA', 'EXOTICA', 'EXOTICA_INVASORA'], nullable: false })
@@ -28,7 +28,7 @@ export class Especies {
     descricao: string;
 
     @Column({ name: 'imagem_url', type: 'varchar', length: 500, nullable: true })
-    imagemUrl: string;
+    imagemUrl: string | null;
 
     @Column({
         type: 'enum',
@@ -60,4 +60,13 @@ export class Especies {
 
     @OneToMany(() => EspecieBioma, (eb) => eb.especie, { cascade: ['insert'] })
     biomas: EspecieBioma[];
+
+    @Column({ name: 'gbif_key', type: 'int', unsigned: true, unique: true, nullable: true })
+    gbifKey: number | null;
+
+    @Column({ name: 'imagem_credito', type: 'varchar', length: 255, nullable: true })
+    imagemCredito: string | null;
+
+    @Column({ type: 'boolean', default: false })
+    revisado: boolean;
 }

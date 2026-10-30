@@ -20,4 +20,8 @@ export class ListEspeciesQueryDto {
     @Transform(({ value }) => value === 'true' || value === true)
     @IsBoolean() @IsOptional()
     apareceEmCasas?: boolean;
+
+    @Transform(({ value }) => (value === 'true' ? true : value === 'false' ? false : undefined))
+    @IsBoolean() @IsOptional()
+    revisado?: boolean;
 }

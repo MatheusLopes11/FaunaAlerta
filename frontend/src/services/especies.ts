@@ -21,6 +21,8 @@ export interface Especie {
     curiosidades: string | null
     fonte: string | null
     biomas: { bioma: Bioma }[]
+    imagemCredito: string | null
+    revisado: boolean
 }
 
 export interface ListaEspecies {
@@ -37,6 +39,7 @@ export interface Filtros {
     grupo: string
     status: string
     apareceEmCasas: boolean
+    revisado?: boolean;
 }
 
 export async function listarEspecies(f: Filtros, signal?: AbortSignal): Promise<ListaEspecies> {
@@ -45,6 +48,7 @@ export async function listarEspecies(f: Filtros, signal?: AbortSignal): Promise<
     if (f.grupo) params.set('grupo', f.grupo)
     if (f.status) params.set('status', f.status)
     if (f.apareceEmCasas) params.set('apareceEmCasas', 'true')
+    if (f.revisado !== undefined) params.set('revisado', String(f.revisado))
 
     const res = await fetch(`${API}/especies?${params}`, { signal })
     if (!res.ok) throw new Error('Não foi possível carregar as espécies.')
@@ -132,6 +136,7 @@ export interface EspeciePayload {
     imagemUrl?: string
     fonte?: string
     biomas?: Bioma[]
+    revisado?: boolean
 }
 
 async function erroDaResposta(res: Response, padrao: string): Promise<Error> {
@@ -172,4 +177,28 @@ export async function atualizarEspecie(id: number, p: EspeciePayload): Promise<E
 export async function excluirEspecie(id: number): Promise<void> {
     const res = await fetch(`${API}/especies/${id}`, { method: 'DELETE', headers: { ...authHeaders() } })
     if (!res.ok) throw await erroDaResposta(res, 'Não foi possível excluir a espécie.')
+}
+
+export interface ResultadoImportacao {
+    grupo: string
+    encontradas: number
+    criadas: number
+    puladas: number
+    falhas: number
+}
+
+export async function importarGbif(grupo: string, quantidade: number): Promise<ResultadoImportacao> {
+    const res = await fetch(`${API}/gbif/importar`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...authHeaders() },
+        body: JSON.stringify({ grupo, quantidade }),
+    })
+    if (!res.ok) throw await erroDaResposta(res, 'Não foi possível importar do GBIF.')
+    return res.json()
+}
+
+export const RISCO_NAO_AVALIADO = { nome: 'Risco ainda não avaliado', cor: '#999' }
+
+export function riscoDaEspecie(e: Especie) {
+    return e.revisado ? (RISCO[e.nivelRisco] ?? RISCO_NAO_AVALIADO) : RISCO_NAO_AVALIADO
 }

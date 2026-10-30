@@ -3,8 +3,9 @@ import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import './Especies.css'
 import '../../global/global.css'
-import { GRUPOS, RISCO, STATUS, listarEspecies } from '../../services/especies'
+import { GRUPOS, riscoDaEspecie, STATUS, listarEspecies } from '../../services/especies'
 import type { Filtros, ListaEspecies } from '../../services/especies'
+import FotoEspecie from '../../components/FotoEspecie/FotoEspecie'
 
 const LIMITE = 12
 
@@ -95,29 +96,28 @@ function Especies() {
                             <p className="especies-total">{lista.total} espécie(s) encontrada(s)</p>
 
                             <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
-                                {lista.data.map((e) => (
-                                    <div className="col" key={e.id}>
-                                        <Link to={`/especies/${e.id}`} className="especie-card">
-                                            {e.imagemUrl
-                                                ? <img src={e.imagemUrl} alt={e.nomePopular} />
-                                                : <div className="especie-sem-foto">Sem foto</div>}
-                                            <div className="especie-corpo">
-                                                <h2>{e.nomePopular}</h2>
-                                                <em>{e.nomeCientifico}</em>
-                                                <div className="especie-selos">
-                                                    <span className="selo" style={{ background: STATUS[e.statusConservacao]?.cor }}>
-                                                        {STATUS[e.statusConservacao]?.nome ?? e.statusConservacao}
-                                                    </span>
-                                                    {e.nivelRisco !== 'NENHUM' && (
-                                                        <span className="selo" style={{ background: RISCO[e.nivelRisco]?.cor }}>
-                                                            {RISCO[e.nivelRisco]?.nome}
+                                {lista.data.map((e) => {
+                                    const risco = riscoDaEspecie(e)
+                                    return (
+                                        <div className="col" key={e.id}>
+                                            <Link to={`/especies/${e.id}`} className="especie-card">
+                                                <FotoEspecie src={e.imagemUrl} alt={e.nomePopular} />
+                                                <div className="especie-corpo">
+                                                    <h2>{e.nomePopular}</h2>
+                                                    <em>{e.nomeCientifico}</em>
+                                                    <div className="especie-selos">
+                                                        <span className="selo" style={{ background: STATUS[e.statusConservacao]?.cor }}>
+                                                            {STATUS[e.statusConservacao]?.nome ?? e.statusConservacao}
                                                         </span>
-                                                    )}
+                                                        {(!e.revisado || e.nivelRisco !== 'NENHUM') && (
+                                                            <span className="selo" style={{ background: risco.cor }}>{risco.nome}</span>
+                                                        )}
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </Link>
-                                    </div>
-                                ))}
+                                            </Link>
+                                        </div>
+                                    )
+                                })}
                             </div>
 
                             {lista.data.length === 0 && <p className="text-center mt-4">Nenhuma espécie encontrada.</p>}
@@ -131,8 +131,8 @@ function Especies() {
                             )}
                         </>
                     )}
-                </section>
-            </main>
+            </section>
+        </main >
         </>
     )
 }

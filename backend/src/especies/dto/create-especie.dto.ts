@@ -49,4 +49,7 @@ export class CreateEspecieDto {
     @IsEnum(['AMAZONIA', 'CERRADO', 'MATA ATLANTICA', 'CAATINGA', 'PAMPA', 'PANTANAL'], { each: true })
     @IsOptional()
     biomas?: ('AMAZONIA' | 'CERRADO' | 'MATA ATLANTICA' | 'CAATINGA' | 'PAMPA' | 'PANTANAL')[];
+
+    @IsBoolean() @IsOptional()
+    revisado?: boolean;
 }

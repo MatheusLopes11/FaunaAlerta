@@ -6,7 +6,8 @@ import './Admin.css'
 import '../../global/global.css'
 import { lerSessao } from '../../services/auth'
 import {
-    GRUPOS, RISCO, STATUS, atualizarEspecie, criarEspecie, excluirEspecie, formatarBioma, listarEspecies,
+    GRUPOS, RISCO, STATUS, atualizarEspecie, criarEspecie, excluirEspecie,
+    formatarBioma, importarGbif, listarEspecies,
 } from '../../services/especies'
 import type { Bioma, Especie, EspeciePayload } from '../../services/especies'
 
@@ -29,12 +30,13 @@ interface FormState {
     imagemUrl: string
     fonte: string
     biomas: Bioma[]
+    revisado: boolean
 }
 
 const VAZIO: FormState = {
     nomePopular: '', nomeCientifico: '', origem: 'NATIVA', statusConservacao: 'NE', grupo: 'OUTRO',
     nivelRisco: 'NENHUM', descricaoRisco: '', expectativaVidaMin: '', expectativaVidaMax: '',
-    apareceEmCasas: false, descricao: '', curiosidades: '', imagemUrl: '', fonte: '', biomas: [],
+    apareceEmCasas: false, descricao: '', curiosidades: '', imagemUrl: '', fonte: '', biomas: [], revisado: true,
 }
 
 function paraForm(e: Especie): FormState {
@@ -54,6 +56,7 @@ function paraForm(e: Especie): FormState {
         imagemUrl: e.imagemUrl ?? '',
         fonte: e.fonte ?? '',
         biomas: e.biomas.map((b) => b.bioma),
+        revisado: e.revisado,
     }
 }
 
@@ -77,6 +80,7 @@ function paraPayload(f: FormState, edicao: boolean): EspeciePayload {
         imagemUrl: opt(f.imagemUrl),
         fonte: opt(f.fonte),
         biomas: f.biomas,
+        revisado: f.revisado,
     }
 }
 
@@ -91,19 +95,23 @@ function Painel() {
     const [erro, setErro] = useState('')
     const [msg, setMsg] = useState('')
     const [salvando, setSalvando] = useState(false)
+    const [soPendentes, setSoPendentes] = useState(false)
+    const [grupoGbif, setGrupoGbif] = useState('MAMIFERO')
+    const [qtdGbif, setQtdGbif] = useState(10)
+    const [importando, setImportando] = useState(false)
 
     const carregar = useCallback(async () => {
         try {
             const r = await listarEspecies({
                 page: 1, limit: 50, busca: buscaAplicada, grupo: '', status: '', apareceEmCasas: false,
+                revisado: soPendentes ? false : undefined,
             })
             setLista(r.data)
             setTotal(r.total)
         } catch (e) {
             setErro(e instanceof Error ? e.message : 'Erro ao carregar.')
         }
-    }, [buscaAplicada])
-
+    }, [buscaAplicada, soPendentes])
     useEffect(() => {
         carregar()
     }, [carregar])
@@ -179,6 +187,21 @@ function Painel() {
         }
     }
 
+    async function importar() {
+        setErro('')
+        setMsg('')
+        setImportando(true)
+        try {
+            const r = await importarGbif(grupoGbif, qtdGbif)
+            setMsg(`Importação concluída: ${r.criadas} novas, ${r.puladas} já existiam, ${r.falhas} falhas.`)
+            await carregar()
+        } catch (err) {
+            tratarErro(err)
+        } finally {
+            setImportando(false)
+        }
+    }
+
     return (
         <main className="admin-page">
             <section className="container py-5">
@@ -199,7 +222,26 @@ function Painel() {
                             />
                             <button className="adm-btn" onClick={() => setBuscaAplicada(busca)}>Buscar</button>
                             <button className="adm-btn adm-verde" onClick={abrirNovo}>+ Nova espécie</button>
+                            <label className="adm-check">
+                                <input type="checkbox" checked={soPendentes} onChange={(e) => setSoPendentes(e.target.checked)} />
+                                Só pendentes de revisão
+                            </label>
                         </div>
+                        <div className="adm-barra">
+                            <select value={grupoGbif} onChange={(e) => setGrupoGbif(e.target.value)}>
+                                {Object.entries(GRUPOS)
+                                    .filter(([k]) => k !== 'PEIXE' && k !== 'OUTRO')
+                                    .map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+                            </select>
+                            <input
+                                type="number" min={1} max={100} style={{ flex: '0 0 90px' }}
+                                value={qtdGbif} onChange={(e) => setQtdGbif(Number(e.target.value))}
+                            />
+                            <button className="adm-btn" onClick={importar} disabled={importando}>
+                                {importando ? 'Importando... (pode demorar)' : 'Importar do GBIF'}
+                            </button>
+                        </div>
+
 
                         <p>{total} espécie(s){total > lista.length && ` (mostrando as ${lista.length} primeiras, use a busca)`}</p>
 
@@ -215,6 +257,7 @@ function Painel() {
                                             <td>{GRUPOS[e.grupo] ?? e.grupo}</td>
                                             <td>{STATUS[e.statusConservacao]?.nome ?? e.statusConservacao}</td>
                                             <td>{RISCO[e.nivelRisco]?.nome ?? e.nivelRisco}</td>
+                                            <td>{e.revisado ? 'OK' : <span className="adm-pendente">Pendente</span>}</td>
                                             <td className="adm-acoes">
                                                 <button className="adm-btn" onClick={() => abrirEdicao(e)}>Editar</button>
                                                 <button className="adm-btn adm-vermelho" onClick={() => excluir(e)}>Apagar</button>
@@ -280,6 +323,10 @@ function Painel() {
                         <label className="adm-check">
                             <input type="checkbox" checked={form.apareceEmCasas} onChange={(e) => campo('apareceEmCasas', e.target.checked)} />
                             Costuma aparecer em casas
+                        </label>
+                        <label className="adm-check">
+                            <input type="checkbox" checked={form.revisado} onChange={(e) => campo('revisado', e.target.checked)} />
+                            Revisado (origem, risco e "aparece em casas" conferidos)
                         </label>
 
                         <label>Descrição
