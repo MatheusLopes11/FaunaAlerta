@@ -8,7 +8,7 @@ export function NavBar() {
     useLocation() // faz a barra atualizar quando a rota muda (login e logout)
     const sessao = lerSessao()
     return (
-        <header className="Topo">
+        <header className={`Topo ${sessao?.usuario.perfil === 'Pesquisador' ? 'modo-pesquisador' : ''}`}>
             <nav className="navbar navbar-expand-md">
                 <div className="container">
                     {/* Logo */}

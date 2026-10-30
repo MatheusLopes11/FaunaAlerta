@@ -1,10 +1,44 @@
 import './Cadastro.css'
+import { useState } from 'react'
+import type { FormEvent } from 'react'
 import { Helmet } from 'react-helmet-async'
 import '../../global/global.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import foto_cadastro from '../../assets/foto_cadastro.jpg'
+import { cadastrarUsuario } from '../../services/auth'
 
 function Cadastro() {
+    const navigate = useNavigate()
+    const [erro, setErro] = useState('')
+    const [enviando, setEnviando] = useState(false)
+
+    async function enviar(e: FormEvent<HTMLFormElement>) {
+        e.preventDefault()
+        const form = new FormData(e.currentTarget)
+        const senha = String(form.get('senha'))
+
+        if (senha !== String(form.get('confirmarSenha'))) {
+            setErro('As senhas não coincidem.')
+            return
+        }
+
+        setErro('')
+        setEnviando(true)
+        try {
+            await cadastrarUsuario({
+                nome: String(form.get('nome')).trim(),
+                email: String(form.get('email')).trim(),
+                telefone: String(form.get('telefone')).trim(),
+                senha,
+            })
+            navigate('/')
+        } catch (err) {
+            setErro(err instanceof Error ? err.message : 'Erro ao criar a conta.')
+        } finally {
+            setEnviando(false)
+        }
+    }
+
     return (
         <>
             <Helmet>
@@ -20,7 +54,7 @@ function Cadastro() {
                     <div className="box-cadastros">
                         <h1 className="titulo-cadastro">CRIE UMA CONTA</h1>
 
-                        <form className="form-cadastro row g-2">
+                        <form className="form-cadastro row g-2" onSubmit={enviar}>
                             <div className="campo-cadastro col-md-12">
                                 <label htmlFor="nome">Digite seu nome:</label>
                                 <input name="nome" type="text" id="nome" placeholder="Insira seu nome" required />
@@ -36,16 +70,16 @@ function Cadastro() {
                                 <input name="telefone" type="tel" id="telefone" placeholder="Insira seu telefone com DDD" required />
                             </div>
 
-                            
-
                             <div className="campo-cadastro col-md-12">
                                 <label htmlFor="senha">Crie uma senha:</label>
-                                <input name="senha" type="password" id="senha" placeholder="Insira uma senha" required />
+                                <input name="senha" type="password" id="senha" placeholder="Mínimo de 8 caracteres" minLength={8} required />
                             </div>
                             <div className="campo-cadastro col-md-12">
                                 <label htmlFor="confirmar-senha">Confirme sua senha:</label>
-                                <input name="confirmarSenha" type="password" id="confirmar-senha" placeholder="Confirme a senha" required />
+                                <input name="confirmarSenha" type="password" id="confirmar-senha" placeholder="Confirme a senha" minLength={8} required />
                             </div>
+
+                            {erro && <p className="erro-cadastro" role="alert">{erro}</p>}
 
                             <div className="termos-cadastro col-12">
                                 <input type="checkbox" id="termos" required />
@@ -54,14 +88,18 @@ function Cadastro() {
 
                             <div className="col-12">
                                 <p className="verifica-login">
-                                    Já tem uma conta? <Link to="/Login"><strong>Faça o login</strong></Link>
+                                    Já tem uma conta? <Link to="/login"><strong>Faça o login</strong></Link>
                                 </p>
                             </div>
                             <div className="col-12">
-                                <Link to="/CampoDocumentacao"><button type="submit" className="btn-cadastro">Criar conta</button></Link>
+                                <button type="submit" className="btn-cadastro" disabled={enviando}>
+                                    {enviando ? 'Criando conta...' : 'Criar conta'}
+                                </button>
                             </div>
                             <div className="col-12 container-troca-cadastro">
-                                <Link to="/CadastroPesquisador"><button type="button" className="btn-troca-cadastro">Cadastre-se como <strong>Pesquisador</strong></button></Link>
+                                <button type="button" className="btn-troca-cadastro" onClick={() => navigate('/CadastroPesquisador')}>
+                                    Cadastre-se como <strong>Pesquisador</strong>
+                                </button>
                             </div>
                         </form>
                     </div>

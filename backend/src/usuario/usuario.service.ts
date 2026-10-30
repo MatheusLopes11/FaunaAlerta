@@ -16,21 +16,23 @@ export class UsuarioService {
     return await this.usuarioRepository.find();
   }
 
-  async create(createUsuarioDto: CreateUsuarioDto): Promise<Usuario> {
-    const usuarioExiste = await this.usuarioRepository.findOne({
-        where: { email: createUsuarioDto.email },
-    });
-    if (usuarioExiste) {
+  async create(dto: CreateUsuarioDto): Promise<Usuario> {
+    const existe = await this.usuarioRepository.findOne({ where: { email: dto.email } });
+    if (existe) {
         throw new ConflictException('E-mail já cadastrado no sistema.');
     }
 
-    const { senha, perfil, ...dados } = createUsuarioDto;
-    const senhaHash = await bcrypt.hash(senha, await bcrypt.genSalt());
+    const { senha, ...dados } = dto;
+    const senhaHash = await bcrypt.hash(senha, 10);
 
-    // Cadastro público só pode virar Usuario ou Pesquisador. Admin é promovido pelo banco.
-    const perfilPermitido = perfil === 'Pesquisador' ? 'Pesquisador' : 'Usuario';
-
-    const novo = this.usuarioRepository.create({ ...dados, perfil: perfilPermitido, senhaHash });
+    // Cadastro público cria sempre usuário comum, já aprovado.
+    // Pesquisador tem rota própria; Admin é promovido pelo banco.
+    const novo = this.usuarioRepository.create({
+        ...dados,
+        senhaHash,
+        perfil: 'Usuario',
+        statusCadastro: 'Aprovado',
+    });
     const { senhaHash: _omitido, ...salvo } = await this.usuarioRepository.save(novo);
     return salvo as Usuario;
 }

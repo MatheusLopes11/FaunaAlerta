@@ -71,6 +71,9 @@ CREATE TABLE Especies(
     aparece_em_casas BOOLEAN NOT NULL DEFAULT FALSE,
     curiosidades TEXT NULL,
     fonte VARCHAR(255) NULL
+    gbif_key INT UNSIGNED NULL UNIQUE,
+    imagem_credito VARCHAR(255) NULL,
+    revisado BOOLEAN NOT NULL DEFAULT FALSE;
 );
 
 CREATE TABLE Especie_biomas (
