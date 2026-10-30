@@ -1,4 +1,4 @@
-.mapa-biomas { background-color: #ebe7e0; font-family: 'Afacad Flux', sans-serif; }
+.mapa-biomas { background-color: #ebe7e0; font-family: 'Afacad Flux', sans-serif; margin: 20px; border-radius: 12px; }
 .mapa-sub { font-size: 1.1rem; }
 .mapa-check { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 1.05rem; }
 .mapa-erro { color: #b3261e; font-weight: 600; }

@@ -24,6 +24,7 @@ export class EspeciesService {
         if (q.grupo) base.grupo = q.grupo;
         if (q.status) base.statusConservacao = q.status;
         if (q.apareceEmCasas !== undefined) base.apareceEmCasas = q.apareceEmCasas;
+        if (q.revisado !== undefined) base.revisado = q.revisado;
 
         const where: FindOptionsWhere<Especies>[] = q.busca
             ? [

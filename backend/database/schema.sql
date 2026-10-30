@@ -1,5 +1,5 @@
 CREATE DATABASE FaunaAlerta;
-
+drop database FaunaAlerta;
 USE FaunaAlerta;
 
 CREATE TABLE Usuario(
@@ -87,8 +87,6 @@ CREATE TABLE Alertas(
     municipio VARCHAR(100) NOT NULL,
     UF CHAR(2) NOT NULL,
     bioma ENUM('AMAZONIA', 'CERRADO', 'MATA ATLANTICA', 'CAATINGA', 'PAMPA', 'PANTANAL') NULL,
-    latitude DECIMAL(10,7) NULL,
-    longitude DECIMAL(10,7) NULL,
     data_avistamento DATE NOT NULL,
     descricao TEXT NULL,
     situacao ENUM('PENDENTE', 'VERIFICADO', 'REJEITADO') NOT NULL DEFAULT 'PENDENTE',
@@ -126,80 +124,6 @@ CREATE TABLE ONG(
     areas_atuacao VARCHAR(255) NULL,
     UF CHAR(2) NULL
 );
-
-
-INSERT INTO Especies
-(nome_popular, nome_cientifico, origem, status_conservacao, descricao, grupo, nivel_risco, descricao_risco, expectativa_vida_min, expectativa_vida_max, aparece_em_casas, curiosidades, fonte)
-VALUES
-('Guará-lobo', 'Chrysocyon brachyurus', 'NATIVA', 'NT',
- 'Maior canídeo da América do Sul, de pernas longas e pelagem alaranjada. Vive em áreas abertas.',
- 'MAMIFERO', 'NENHUM', NULL, 12, 15, FALSE,
- 'É onívoro e come muitos frutos, como a lobeira.', 'ICMBio / Lista Vermelha IUCN'),
-
-('Onça-pintada', 'Panthera onca', 'NATIVA', 'NT',
- 'Maior felino das Américas, de grande importância para o equilíbrio dos ecossistemas.',
- 'MAMIFERO', 'ALTO', 'Não se aproxime. Em caso de avistamento, afaste-se com calma e avise o órgão ambiental.', 12, 15, FALSE,
- 'Tem a mordida mais forte entre os felinos.', 'ICMBio / Lista Vermelha IUCN'),
-
-('Gambá-de-orelha-branca (saruê)', 'Didelphis albiventris', 'NATIVA', 'LC',
- 'Marsupial noturno comum em áreas urbanas, que ajuda a controlar insetos e pequenos animais.',
- 'MAMIFERO', 'BAIXO', 'Não mate: é fauna silvestre protegida por lei. Mantenha distância e, se precisar, chame o órgão ambiental. Não manuseie.', 2, 4, TRUE,
- 'Fêmeas carregam os filhotes em uma bolsa.', 'ICMBio'),
-
-('Aranha-marrom', 'Loxosceles intermedia', 'NATIVA', 'NE',
- 'Aranha pequena e discreta, que se esconde em cantos, roupas e sapatos.',
- 'ARACNIDEO', 'ALTO', 'A picada pode causar lesão grave. Procure atendimento médico e, se possível, leve o aracnídeo.', 2, 4, TRUE,
- 'Não costuma atacar, só pica quando é pressionada.', 'Instituto Butantan'),
-
-('Arara-azul-grande', 'Anodorhynchus hyacinthinus', 'NATIVA', 'VU',
- 'Maior papagaio do mundo, de plumagem azul intensa. Habita Pantanal, Cerrado e Amazônia.',
- 'AVE', 'NENHUM', NULL, 40, 60, FALSE,
- 'Tem bico forte, capaz de quebrar sementes duras.', 'ICMBio / Lista Vermelha IUCN'),
-
-('Lobo-marinho-sul-americano', 'Arctocephalus australis', 'NATIVA', 'LC',
- 'Mamífero marinho que pode aparecer no litoral Sul.',
- 'MAMIFERO', 'BAIXO', 'Não toque nem se aproxime de animais encalhados. Avise o órgão ambiental.', 15, 25, FALSE,
- NULL, 'ICMBio');
-
-UPDATE Especies SET imagem_url = 'https://commons.wikimedia.org/wiki/Special:FilePath/Maned_Wolf_11,_Beardsley_Zoo,_2009-11-06.jpg?width=600'
-WHERE nome_popular = 'Guará-lobo';
-
-UPDATE Especies SET imagem_url = 'https://commons.wikimedia.org/wiki/Special:FilePath/Jaguar_(Panthera_onca_palustris)_male_Three_Brothers_River_2.jpg?width=600'
-WHERE nome_popular = 'Onça-pintada';
-
-UPDATE Especies SET imagem_url = 'https://commons.wikimedia.org/wiki/Special:FilePath/Hyacinth_macaw_(Anodorhynchus_hyacinthinus)_head.JPG?width=600'
-WHERE nome_popular = 'Arara-azul-grande';
-
-UPDATE Especies SET imagem_url = 'https://commons.wikimedia.org/wiki/Special:FilePath/Didelphis_marsupialis,_Bahia,_Brazil.jpg?width=600'
-WHERE nome_popular = 'Gambá-de-orelha-branca (saruê)';
-
-UPDATE Especies SET imagem_url = 'https://en.wikipedia.org/wiki/Special:FilePath/SAFS_Falklands.jpg?width=600'
-WHERE nome_popular = 'Lobo-marinho-sul-americano';
-
-UPDATE Especies SET imagem_url = 'https://en.wikipedia.org/wiki/Special:FilePath/SAFS_Falklands.jpg?width=600'
-WHERE nome_popular = 'Lobo-marinho-sul-americano';
-
-UPDATE Especies SET imagem_url = 'https://commons.wikimedia.org/wiki/Special:FilePath/Loxosceles_Romulo2.jpg?width=600'
-WHERE nome_popular = 'Aranha-marrom';
-
-INSERT INTO Especie_biomas (especie_id, bioma)
-SELECT e.id, b.bioma FROM Especies e JOIN (
-  SELECT 'Guará-lobo' n, 'CERRADO' bioma UNION ALL
-  SELECT 'Guará-lobo', 'PAMPA' UNION ALL
-  SELECT 'Guará-lobo', 'MATA ATLANTICA' UNION ALL
-  SELECT 'Onça-pintada', 'AMAZONIA' UNION ALL
-  SELECT 'Onça-pintada', 'PANTANAL' UNION ALL
-  SELECT 'Onça-pintada', 'CERRADO' UNION ALL
-  SELECT 'Gambá-de-orelha-branca (saruê)', 'CERRADO' UNION ALL
-  SELECT 'Gambá-de-orelha-branca (saruê)', 'MATA ATLANTICA' UNION ALL
-  SELECT 'Aranha-marrom', 'MATA ATLANTICA' UNION ALL
-  SELECT 'Aranha-marrom', 'PAMPA' UNION ALL
-  SELECT 'Arara-azul-grande', 'PANTANAL' UNION ALL
-  SELECT 'Arara-azul-grande', 'CERRADO' UNION ALL
-  SELECT 'Arara-azul-grande', 'AMAZONIA' UNION ALL
-  SELECT 'Lobo-marinho-sul-americano', 'PAMPA'
-) b ON b.n = e.nome_popular;
-
 
 -- Tabela de simulação pro banco de dados do órgão, simular através do mock
 CREATE DATABASE Orgao_mock;

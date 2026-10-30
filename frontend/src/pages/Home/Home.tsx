@@ -76,19 +76,6 @@ function Home() {
           </div>
         </section>
 
-        {/* ===== MAPA DE GEOLOCALIZAÇÃO ===== */}
-        <section className="container-map">
-          <div className="titulo-map">
-            <h2>LOCALIZE!</h2>
-            <p>
-              Veja os órgãos ambientais, áreas de proteções e ONG's perto de você!
-            </p>
-          </div>
-          <div className="box-map">
-            <h1>O mapa fica aqui!</h1>
-          </div>
-        </section>
-
         {/* ===== CARDS INFORMATIVOS ===== */}
         <section className="container-card">
           <div className="card-especie-home">
