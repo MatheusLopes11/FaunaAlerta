@@ -16,7 +16,7 @@ export function Footer() {
             <div className="d-flex align-items-center justify-content-center justify-content-md-start">
               <img src={Logo} className="footer-logo" alt="Logo FaunaAlerta" />
               <h2 className="logo-nome ms-3">
-                Fauna<br />Alerta
+                <span style={{color: '#4e3f37'}}>Faun</span>Alerta
               </h2>
             </div>
           </div>

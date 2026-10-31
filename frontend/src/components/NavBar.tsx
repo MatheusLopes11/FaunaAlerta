@@ -14,7 +14,7 @@ export function NavBar() {
                     {/* Logo */}
                     <Link className="navbar-brand d-flex align-items-center" to="/">
                         <img src={Logo} width="60" alt="Logo" />
-                        <span className="texto-logo ms-2">FaunAlerta</span>
+                        <span className="texto-logo ms-2"><span style={{color: '#4e3f37'}}>Faun</span>Alerta</span>
                     </Link>
                     {/* Botão Hambúrguer (Bootstrap) */}
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">

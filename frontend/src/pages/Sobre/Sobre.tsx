@@ -84,6 +84,7 @@ function Sobre() {
                                     <ul className="lista-integrantes">
                                         <li><span className="nome-integrante">Anselmo Pereira de Lima</span>    <a href="https://github.com/AnselmoPlima"><i className="bi bi-github"></i></a></li>
                                         <li><span className="nome-integrante">Gustavo Fernández Ferreira</span> <a href="https://github.com/gustavo-ferndez"><i className="bi bi-github"></i></a></li>
+                                        <li><span className="nome-integrante">Kevin Afonso de Jesus Gomes</span><a href="https://github.com/Kevingms-dev"><i className="bi bi-github"></i></a></li>
                                         <li><span className="nome-integrante">Marcelo de Souza Siciliano</span> <a href="https://github.com/MarceloFatec2450"><i className="bi bi-github"></i></a></li>
                                         <li><span className="nome-integrante">Matheus Ferreira Lopes</span>     <a href="https://github.com/MatheusLopes11"><i className="bi bi-github"></i></a></li>
                                         <li><span className="nome-integrante">Sophia Santoro Rodrigues</span>   <a href="https://github.com/SophiaRodrigues-S"><i className="bi bi-github"></i></a></li>

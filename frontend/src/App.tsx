@@ -32,10 +32,11 @@ export function App() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/Pesquisador" element={<Pesquisador />} />
           <Route path="/ONG" element={<Ong />} />
-          <Route path="/PagOng" element={<PagOng />} />
+          <Route path="/PagOng/:id" element={<PagOng />} />
           <Route path="/CadastroPesquisador" element={<CadastroPesquisador />} />
         </Routes>
         <Footer/>
     </BrowserRouter>
-  )
+  );
 }
+

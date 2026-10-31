@@ -25,47 +25,55 @@ function Ong(){
 
     const ongs = [
         { 
+            id: "viralatas",
             nome: "Clube dos Viralatas",
             descricao: "Ong Animal",
             imagem: Viralata,
-            link: "/PagOng"
         },
         {
+            id: "upaga",
             nome: "União de Proteção Animal",
             descricao: "Grande ABC",
             imagem: Upaga
         },
         {
+            id: "sava",
             nome: "SAVA",
             descricao: "Soliedariedade a Vida Animal",
             imagem: SAVA
         },
         {
+            id: "aaac",
             nome: "Associação Amigos dos Animais",
             descricao: "Proteção Ambiental",
             imagem: aaac
         },
         {
+            id: "uips",
             nome: "União Internacional Protetora dos Animais",
             descricao: "Luta contra Maus tratos",
             imagem: uips
         },
         {
+            id: "adotegatinho",
             nome: "Adote um Gatinho",
             descricao: "Adoção de Animais",
             imagem: adotegatinho
         },
         {
+            id: "ampara",
             nome: "Instituto Ampara Animal",
             descricao: "Proteção e Defesa Animal",
             imagem: ampara
         },
         {
+            id: "caramelo",
             nome: "Instituo Caramelo",
             descricao: "Proteção Animal e Meio Ambiente",
             imagem: caramelo
         },
         {
+            id: "amordebicho",
             nome: "Amor de Bicho",
             descricao: "Amparo de Animais",
             imagem: amordebicho
@@ -82,8 +90,8 @@ function Ong(){
                 <title> Ong - FaunaAlerta</title>
             </Helmet>
 
-            <main className = "ong-page" style={{backgroundColor: "#d3b285"}}>
-                <section className = "container py-5">
+            <main className = "ong-page">
+                <section className = "container py-5" style={{backgroundColor: "#F7F1EE", marginTop: '60px'}}>
                     <div><h1> ONG's</h1></div>
                     <div className="row height d-flex justify-content-flex-start">
                         <div className="d-flex justify-content-flex-start">
@@ -101,14 +109,14 @@ function Ong(){
                     </div>
                     
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 g-lg-3">
-                        {ongsFiltradas.map((ong, index) => (
-                            <div className="col" key={ong.nome}>
+                        {ongsFiltradas.map((ong) => (
+                            <div className="col" key={ong.id}>
                                 <img
                                     src={ong.imagem}
                                     alt={ong.nome}
                                     className="OngsLogos"
                                 />
-                                <Link to="/PagOng">
+                                <Link to={`/PagOng/${ong.id}`}>
                                     <h5 className="text-center">
                                         {ong.nome}
                                         <br />
@@ -132,5 +140,4 @@ function Ong(){
         </>
     )
 }
-
 export default Ong;
