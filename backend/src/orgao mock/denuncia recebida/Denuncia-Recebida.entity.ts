@@ -1,5 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany } from 'typeorm';
 import { DenunciaMidiaMock } from '../denuncia midias/denuncia-midia.entity.js';
+import { TIPOS_DENUNCIA, type TipoDenuncia } from '../../denuncias/tipos.js';
+import { decimalParaNumero } from '../../common/decimal.transformer.js';
 
 @Entity('denuncias_recebidas')
 export class DenunciaRecebida {
@@ -9,12 +11,8 @@ export class DenunciaRecebida {
   @Column({ type: 'varchar', length: 20, unique: true, nullable: false })
   protocolo: string;
 
-  @Column({
-    type: 'enum',
-    enum: ['CACA', 'PESCA', 'MAUS_TRATOS', 'TRAFICO', 'OUTRO'],
-    nullable: false,
-  })
-  tipo: 'CACA' | 'PESCA' | 'MAUS_TRATOS' | 'TRAFICO' | 'OUTRO';
+  @Column({ type: 'enum', enum: [...TIPOS_DENUNCIA], nullable: false })
+  tipo: TipoDenuncia;
 
   @Column({ type: 'text', nullable: false })
   descricao: string;
@@ -24,6 +22,12 @@ export class DenunciaRecebida {
 
   @Column({ name: 'data_ocorrencia', type: 'date', nullable: true })
   dataOcorrencia: string;
+
+  @Column({ type: 'decimal', precision: 10, scale: 7, nullable: true, transformer: decimalParaNumero })
+  latitude: number | null;
+
+  @Column({ type: 'decimal', precision: 10, scale: 7, nullable: true, transformer: decimalParaNumero })
+  longitude: number | null;
 
   @Column({
     name: 'status_denun',

@@ -7,6 +7,7 @@ export function NavBar() {
     const navigate = useNavigate()
     useLocation() // faz a barra atualizar quando a rota muda (login e logout)
     const sessao = lerSessao()
+
     return (
         <header className={`Topo ${sessao?.usuario.perfil === 'Pesquisador' ? 'modo-pesquisador' : ''}`}>
             <nav className="navbar navbar-expand-md">
@@ -14,7 +15,7 @@ export function NavBar() {
                     {/* Logo */}
                     <Link className="navbar-brand d-flex align-items-center" to="/">
                         <img src={Logo} width="60" alt="Logo" />
-                        <span className="texto-logo ms-2"><span style={{color: '#4e3f37'}}>Faun</span>Alerta</span>
+                        <span className="texto-logo ms-2">FaunAlerta</span>
                     </Link>
                     {/* Botão Hambúrguer (Bootstrap) */}
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
@@ -35,7 +36,15 @@ export function NavBar() {
                             </Link>
                         </li>
 
-                        {/* Botão Informativa */}
+                        {/*Botão Ongs*/}
+                        <li className="nav-item">
+                            <Link className="nav-link menu-btn " to="/Ong">
+                                <i className="bi bi-heart fs-4"></i>
+                                <strong>ONGs</strong>
+                            </Link>
+                        </li>
+
+                        {/*Botão Espécies*/}
                         <li className="nav-item">
                             <Link className="nav-link menu-btn" to="/especies">
                                 <i className="bi bi-book fs-4"></i>
@@ -43,14 +52,6 @@ export function NavBar() {
                             </Link>
                         </li>
 
-                        {/*Botão Ongs*/}
-                        <li className="nav-item">
-                        
-                            <Link className="nav-link menu-btn " to="/Ong">
-                                <i className="bi bi-heart fs-4"></i>
-                                <strong>ONGs</strong>  
-                            </Link>
-                        </li>                       
                         {/* Botão Denúncia */}
                         <li className="nav-item">
                             <Link className="nav-link menu-btn" to="/denuncia">
@@ -69,26 +70,28 @@ export function NavBar() {
 
                         </ul>
 
-                        {/* Botão Usuário (Login) */}
+                        {/* Área do usuário */}
                         {sessao ? (
-                             <div className="d-flex align-items-center gap-3">
-                             {sessao.usuario.perfil === 'Admin' && (
-                              <Link to="/admin" className="nav-link menu-btn"><strong>Admin</strong></Link>
-                             )}
-                             <span>Olá, {sessao.usuario.nome.split(' ')[0]}</span>
-                            <button
-                              type="button"
-                                 className="menu-btn border-0 bg-transparent"
-                                onClick={() => { sair(); navigate('/') }}
-                                 >
-                         <strong>Sair</strong>
-                            </button>
-                            </div>
-                            ) : (
-                                <Link to="/login" className="user-btn">
-                                    <i className="bi bi-person fs-3"></i>
+                            <div className="d-flex align-items-center gap-3">
+                                {sessao.usuario.perfil === 'Admin' && (
+                                    <Link to="/admin" className="nav-link menu-btn"><strong>Admin</strong></Link>
+                                )}
+                                <Link to="/perfil" className="nav-link menu-btn">
+                                    <strong>Olá, {sessao.usuario.nome.split(' ')[0]}</strong>
                                 </Link>
-                            )}
+                                <button
+                                    type="button"
+                                    className="menu-btn border-0 bg-transparent"
+                                    onClick={() => { sair(); navigate('/') }}
+                                >
+                                    <strong>Sair</strong>
+                                </button>
+                            </div>
+                        ) : (
+                            <Link to="/login" className="user-btn">
+                                <i className="bi bi-person fs-3"></i>
+                            </Link>
+                        )}
 
                     </div>
                 </div>

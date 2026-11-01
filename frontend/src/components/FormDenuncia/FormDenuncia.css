@@ -120,3 +120,45 @@
     border-radius: 6px;
     font-size: 25px !important;
 }
+
+.denuncia-erro { color: #b3261e; font-weight: 600; margin: 0; }
+.denuncia-aviso { margin: 0; padding: 8px 12px; background: #fff6e5; border-left: 4px solid #D47E09; border-radius: 4px; max-width: 590px; }
+.denuncia-sucesso { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 30px; text-align: center; font-family: 'Afacad Flux', sans-serif; max-width: 590px; }
+.denuncia-protocolo { font-size: 1.8rem; letter-spacing: 2px; color: #14AE5C; }
+.denuncia-sucesso .container-btn-form {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+/* mesmo tamanho e formato para o link e o botão */
+.container-form .denuncia-sucesso .container-btn-form > * {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 210px;
+    height: 52px;
+    padding: 0 12px;
+    box-sizing: border-box;
+    font-size: 1.1rem !important;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.container-form .denuncia-sucesso .denuncia-link {
+    background: #14AE5C;
+    border: 2px solid #14AE5C;
+    color: #fff;
+}
+
+.container-form .denuncia-sucesso .denuncia-voltar {
+    background: #fff;
+    border: 2px solid #D47E09;
+    color: #333;
+}

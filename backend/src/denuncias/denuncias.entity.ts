@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm'
 import { Usuario } from '../usuario/usuario.entity.js'
+import { TIPOS_DENUNCIA, type TipoDenuncia } from './tipos.js'
 
 @Entity('denuncias')
 export class Denuncias {
@@ -15,6 +16,9 @@ export class Denuncias {
     @ManyToOne(() => Usuario, { onDelete: 'SET NULL', nullable: true })
     @JoinColumn({ name: 'usuario_id' })
     usuario: Usuario;
+
+    @Column({ type: 'enum', enum: [...TIPOS_DENUNCIA], default: 'OUTRO' })
+    tipo: TipoDenuncia;
 
     @Column({
       name: 'status_atual',

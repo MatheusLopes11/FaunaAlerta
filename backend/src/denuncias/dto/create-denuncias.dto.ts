@@ -1,20 +1,28 @@
-import { IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, MaxLength } from 'class-validator';
+import { IsDateString, IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, Length, Max, MaxLength, Min } from 'class-validator';
+import { TIPOS_DENUNCIA, type TipoDenuncia } from '../tipos.js';
 
 export class CreateDenunciaDto {
-    @IsString()
-    @IsNotEmpty()
-    @MaxLength(20)
-    protocolo: string;
+    @IsEnum([...TIPOS_DENUNCIA])
+    tipo: TipoDenuncia;
 
-    @IsNumber()
-    @IsOptional()
-    usuarioId?: number;
+    @IsDateString()
+    dataOcorrencia: string;
 
-    @IsEnum(['Recebida', 'Em_validacao', 'Em_resolucao', 'Concluida', 'Rejeitada'])
-    @IsOptional()
-    statusAtual?: 'Recebida' | 'Em_validacao' | 'Em_resolucao' | 'Concluida' | 'Rejeitada';
+    @IsString() @IsNotEmpty() @MaxLength(100)
+    municipio: string;
 
-    @IsEnum(['PENDENTE', 'ENVIADA', 'FALHA'])
-    @IsOptional()
-    statusEnvio?: 'PENDENTE' | 'ENVIADA' | 'FALHA';
+    @IsString() @Length(2, 2)
+    uf: string;
+
+    @IsString() @IsOptional() @MaxLength(150)
+    referencia?: string;
+
+    @IsString() @IsNotEmpty() @MaxLength(5000)
+    descricao: string;
+
+    @IsNumber() @Min(-34.5) @Max(6) @IsOptional()
+    latitude?: number;
+
+    @IsNumber() @Min(-74.5) @Max(-28) @IsOptional()
+    longitude?: number;
 }

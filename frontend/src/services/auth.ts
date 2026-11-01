@@ -48,7 +48,7 @@ export function authHeaders(): Record<string, string> {
     return sessao ? { Authorization: `Bearer ${sessao.token}` } : {}
 }
 
-async function lerErro(res: Response, padrao: string): Promise<string> {
+export async function lerErro(res: Response, padrao: string): Promise<string> {
     try {
         const j = await res.json()
         return Array.isArray(j.message) ? j.message.join(' • ') : (j.message ?? padrao)
@@ -89,4 +89,24 @@ export async function cadastrarPesquisador(d: DadosPesquisador): Promise<Sessao>
     })
     if (!res.ok) throw new Error(await lerErro(res, 'Não foi possível enviar o cadastro.'))
     return login(d.email, d.senha)
+}
+
+// Busca os dados atuais do usuário (ex.: cadastro de pesquisador aprovado desde o último login).
+export async function atualizarSessao(): Promise<Sessao | null> {
+    const atual = lerSessao()
+    if (!atual) return null
+    try {
+        const res = await fetch(`${API}/auth/me`, { headers: { Authorization: `Bearer ${atual.token}` } })
+        if (res.status === 401) {
+            sair()
+            return null
+        }
+        if (!res.ok) return atual
+        const usuario: UsuarioLogado = await res.json()
+        const nova = { token: atual.token, usuario }
+        localStorage.setItem(CHAVE, JSON.stringify(nova))
+        return nova
+    } catch {
+        return atual
+    }
 }
