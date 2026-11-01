@@ -41,4 +41,16 @@ export class AuthService {
             },
         };
     }
+
+    async me(id: number) {
+        const usuario = await this.usuarioRepository.findOne({ where: { id } });
+        if (!usuario) throw new UnauthorizedException('Sessão inválida.');
+        return {
+            id: usuario.id,
+            nome: usuario.nome,
+            email: usuario.email,
+            perfil: usuario.perfil,
+            statusCadastro: usuario.statusCadastro,
+        };
+    }
 }

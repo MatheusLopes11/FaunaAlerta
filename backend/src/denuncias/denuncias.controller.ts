@@ -1,19 +1,33 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Query, Req, UseGuards } from '@nestjs/common';
 import { DenunciasService } from './denuncias.service.js';
 import { CreateDenunciaDto } from './dto/create-denuncias.dto.js';
-import { Denuncias } from './denuncias.entity.js';
+import { PaginacaoQueryDto } from '../common/paginacao-query.dto.js';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard.js';
+import { OptionalJwtAuthGuard } from '../auth/optional-jwt-auth.guard.js';
+import { RolesGuard } from '../auth/roles.guard.js';
+import { Roles } from '../auth/roles.decorator.js';
 
 @Controller('denuncias')
-export class DenunciasController { 
+export class DenunciasController {
     constructor(private readonly denunciasService: DenunciasService) {}
 
     @Get()
-    async findAll(): Promise<Denuncias[]> {
-        return await this.denunciasService.findAll();
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles('Admin')
+    findAll() {
+        return this.denunciasService.findAll();
     }
 
+    @Get('minhas')
+    @UseGuards(JwtAuthGuard)
+    minhas(@Req() req: { user: { sub: number } }, @Query() q: PaginacaoQueryDto) {
+        return this.denunciasService.minhas(req.user.sub, q.page, q.limit);
+    }
+
+    // Qualquer pessoa pode denunciar. Logada, a denúncia vai para o histórico dela.
     @Post()
-    async create(@Body() dto: CreateDenunciaDto): Promise<Denuncias> {
-        return await this.denunciasService.create(dto);
+    @UseGuards(OptionalJwtAuthGuard)
+    create(@Body() dto: CreateDenunciaDto, @Req() req: { user?: { sub: number } }) {
+        return this.denunciasService.create(dto, req.user?.sub);
     }
 }
