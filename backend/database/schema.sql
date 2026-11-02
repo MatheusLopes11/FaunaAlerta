@@ -36,7 +36,7 @@ CREATE TABLE denuncias(
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     protocolo VARCHAR(20) UNIQUE NOT NULL,
     usuario_id INT UNSIGNED NULL,
-    tipo ENUM('CACA','PESCA','MAUS_TRATOS','TRAFICO','ABANDONO','OUTRO') NOT NULL DEFAULT 'OUTRO' AFTER usuario_id,sssssssss
+    tipo ENUM('CACA','PESCA','MAUS_TRATOS','TRAFICO','ABANDONO','OUTRO') NOT NULL DEFAULT 'OUTRO',
     status_atual ENUM('Recebida', 'Em_validacao', 'Em_resolucao', 'Concluida', 'Rejeitada') NOT NULL DEFAULT 'Recebida',
     status_envio ENUM('PENDENTE', 'ENVIADA', 'FALHA') NOT NULL DEFAULT 'PENDENTE',
     criado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -141,7 +141,7 @@ CREATE TABLE denuncias_recebidas(
     protocolo VARCHAR(20) NOT NULL UNIQUE,
     tipo ENUM('CACA','PESCA','MAUS_TRATOS','TRAFICO','ABANDONO','OUTRO') NOT NULL,
     latitude DECIMAL(10,7) NULL,
-    longitude DECIMAL(10,7) NULL;
+    longitude DECIMAL(10,7) NULL,
     descricao TEXT NOT NULL,
     local_descricao VARCHAR(255) NULL,
     data_ocorrencia DATE NULL,

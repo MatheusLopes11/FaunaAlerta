@@ -303,3 +303,52 @@ padding-right: 40px;
 .Topo.modo-pesquisador .menu-btn:hover { background-color: #D47E09; }
 .Topo.modo-pesquisador .navbar-toggler { border-color: rgba(255, 255, 255, .6); }
 .Topo.modo-pesquisador .navbar-toggler-icon { filter: invert(1); }
+
+/* MENU DO USUÁRIO (dropdown) */
+.menu-usuario { position: relative; }
+.menu-usuario .menu-btn strong { max-width: 130px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.menu-usuario-lista {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 6px);
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .2);
+    z-index: 2000; /* acima do mapa */
+}
+
+.menu-usuario-lista a,
+.menu-usuario-lista button {
+    display: block;
+    width: 100%;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    text-align: left;
+    font-family: 'Afacad Flux', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #222 !important;
+}
+
+.menu-usuario-lista a:hover,
+.menu-usuario-lista button:hover { background: #D47E09; color: #fff !important; }
+
+/* menu hambúrguer aberto: a lista fica dentro do fluxo da página */
+@media (max-width: 991.98px) {
+    .menu-usuario-lista { position: static; margin-top: 6px; box-shadow: none; border: 1px solid #ddd; }
+}
+
+/* telas médias: botões mais compactos para tudo caber na linha */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .menuu { gap: 12px; }
+    .navbar-nav { gap: 4px !important; }
+    .menu-btn { padding: 6px 10px !important; font-size: 16px; }
+    .navbar-nav .menu-btn .bi { display: none; }
+}

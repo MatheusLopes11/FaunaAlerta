@@ -1,0 +1,9 @@
+.adm-abas { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 18px; }
+.adm-aba { padding: 6px 18px; border: 2px solid #4e3f37; border-radius: 20px; background: #fff; font-weight: 600; color: #333; }
+.adm-aba.ativa { background: #4e3f37; color: #f7f1ee; }
+
+.adm-cartao { background: #fff; border-radius: 10px; padding: 16px 20px; margin-bottom: 14px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.adm-cartao h2 { font-size: 1.3rem; margin: 0 0 8px; font-weight: 700; }
+.adm-cartao p { margin: 2px 0; overflow-wrap: anywhere; }
+.adm-selo { color: #fff; font-size: .8rem; padding: 2px 10px; border-radius: 20px; vertical-align: middle; font-weight: 400; }
+.adm-acoes-cartao { align-self: center; }
