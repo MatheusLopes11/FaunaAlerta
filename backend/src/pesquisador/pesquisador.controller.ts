@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Patch, Param, ParseIntPipe, Query, Body, UseGuards } from '@nestjs/common';
 import { PesquisadorService } from './pesquisador.service.js';
 import { CreatePesquisadorDto } from './dto/create-pesquisador.Dto.js';
 import { RegistroPesquisadorDto } from './dto/registro-pesquisador.dto.js';
+import { AlterarStatusCadastroDto, ListaSolicitacoesQueryDto } from './dto/status-cadastro.dto.js';
 import { Pesquisador } from './pesquisador.entity.js';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard.js';
 import { RolesGuard } from '../auth/roles.guard.js';
@@ -18,6 +19,13 @@ export class PesquisadorController {
         return await this.pesquisadorService.findAll();
     }
 
+    @Get('solicitacoes')
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles('Admin')
+    solicitacoes(@Query() q: ListaSolicitacoesQueryDto) {
+        return this.pesquisadorService.solicitacoes(q.status);
+    }
+
     @Post()
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Roles('Admin')
@@ -28,5 +36,15 @@ export class PesquisadorController {
     @Post('registro')
     async registrar(@Body() dto: RegistroPesquisadorDto) {
         return await this.pesquisadorService.registrar(dto);
+    }
+
+    @Patch(':usuarioId/status')
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles('Admin')
+    alterarStatus(
+        @Param('usuarioId', ParseIntPipe) usuarioId: number,
+        @Body() dto: AlterarStatusCadastroDto,
+    ) {
+        return this.pesquisadorService.alterarStatus(usuarioId, dto.statusCadastro);
     }
 }

@@ -5,6 +5,7 @@ import * as bcrypt from 'bcrypt';
 import { Pesquisador } from './pesquisador.entity.js';
 import { CreatePesquisadorDto } from './dto/create-pesquisador.Dto.js';
 import { RegistroPesquisadorDto } from './dto/registro-pesquisador.dto.js';
+import type { StatusCadastro } from './dto/status-cadastro.dto.js';
 import { Usuario } from '../usuario/usuario.entity.js';
 
 @Injectable()
@@ -69,5 +70,40 @@ export class PesquisadorService {
         });
 
         return { mensagem: 'Cadastro enviado para análise.' };
+    }
+
+    // Lista para o painel do admin (mais antigos primeiro).
+    async solicitacoes(status?: StatusCadastro) {
+        const lista = await this.pesquisadorRepository.find({
+            where: { usuario: { perfil: 'Pesquisador', ...(status ? { statusCadastro: status } : {}) } },
+            relations: { usuario: true },
+            order: { id: 'ASC' },
+        });
+
+        return lista.map((p) => ({
+            usuarioId: p.usuarioId,
+            nome: p.usuario.nome,
+            email: p.usuario.email,
+            telefone: p.usuario.telefone,
+            statusCadastro: p.usuario.statusCadastro,
+            instituicao: p.instituicao,
+            areaPesquisa: p.areaPesquisa,
+            linkLattesOrcid: p.linkLattesOrcid,
+            emailInstituicional: p.emailInstituicional,
+        }));
+    }
+
+    async alterarStatus(usuarioId: number, status: StatusCadastro) {
+        const pesquisador = await this.pesquisadorRepository.findOne({
+            where: { usuarioId },
+            relations: { usuario: true },
+        });
+        // só mexe em quem é pesquisador (nunca em admin ou usuário comum)
+        if (!pesquisador || pesquisador.usuario.perfil !== 'Pesquisador') {
+            throw new NotFoundException('Pesquisador não encontrado.');
+        }
+
+        await this.usuarioRepository.update(usuarioId, { statusCadastro: status });
+        return { usuarioId, statusCadastro: status };
     }
 }
