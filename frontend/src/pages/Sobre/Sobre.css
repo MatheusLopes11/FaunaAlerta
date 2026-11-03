@@ -38,9 +38,9 @@ span{
     color: rgb(57, 57, 239);
 }
 
-#JS{
-    color: rgb(255, 255, 0);
-     -webkit-text-stroke: 0.4px black;
+#TS{
+    color: rgb(33, 175, 241);
+     -webkit-text-stroke: 0.4px rgb(172, 171, 171);
 }
 
 .sobre-page{
