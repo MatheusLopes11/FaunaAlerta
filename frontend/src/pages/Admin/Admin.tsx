@@ -230,7 +230,7 @@ function Painel() {
                         <div className="adm-barra">
                             <select value={grupoGbif} onChange={(e) => setGrupoGbif(e.target.value)}>
                                 {Object.entries(GRUPOS)
-                                    .filter(([k]) => k !== 'PEIXE' && k !== 'OUTRO')
+                                    .filter(([k]) => k !== 'OUTRO')
                                     .map(([k, v]) => <option key={k} value={k}>{v}</option>)}
                             </select>
                             <input

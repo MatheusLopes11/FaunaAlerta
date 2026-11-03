@@ -5,13 +5,14 @@ import { Especies } from '../especies/especies.entity.js';
 import { GbifService } from './gbif.service.js';
 
 // Seu enum `grupo` ↔ classes do GBIF
-export const CLASSES_GBIF: Record<string, { classKey: number }> = {
-  MAMIFERO: { classKey: 359 },
-  AVE: { classKey: 212 },
-  REPTIL: { classKey: 358 },
-  ANFIBIO: { classKey: 131 },
-  ARACNIDEO: { classKey: 367 },
-  INSETO: { classKey: 216 },
+export const CLASSES_GBIF: Record<string, { classKeys: number[] }> = {
+  MAMIFERO: { classKeys: [359] },
+  AVE: { classKeys: [212] },
+  REPTIL: { classKeys: [358] },
+  ANFIBIO: { classKeys: [131] },
+  ARACNIDEO: { classKeys: [367] },
+  INSETO: { classKeys: [216] },
+  PEIXE: { classKeys: [204, 119, 234] }
 };
 
 @Injectable()
@@ -25,20 +26,32 @@ export class GbifImportService {
   ) {}
 
   async importar(grupo: string, quantidade: number) {
-    const { classKey } = CLASSES_GBIF[grupo];
-    const chaves = await this.gbif.listarEspeciesDoBrasil(classKey, quantidade);
+    const { classKeys } = CLASSES_GBIF[grupo];
+    
+    const chaves: number[] = [];
+
+    
+    for (const key of classKeys) {
+      
+      const qtdPorClasse = Math.ceil(quantidade / classKeys.length);
+      
+      const chavesDaClasse = await this.gbif.listarEspeciesDoBrasil(key, qtdPorClasse);
+      chaves.push(...chavesDaClasse);
+    }
+
+   
+    const chavesUnicas = [...new Set(chaves)].slice(0, quantidade);
 
     let criadas = 0, puladas = 0, falhas = 0;
 
-    // Sequencial de propósito: não "metralha" o GBIF com milhares de chamadas
-    for (const chave of chaves) {
+    
+    for (const chave of chavesUnicas) {
       try {
         const jaExiste = await this.especiesRepository.findOne({ where: { gbifKey: chave } });
         if (jaExiste) { puladas++; continue; }
 
         const d = await this.gbif.buscarEspecie(chave);
 
-        // nome_popular é UNIQUE: se faltar ou colidir, usa o científico
         let nomePopular = d.nomePopular ?? d.nomeCientifico;
         const colisao = await this.especiesRepository.findOne({ where: { nomePopular } });
         if (colisao) nomePopular = `${nomePopular} (${d.nomeCientifico})`.slice(0, 120);
@@ -48,7 +61,7 @@ export class GbifImportService {
             gbifKey: d.gbifKey,
             nomePopular,
             nomeCientifico: d.nomeCientifico,
-            origem: 'NATIVA',        // revisar depois: o GBIF não informa isso com confiança
+            origem: 'NATIVA',        
             grupo,
             imagemUrl: d.imagemUrl,
             imagemCredito: d.imagemCredito,
@@ -61,6 +74,6 @@ export class GbifImportService {
         this.logger.warn(`Falha na espécie ${chave}: ${(erro as Error).message}`);
       }
     }
-    return { grupo, encontradas: chaves.length, criadas, puladas, falhas };
+    return { grupo, encontradas: chavesUnicas.length, criadas, puladas, falhas };
   }
 }

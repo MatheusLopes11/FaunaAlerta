@@ -102,11 +102,12 @@
 }
 
 .btn-troca-cadastro {
-    width: 100%;
+   width: auto;
+    min-width: 150px;
     padding: 8px;
     border: none;
     border-radius: 6px;
-    background-color:#14ae5c;
+    background-color: #14ae5c;
     color: #f7f1ee;
     font-size: 1.1rem;
     font-weight: 500;

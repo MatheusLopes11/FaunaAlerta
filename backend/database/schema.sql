@@ -5,7 +5,7 @@ USE FaunaAlerta;
 CREATE TABLE usuario(
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(250) NOT NULL,
-    email VARCHAR(70) UNIQUE NOT NULL,
+    email VARCHAR(70) UNIQUE NULL,
     telefone VARCHAR(20) NULL,
     senha_hash VARCHAR(255) NOT NULL,
     perfil ENUM('Usuario', 'Pesquisador', 'Admin') DEFAULT 'Usuario',

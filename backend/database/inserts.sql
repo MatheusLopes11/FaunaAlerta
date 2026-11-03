@@ -14,12 +14,12 @@ INSERT INTO usuario(nome, email, telefone, senha_hash, perfil, status_cadastro) 
 ('Sophia Santoro','Sophia', '11999990000', '$2b$10$wJYp3Eey11EXiyBz6eg/eu6Pdpu/XzKZvn28pDrcKaw6kHKDiBSTa', 'Admin', 'Aprovado'),
 ('Wagner Acácio','Wagner@gmail.com', '11999990000', '$2b$10$wJYp3Eey11EXiyBz6eg/eu6Pdpu/XzKZvn28pDrcKaw6kHKDiBSTa', 'Admin', 'Aprovado');
 
-INSERT INTO usuario(nome, email, telefone, senha_hash, perfil, status_cadastro) VALUES
-('Thom Marques', 'Thom@usp.sp.gov.br', '11987654321', '$2b$10$hcDfd1bsrLxGzyNB89ksJ.m7BO/hyQeOKC.NF7/FVNFpmXM/.NbbG', 'Pesquisador', 'Aprovado'), -- Senha: Pesquisador123
-('Wendell da Silva', 'Wendell@unicamp.sp.gov.br', '11987654321', '$2b$10$hcDfd1bsrLxGzyNB89ksJ.m7BO/hyQeOKC.NF7/FVNFpmXM/.NbbG', 'Pesquisador', 'Aprovado'),
-('Eduardo Rodrigues', 'Eduardo@unesp.sp.gov.br', '11987654321', '$2b$10$hcDfd1bsrLxGzyNB89ksJ.m7BO/hyQeOKC.NF7/FVNFpmXM/.NbbG', 'Pesquisador', 'Aprovado'),
-('Eri Lima', '22987654321', 'Eri@ufrj.rj.gov.br', '$2b$10$hcDfd1bsrLxGzyNB89ksJ.m7BO/hyQeOKC.NF7/FVNFpmXM/.NbbG', 'Pesquisador', 'Pendente'),
-('Elise Ângelo', '31987654321', 'Elise@ufmg.mg.gov.br', '$2b$10$hcDfd1bsrLxGzyNB89ksJ.m7BO/hyQeOKC.NF7/FVNFpmXM/.NbbG', 'Pesquisador', 'Aprovado');
+INSERT INTO usuario(nome, telefone, senha_hash, perfil, status_cadastro) VALUES
+('Thom Marques', '11987654321', '$2b$10$hcDfd1bsrLxGzyNB89ksJ.m7BO/hyQeOKC.NF7/FVNFpmXM/.NbbG', 'Pesquisador', 'Aprovado'), -- Senha: Pesquisador123
+('Wendell da Silva', '11987654321', '$2b$10$hcDfd1bsrLxGzyNB89ksJ.m7BO/hyQeOKC.NF7/FVNFpmXM/.NbbG', 'Pesquisador', 'Aprovado'),
+('Eduardo Rodrigues', '11987654321', '$2b$10$hcDfd1bsrLxGzyNB89ksJ.m7BO/hyQeOKC.NF7/FVNFpmXM/.NbbG', 'Pesquisador', 'Aprovado'),
+('Eri Lima', '22987654321', '$2b$10$hcDfd1bsrLxGzyNB89ksJ.m7BO/hyQeOKC.NF7/FVNFpmXM/.NbbG', 'Pesquisador', 'Pendente'),
+('Elise Ângelo', '31987654321', '$2b$10$hcDfd1bsrLxGzyNB89ksJ.m7BO/hyQeOKC.NF7/FVNFpmXM/.NbbG', 'Pesquisador', 'Aprovado');
 
 
 INSERT INTO pesquisador(usuario_id, instituicao, area_pesquisa, link_lattes_orcid, email_institucional) VALUES
@@ -129,13 +129,13 @@ NULL, 'Goiânia', 'GO', 'CERRADO', '2026-10-05', '[TESTE-04] Vários sapos perto
 ((SELECT id FROM especies WHERE nome_popular = 'Peixe-leão'), null,
  'Arraial do Cabo', 'RJ', NULL, '2026-10-10',
  '[TESTE-08] Peixe com espinhos longos visto durante mergulho.', 'VERIFICADO'),
-((SELECT id FROM especies WHERE nome_popular = 'Mico-leão-dourado'), 18,
+((SELECT id FROM especies WHERE nome_popular = 'Mico-leão-dourado'), 16,
  'Silva Jardim', 'RJ', 'MATA ATLANTICA', '2026-10-14',
  '[TESTE-09] Grupo de micos nas copas das árvores em área de mata.', 'VERIFICADO'),
-((SELECT id FROM especies WHERE nome_popular = 'Harpia'), 18,
+((SELECT id FROM especies WHERE nome_popular = 'Harpia'), 17,
  'Altamira', 'PA', 'AMAZONIA', '2026-06-18',
  '[TESTE-10] Ave grande pousada em árvore alta, com crista aberta.', 'VERIFICADO'),
-((SELECT id FROM especies WHERE nome_popular = 'Aranha-armadeira'), 22,
+((SELECT id FROM especies WHERE nome_popular = 'Aranha-armadeira'), 17,
  'Curitiba', 'PR', 'MATA ATLANTICA', '2026-09-28',
  '[TESTE-11] Aranha dentro de um sapato. (Rejeitado no teste: foto sem nitidez.)', 'REJEITADO'),
 ((SELECT id FROM especies WHERE nome_popular = 'Teiú'), 1,
@@ -175,18 +175,18 @@ INSERT INTO denuncias (protocolo, usuario_id, status_atual, status_envio, criado
 ('DEN-2026-AB1C2D3E', 5,   'Recebida',     'FALHA',    '2026-10-28 08:30:00', '2026-10-28 08:30:00');
 
 INSERT INTO denuncia_historico (denuncia_id, status_denun, observacao, origem, criado_em) VALUES
-(13, 'Recebida', 'Denúncia enviada ao órgão', 'SISTEMA', '2026-08-05 09:00:00'),
-(14, 'Em_validacao', 'Em análise pela equipe técnica', 'ORGAO', '2026-08-07 10:30:00'),
-(15, 'Em_resolucao', 'Fiscalização agendada', 'ORGAO', '2026-08-20 14:00:00'),
-(16, 'Concluida', 'Autuação realizada', 'ORGAO', '2026-09-10 15:20:00'),
-(17, 'Recebida', 'Denúncia enviada ao órgão', 'SISTEMA', '2026-09-14 18:10:00'),
-(18, 'Em_validacao', 'Em análise pela equipe técnica', 'ORGAO', '2026-09-16 09:00:00'),
-(19, 'Em_resolucao', 'Equipe em campo', 'ORGAO',   '2026-10-02 11:15:00'),
-(20, 'Recebida', 'Denúncia enviada ao órgão', 'SISTEMA', '2026-10-08 07:45:00'),
-(21, 'Em_validacao', 'Em análise pela equipe técnica', 'ORGAO', '2026-10-09 13:30:00'),
-(22, 'Recebida', 'Denúncia enviada ao órgão', 'SISTEMA', '2026-09-01 20:00:00'),
-(23, 'Rejeitada','Informações insuficientes para fiscalização', 'ORGAO', '2026-09-04 16:00:00'),
-(24, 'Recebida','Denúncia enviada ao órgão', 'SISTEMA', '2026-10-27 12:00:00');
+(1, 'Recebida', 'Denúncia enviada ao órgão', 'SISTEMA', '2026-08-05 09:00:00'),
+(2, 'Em_validacao', 'Em análise pela equipe técnica', 'ORGAO', '2026-08-07 10:30:00'),
+(3, 'Em_resolucao', 'Fiscalização agendada', 'ORGAO', '2026-08-20 14:00:00'),
+(4, 'Concluida', 'Autuação realizada', 'ORGAO', '2026-09-10 15:20:00'),
+(5, 'Recebida', 'Denúncia enviada ao órgão', 'SISTEMA', '2026-09-14 18:10:00'),
+(6, 'Em_validacao', 'Em análise pela equipe técnica', 'ORGAO', '2026-09-16 09:00:00'),
+(7, 'Em_resolucao', 'Equipe em campo', 'ORGAO',   '2026-10-02 11:15:00'),
+(8, 'Recebida', 'Denúncia enviada ao órgão', 'SISTEMA', '2026-10-08 07:45:00'),
+(9, 'Em_validacao', 'Em análise pela equipe técnica', 'ORGAO', '2026-10-09 13:30:00'),
+(10, 'Recebida', 'Denúncia enviada ao órgão', 'SISTEMA', '2026-09-01 20:00:00'),
+(11, 'Rejeitada','Informações insuficientes para fiscalização', 'ORGAO', '2026-09-04 16:00:00'),
+(12, 'Recebida','Denúncia enviada ao órgão', 'SISTEMA', '2026-10-27 12:00:00');
 
 
 INSERT INTO ONG (nome, descricao, contato, site, areas_atuacao, UF) VALUES

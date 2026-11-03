@@ -1,5 +1,5 @@
 -- PROCEDURES
-
+USE FaunaAlerta;
 /*
 PROCEDURES 1:
 Traz todos os dados do avistamento, possibilitando filtar os dados.
