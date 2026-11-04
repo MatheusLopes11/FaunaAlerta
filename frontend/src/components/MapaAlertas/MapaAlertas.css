@@ -1,0 +1,7 @@
+.mapa-alertas-caixa { border: 2px solid #0d4a2f; border-radius: 10px; overflow: hidden; }
+.mapa-alertas-leaflet { height: 420px; width: 100%; }
+.mapa-alertas-legenda { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; margin: 8px 0 16px; font-size: .95rem; }
+.mapa-alertas-legenda i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; border: 1px solid #222; vertical-align: middle; }
+.mapa-alertas-contagem { margin-left: auto; color: #444; }
+.mapa-alertas-desc { margin: 6px 0 0; max-width: 220px; overflow-wrap: anywhere; }
+@media (max-width: 768px) { .mapa-alertas-leaflet { height: 320px; } }

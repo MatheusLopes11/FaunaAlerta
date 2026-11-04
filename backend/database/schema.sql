@@ -12,6 +12,10 @@ CREATE TABLE usuario(
     status_cadastro ENUM('Aprovado', 'Pendente', 'Negado') DEFAULT 'Pendente'
 );
 
+select * from usuario;
+UPDATE Usuario SET perfil = 'Admin', status_cadastro = 'Aprovado' WHERE email = 'gustavo@gmail.com';
+SELECT id, nome, email, perfil, status_cadastro FROM Usuario WHERE email = 'gustavo@gmail.com';
+
 CREATE TABLE pesquisador(
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     usuario_id INT UNSIGNED,
@@ -44,6 +48,16 @@ CREATE TABLE denuncias(
     CONSTRAINT fk_denuncia_usuario
 		FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE SET NULL
 );
+
+INSERT INTO Alertas (especie_id, municipio, uf, data_avistamento, descricao, situacao, latitude, longitude) VALUES
+((SELECT id FROM Especies WHERE nome_popular = 'Guará-lobo'), 'Campo Grande', 'MS', '2026-06-12', '[TESTE] Avistado em área de cerrado.', 'PENDENTE', -20.4697, -54.6201),
+((SELECT id FROM Especies WHERE nome_popular = 'Guará-lobo'), 'Uberaba', 'MG', '2026-08-03', '[TESTE] Visto à beira da estrada.', 'VERIFICADO', -19.7472, -47.9319),
+((SELECT id FROM Especies WHERE nome_popular = 'Guará-lobo'), 'Brasília', 'DF', '2026-09-21', '[TESTE] Perto de um parque.', 'PENDENTE', -15.7939, -47.8828),
+((SELECT id FROM Especies WHERE nome_popular = 'Onça-pintada'), 'Corumbá', 'MS', '2026-07-15', '[TESTE] Pegadas e avistamento no Pantanal.', 'VERIFICADO', -19.0078, -57.6510),
+((SELECT id FROM Especies WHERE nome_popular = 'Arara-azul-grande'), 'Poconé', 'MT', '2026-09-02', '[TESTE] Casal em árvore.', 'PENDENTE', -16.2567, -56.6228),
+((SELECT id FROM Especies WHERE nome_popular = 'Gambá-de-orelha-branca (saruê)'), 'Diadema', 'SP', '2026-10-10', '[TESTE] No quintal, à noite.', 'REJEITADO', -23.6861, -46.6228),
+((SELECT id FROM Especies WHERE nome_popular = 'Lobo-marinho-sul-americano'), 'Torres', 'RS', '2026-05-28', '[TESTE] Animal na praia.', 'PENDENTE', -29.3351, -49.7263),
+(NULL, 'Diadema', 'SP', '2026-10-18', '=1+1 [TESTE] Animal não identificado.', 'PENDENTE', NULL, NULL);
 
 CREATE TABLE denuncia_historico(
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
