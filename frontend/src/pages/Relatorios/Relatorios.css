@@ -1,0 +1,72 @@
+.rel-page { background-color: #4e3f37; min-height: 70vh; padding: 32px 16px; font-family: 'Afacad Flux', sans-serif; }
+.rel-card { max-width: 1000px; margin: 0 auto; background: #f7f1ee; border-radius: 6px; padding: 28px 32px 36px; }
+.rel-titulo { display: block; width: fit-content; margin: 0 auto 20px; padding: 6px 28px; border: 3px solid #0d4a2f; border-radius: 4px; box-shadow: 4px 4px 0 #0d4a2f; font-family: 'Afacad Flux', sans-serif; font-size: 1.5rem; font-weight: 700; }
+.rel-subtitulo { text-align: center; font-size: 1.1rem; margin-bottom: 10px; }
+
+.rel-tipos { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+.rel-tipo { min-width: 170px; padding: 10px 16px; border: 3px solid #0d4a2f; border-radius: 6px; background: #fff; box-shadow: 5px 5px 0 #0d4a2f; font-size: 1.2rem; font-weight: 700; color: #222; }
+.rel-tipo .bi { color: inherit; }
+.rel-tipo.ativo { background: #0d4a2f; color: #fff; }
+
+.rel-linha { display: flex; gap: 32px; flex-wrap: wrap; margin-bottom: 20px; }
+.rel-linha > .rel-campo { flex: 1 1 260px; }
+.rel-campo { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; position: relative; }
+.rel-campo > label { font-weight: 600; }
+.rel-campo select, .rel-campo input[type="search"], .rel-data input { padding: 6px 10px; border: 2px solid #0d4a2f; border-radius: 6px; background: #fff; font-size: 1rem; }
+.rel-campo select { max-width: 280px; }
+.rel-data { display: flex; align-items: center; gap: 10px; font-weight: 400 !important; }
+
+.rel-sugestoes { list-style: none; margin: 0; padding: 0; border: 2px solid #0d4a2f; border-radius: 6px; background: #fff; }
+.rel-sugestoes li + li { border-top: 1px solid #ccc; }
+.rel-sugestoes button { width: 100%; padding: 8px 12px; border: none; background: transparent; text-align: left; font-size: 1rem; }
+.rel-sugestoes button:hover { background: #fbe3c2; }
+.rel-especie-escolhida { display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; border: 2px solid #0d4a2f; border-radius: 6px; background: #fff; }
+.rel-especie-escolhida button { border: none; background: transparent; font-size: 1.4rem; line-height: 1; }
+
+.rel-centro { text-align: center; margin-top: 12px; }
+.rel-gerar { padding: 10px 28px; border: none; border-radius: 6px; background: #0d4a2f; color: #fff; font-size: 1.3rem; font-weight: 700; }
+.rel-gerar:disabled { opacity: .6; }
+.rel-erro { color: #b3261e; font-weight: 600; text-align: center; }
+.rel-ok { color: #0d7a3f; font-weight: 600; text-align: center; margin-top: 12px; }
+
+.rel-resultado { margin-top: 32px; border-top: 3px solid #D47E09; padding-top: 18px; }
+.rel-resultado h2 { font-family: 'Archivo Black', sans-serif; font-size: 1.3rem; }
+.rel-resumo { color: #333; }
+.rel-exportar { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0 14px; }
+
+.rel-btn { padding: 4px 12px; border: 2px solid #4e3f37; border-radius: 6px; background: #fff; color: #222; font-weight: 600; font-size: .9rem; }
+.rel-btn:disabled { opacity: .5; }
+.rel-verde { background: #14ae5c; border-color: #14ae5c; color: #fff; }
+.rel-vermelho { background: #8b1a1a; border-color: #8b1a1a; color: #fff; }
+
+.rel-tabela-wrap { max-height: 480px; overflow: auto; border: 2px solid #4e3f37; border-radius: 6px; background: #fff; }
+.rel-tabela { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.rel-tabela th { position: sticky; top: 0; background: #4e3f37; color: #fff; text-align: left; padding: 8px 10px; }
+.rel-tabela td { padding: 8px 10px; border-top: 1px solid #ddd; vertical-align: middle; }
+.rel-selo { color: #fff; font-size: .8rem; padding: 2px 10px; border-radius: 20px; white-space: nowrap; }
+.rel-acoes-linha { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.rel-graficos { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
+.rel-grafico { background: #fff; border-radius: 8px; padding: 14px 16px; }
+.rel-grafico h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+.rel-barra-linha { display: grid; grid-template-columns: 120px 1fr 32px; align-items: center; gap: 8px; margin-bottom: 6px; }
+.rel-barra-rotulo { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .9rem; }
+.rel-barra-trilho { background: #e4e0db; border-radius: 4px; height: 16px; }
+.rel-barra { background: #D47E09; height: 100%; border-radius: 4px; min-width: 3px; }
+.rel-barra-valor { font-weight: 700; text-align: right; }
+
+.rel-texto { background: #fff; border-radius: 8px; padding: 18px 22px; line-height: 1.7; font-size: 1.05rem; }
+
+.rel-modal-fundo { position: fixed; inset: 0; background: rgba(0, 0, 0, .55); display: flex; align-items: center; justify-content: center; z-index: 3000; padding: 16px; }
+.rel-modal { position: relative; width: 100%; max-width: 460px; background: #0d4a2f; border-radius: 4px; padding: 32px 24px 26px; text-align: center; color: #fff; }
+.rel-modal h2 { font-family: 'Afacad Flux', sans-serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 22px; }
+.rel-modal-fechar { position: absolute; top: 8px; right: 12px; border: none; background: transparent; color: #fff; font-size: 1.8rem; line-height: 1; }
+.rel-modal-acoes { display: flex; justify-content: center; gap: 18px; }
+.rel-modal-acoes button { padding: 8px 22px; border: none; border-radius: 4px; font-size: 1.15rem; font-weight: 700; }
+.rel-modal-voltar { background: #f7f1ee; color: #111; }
+.rel-modal-confirmar { background: #D47E09; color: #fff; }
+
+@media (max-width: 768px) {
+    .rel-card { padding: 20px 16px 28px; }
+    .rel-barra-linha { grid-template-columns: 90px 1fr 28px; }
+}

@@ -12,6 +12,7 @@ import PagOng from './pages/PagOng/PagOng.tsx'
 import CadastroPesquisador from './pages/CadastroPesquisador/CadastroPesquisador.tsx'
 import Especies from './pages/Especies/Especies.tsx'
 import EspecieDetalhe from './pages/Especies/EspecieDetalhe.tsx'
+import Relatorios from './pages/Relatorios/Relatorios.tsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { NavBar } from './components/NavBar.tsx'
 import { Footer } from './components/Footer.tsx'
@@ -36,6 +37,7 @@ export function App() {
           <Route path="/CadastroPesquisador" element={<CadastroPesquisador />} />
           <Route path="/especies" element={<Especies />} />
           <Route path="/especies/:id" element={<EspecieDetalhe />} />
+          <Route path="/relatorios" element={<Relatorios />} />
         </Routes>
         <Footer/>
     </BrowserRouter>

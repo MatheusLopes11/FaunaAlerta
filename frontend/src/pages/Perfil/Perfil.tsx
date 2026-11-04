@@ -153,7 +153,8 @@ function PerfilConteudo({ inicial }: { inicial: UsuarioLogado }) {
                         {aba === 'relatorios' ? (
                             <>
                                 <h2 className="perfil-titulo-secao"><span>Meus relatórios</span></h2>
-                                <p>Em breve você poderá gerar e consultar relatórios por aqui.</p>
+                                <p>Gere relatórios com os alertas de avistamento, filtrando por local, espécie e período.</p>
+                                <Link to="/relatorios" className="perfil-atalho">Solicitar relatório</Link>
                             </>
                         ) : historico}
                     </section>
