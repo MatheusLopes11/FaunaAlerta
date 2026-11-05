@@ -9,6 +9,7 @@ export function NavBar() {
     const location = useLocation() // também faz a barra atualizar no login e no logout
     const sessao = lerSessao()
     const admin = sessao?.usuario.perfil === 'Admin'
+    const pesquisador = sessao?.usuario.perfil === 'Pesquisador'
 
     // Guardamos a página em que o menu foi aberto: ao navegar, ele fecha sozinho.
     const [menuEm, setMenuEm] = useState<string | null>(null)
@@ -41,7 +42,7 @@ export function NavBar() {
     }
 
     return (
-        <header className={`Topo ${sessao?.usuario.perfil === 'Pesquisador' ? 'modo-pesquisador' : ''}`}>
+        <header className={`Topo ${pesquisador ? 'modo-pesquisador' : ''}`}>
             <nav className="navbar navbar-expand-lg">
                 <div className="container">
                     {/* Logo */}
@@ -115,6 +116,9 @@ export function NavBar() {
                                 {usuarioAberto && (
                                     <div className="menu-usuario-lista" role="menu">
                                         <Link to="/perfil" role="menuitem">Meu perfil</Link>
+                                        {(admin || pesquisador) && (
+                                            <Link to="/relatorios" role="menuitem">Relatórios</Link>
+                                        )}
                                         {admin && (
                                             <>
                                                 <Link to="/admin" role="menuitem">Painel de espécies</Link>

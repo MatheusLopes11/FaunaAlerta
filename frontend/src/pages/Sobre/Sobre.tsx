@@ -75,7 +75,7 @@ function Sobre() {
 
 
                                 O projeto está sendo desenvolvido em Diadema – SP, utilizando tecnologias web como <span id="HTML"><b>HTML5</b></span>,
-                                <span id="CSS"><b>CSS3</b></span> e <span id="JS"><b>JavaScript</b></span>, com foco em acessibilidade, usabilidade e inovação.
+                                <span id="CSS"><b>CSS3</b></span> e <span id="TS"><b>TypeScript</b></span>, com foco em acessibilidade, usabilidade e inovação.
                             </p>
 
                             <hr/>
