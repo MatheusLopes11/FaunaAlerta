@@ -1,4 +1,6 @@
 -- CONSULTAS 
+select * from usuario;
+
 
 -- Mostra os dez locais com mais avistamentos
 SELECT uf, municipio, total_alertas, especies_distintas, alertas_ameacadas, alertas_invasoras, ultimo_registro

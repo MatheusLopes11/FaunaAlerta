@@ -13,81 +13,62 @@
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.form-login {
+/* Campos (igual ao Cadastro) */
+.login-campo {
     display: flex;
     flex-direction: column;
-    gap: 35px;
+    font-family: 'Afacad Flux', sans-serif;
 }
 
-/* Labels dos campos (Nome, E-mail, etc.) */
-.label-login {
-    font-size: 25px !important;
-    font-weight: 600;
-    color: #000000;
+.login-campo label {
     font-size: 1.1rem;
-    margin-bottom: 8px;
-}
-
-/* Inputs cinzas idênticos ao protótipo */
-.input-cadastro {
-    background-color: #D9D9D9 !important; /* Força o fundo cinza sobre o padrão do Bootstrap */
-    border: 1px solid #A6A6A6 !important;
-    border-radius: 6px;
-    padding: 10px 15px;
-    font-size: 20px;
-    color: #333333;
-}
-
-/* Efeito ao clicar no campo (Foco) */
-.input-cadastro:focus {
-    background-color: #E2E2E2 !important;
-    border-color: #D47E09 !important;
-    box-shadow: 0 0 0 0.25rem rgba(212, 126, 9, 0.25) !important;
-}
-
-/* Botão CADASTRAR (Vazado/Outline e Arredondado) */
-.btn-cadastro-laranja {
-    background-color: transparent;
-    border: 3px solid #D47E09;
-    color: #D47E09;
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 1.2rem;
-    padding: 8px 50px;
-    border-radius: 30px;
-    transition: 0.3s ease;
-}
-
-/* Efeito Hover (Preenche o botão ao passar o mouse) */
-.btn-cadastro-laranja:hover {
-    background-color: #D47E09;
-    color: #FFFFFF;
-}
-
-.nao-possui{
+    font-weight: 600;
     color: #333;
-    font-weight: 600;
-    font-size: 20px;
 }
 
-
-.clique-aqui a{
-    color: #D47E09;
-    text-decoration:none;
-    font-weight: 600;
-    font-size: 20px;
+.login-campo input {
+    padding: 4px 10px;
+    border: 2px solid #333;
+    border-radius: 6px;
+    font-size: 1rem;
 }
 
-.btn-login {
+.login-campo input:focus {
+    outline: none;
+    border-color: #d47e09;
+}
+
+/* Botão principal (igual ao btn-cadastro) */
+.login-btn {
     width: 100%;
     padding: 8px;
     border: none;
     border-radius: 6px;
-    background-color: #14AE5C;
+    background-color: #4e3f37;
     color: #f7f1ee;
+    font-family: 'Afacad Flux', sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
+    margin-top: 12px;
 }
 
-.btn-login:hover {
-    background-color: #4e3f37;
+.login-btn:hover {
+    background-color: #14ae5c;
+}
+
+.login-btn:disabled {
+    opacity: .6;
+}
+
+/* "Não possui conta? Clique aqui" (igual ao verifica-login) */
+.login-verifica {
+    text-align: center;
+    font-family: 'Afacad Flux', sans-serif;
+    font-size: 1rem;
+    color: #333;
+}
+
+.login-verifica strong {
+    color: #14ae5c;
+    text-decoration: underline;
 }

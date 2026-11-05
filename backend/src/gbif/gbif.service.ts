@@ -25,10 +25,11 @@ export class GbifService {
   }
 
   /** IDs das espécies mais registradas no Brasil para uma classe (ex.: 359 = mamíferos) */
-  async listarEspeciesDoBrasil(classKey: number, quantidade: number): Promise<number[]> {
+  // gbif.service.ts: só o nome do parâmetro da URL muda
+  async listarEspeciesDoBrasil(key: number, quantidade: number) {
     const dados = await this.get<GbifFacetResponse>('/occurrence/search', {
       country: 'BR',
-      classKey,
+      taxonKey: key,
       occurrenceStatus: 'PRESENT',
       facet: 'speciesKey',
       facetLimit: quantidade,

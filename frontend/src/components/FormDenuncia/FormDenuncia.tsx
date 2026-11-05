@@ -120,7 +120,7 @@ function FormDenuncia({ onVoltar }: Props) {
                 <textarea name="descricao" id="descricao-denuncia" placeholder="Descreva o que aconteceu" required />
             </div>
             <div className="file-box-denuncia">
-                <input type="file" id="file-denuncia" name="arquivo" disabled />
+                <input type="file" id="file-denuncia" name="arquivo" />
                 <label htmlFor="file-denuncia" className="file-label-denuncia">
                     <span className="file-text-denuncia">Envio de fotos e vídeos em breve</span>
                 </label>

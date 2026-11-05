@@ -1,5 +1,14 @@
 .especies-page { 
-    background-color: #d6d0cb; min-height: 100vh; font-family: 'Afacad Flux', sans-serif; 
+    min-height: 100vh; font-family: 'Afacad Flux', sans-serif; 
+}
+
+.container-especie {
+    background-color: #d6d0cb;
+    margin-bottom: 60px;
+    margin-top: 60px;
+    padding: 50px;
+    min-height: 100vh;
+    border-radius: 12px;
 }
 
 .especies-page h1 { 

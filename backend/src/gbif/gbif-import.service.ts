@@ -8,7 +8,7 @@ import { GbifService } from './gbif.service.js';
 export const CLASSES_GBIF: Record<string, { classKeys: number[] }> = {
   MAMIFERO: { classKeys: [359] },
   AVE: { classKeys: [212] },
-  REPTIL: { classKeys: [358] },
+  REPTIL: { classKeys: [11592253, 11418114, 11493978] },
   ANFIBIO: { classKeys: [131] },
   ARACNIDEO: { classKeys: [367] },
   INSETO: { classKeys: [216] },

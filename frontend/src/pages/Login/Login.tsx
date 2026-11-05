@@ -40,31 +40,27 @@ function Login() {
                             <div className="card-cadastro p-4 p-sm-5">
                                 <h1 className="text-center mb-4 titulo-cadastro">EFETUE O LOGIN</h1>
                                 <form onSubmit={entrar}>
-                                    <div className="mb-4">
-                                        <label className="form-label label-cadastro" htmlFor="email">E-mail</label>
-                                        <input name="email" type="email" className="form-control input-cadastro" placeholder="E-mail" required id="email" />
+                                    <div className="login-campo mb-3">
+                                        <label htmlFor="email">E-mail</label>
+                                        <input name="email" type="email" placeholder="Insira seu e-mail" required id="email" />
                                     </div>
 
-                                    <div className="mb-5">
-                                        <label className="form-label label-cadastro" htmlFor="senha">Senha</label>
-                                        <input name="senha" type="password" className="form-control input-cadastro" placeholder="Senha" required id="senha" />
+                                    <div className="login-campo mb-3">
+                                        <label htmlFor="senha">Senha</label>
+                                        <input name="senha" type="password" placeholder="Insira sua senha" required id="senha" />
                                     </div>
 
                                     {erro && <p className="text-danger text-center fw-bold" role="alert">{erro}</p>}
 
-                                    <div className="text-center">
-                                        <button type="submit" className="btn btn-cadastro-laranja" disabled={enviando}>
-                                            {enviando ? 'ENTRANDO...' : 'ENTRAR'}
-                                        </button>
-                                    </div>
+                                    <button type="submit" className="login-btn" disabled={enviando}>
+                                        {enviando ? 'Entrando...' : 'Entrar'}
+                                    </button>
                                 </form>
-                                <br/>
-                                    <p className="nao-possui text-center mt-3 mb-0">
-                                        Não possui conta?
-                                    </p>
-                                    <p className="clique-aqui text-center mt-3 mb-0">
-                                        <Link to="/cadastro"><b>Clique aqui</b></Link>
-                                    </p>
+
+                                <p className="login-verifica mt-3 mb-0">
+                                    Não possui conta? <Link to="/cadastro"><strong>Clique aqui</strong></Link>
+                                </p>
+
                             </div>
                         </div>
                     </div>
