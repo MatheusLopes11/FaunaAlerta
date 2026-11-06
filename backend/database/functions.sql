@@ -1,7 +1,7 @@
 -- FUNCTIONS DO SISTEMA
 
 -- DROP FUNCTION IF EXISTS classificacao_especie;
-
+use FaunaAlerta;
 /*
 Essa função é responsável por classificar a espécie a depender de sua origem (caso seja exótica ou invasora) ou o status da sobrevivência da espécie
 */

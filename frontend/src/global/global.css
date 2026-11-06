@@ -352,3 +352,15 @@ padding-right: 40px;
     .menu-btn { padding: 6px 10px !important; font-size: 16px; }
     .navbar-nav .menu-btn .bi { display: none; }
 }
+
+/* Botão do usuário logado: sem efeito de hover */
+.menu-usuario > .menu-btn:hover {
+    background-color: transparent;
+    color: black !important;
+}
+
+/* Modo pesquisador (header verde): mantém o texto branco */
+.Topo.modo-pesquisador .menu-usuario > .menu-btn:hover {
+    background-color: transparent;
+    color: #fff !important;
+}

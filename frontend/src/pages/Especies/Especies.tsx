@@ -59,7 +59,7 @@ function Especies() {
             </Helmet>
 
             <main className="especies-page">
-                <section className="container py-5">
+                <section className="container container-especie py-5">
                     <h1 className="mb-1">Catálogo de espécies</h1>
                     <p className="especies-sub">Conheça a fauna brasileira, as espécies ameaçadas e os bichos que aparecem perto de você.</p>
 

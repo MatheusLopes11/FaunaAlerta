@@ -115,7 +115,7 @@ function FormAlerta({ onVoltar }: Props) {
                 <textarea name="descricao" id="descricao-alerta" placeholder="Digite a descrição do evento" />
             </div>
             <div className="file-box-alert">
-                <input type="file" id="file-alerta" name="arquivo" disabled />
+                <input type="file" id="file-alerta" name="arquivo" />
                 <label htmlFor="file-alerta" className="file-label-alerta">
                     <span className="file-text-alerta">Envio de fotos e vídeos em breve</span>
                 </label>
