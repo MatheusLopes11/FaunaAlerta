@@ -42,4 +42,8 @@ export class DenunciasRecebidasService {
   async remover(id: number): Promise<void> {
     await this.denunciaRecebidaRepository.delete(id);
   }
+
+  async existeProtocolo(protocolo: string): Promise<boolean> {
+    return (await this.denunciaRecebidaRepository.count({ where: { protocolo } })) > 0;
+  }
 }

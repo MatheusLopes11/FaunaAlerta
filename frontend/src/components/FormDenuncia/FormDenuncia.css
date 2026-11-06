@@ -162,3 +162,19 @@
     border: 2px solid #D47E09;
     color: #333;
 }
+
+.denuncia-aviso details { 
+    margin-top: 6px; }
+    
+.denuncia-aviso summary { 
+    cursor: pointer; 
+    font-weight: 600; }
+
+.denuncia-aviso ul { margin: 8px 0 0; 
+    padding-left: 18px; }
+
+.denuncia-aviso-ok { background: #e8f7ee; 
+    border-left-color: #14AE5C; }
+
+.denuncia-info { margin: 0; color: #555; 
+    font-size: .95rem; }

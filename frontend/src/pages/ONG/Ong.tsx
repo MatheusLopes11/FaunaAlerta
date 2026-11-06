@@ -16,10 +16,10 @@ import caramelo from '../../assets/caramelo.jpeg'
 import amordebicho from '../../assets/amordebicho.jpeg'
 
 //IMPORTS DOS ICONES DE PROCURAS
-import IconePet2 from '../../assets/IconePet2.svg'
+{/*import IconePet2 from '../../assets/IconePet2.svg'
 import IconeNatureza2 from '../../assets/IconeNatureza2.svg'
 import IconeAbrigo2 from '../../assets/IconeAbrigo2.svg'
-import IconeEstudo2 from '../../assets/IconeEstudo2.svg'
+import IconeEstudo2 from '../../assets/IconeEstudo2.svg'*/}
 
 function Ong(){
 

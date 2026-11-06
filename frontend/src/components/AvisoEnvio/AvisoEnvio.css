@@ -1,0 +1,48 @@
+.aviso-fundo { 
+    position: fixed; 
+    inset: 0; background: rgba(0,0,0,.5); 
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    padding: 20px; 
+    z-index: 1000; 
+}
+.aviso-caixa { 
+    background: #fff; 
+    border-radius: 8px; 
+    max-width: 460px; 
+    width: 100%; 
+    padding: 28px 24px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 12px; 
+    text-align: center;
+    font-family: 'Afacad Flux', sans-serif; 
+}
+.aviso-caixa h2 { 
+    margin: 0; 
+    color: #14AE5C; 
+}
+
+.aviso-caixa p {
+     margin: 0; 
+}
+
+.aviso-caixa .denuncia-protocolo {
+    font-size: 1.8rem; 
+    letter-spacing: 2px; 
+    color: #14AE5C; 
+}
+
+.aviso-caixa .denuncia-link { 
+    color: #14AE5C; 
+    font-weight: bold; 
+}
+
+.aviso-fechar { 
+    background: #14AE5C; 
+    border: none; 
+    border-radius: 6px; 
+    color: #fff !important; 
+    margin-top: 8px; }

@@ -28,7 +28,7 @@ export class DenunciasService {
       let codigo = '';
       for (let i = 0; i < 6; i++) codigo += ALFABETO[randomInt(ALFABETO.length)];
       const protocolo = `FA-${ano}-${codigo}`;
-      const existe = await this.denunciasRepository.findOne({ where: { protocolo } });
+      const existe = await this.orgao.existeProtocolo(protocolo);
       if (!existe) return protocolo;
     }
     throw new InternalServerErrorException('Não foi possível gerar o protocolo.');
@@ -65,6 +65,16 @@ export class DenunciasService {
       throw new BadGatewayException('Não foi possível enviar a denúncia ao órgão agora. Tente novamente em instantes.');
     }
 
+    if (usuarioId == null) {
+      return {
+        protocolo,
+        statusAtual: recebida.statusDenun,
+        criadoEm: recebida.recebidaEm,
+        identificada: false,
+      };
+    }
+
+    
     // 2) Registra no nosso banco. Se falhar, desfaz o envio ao órgão.
     try {
       const nova = await this.denunciasRepository.save(
@@ -84,7 +94,7 @@ export class DenunciasService {
           origem: 'SISTEMA',
         }),
       );
-      return { protocolo: nova.protocolo, statusAtual: nova.statusAtual, criadoEm: nova.criadoEm };
+      return { protocolo: nova.protocolo, statusAtual: nova.statusAtual, criadoEm: nova.criadoEm, identificada: true };
     } catch (e) {
       await this.orgao.remover(recebida.id).catch(() => undefined);
       throw e;
