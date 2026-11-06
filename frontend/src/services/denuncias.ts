@@ -46,7 +46,7 @@ export interface ListaMinhasDenuncias {
     limit: number
 }
 
-export async function enviarDenuncia(d: NovaDenuncia): Promise<{ protocolo: string }> {
+export async function enviarDenuncia(d: NovaDenuncia): Promise<{ protocolo: string; identificada: boolean }> {
     const res = await fetch(`${API}/denuncias`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...authHeaders() },

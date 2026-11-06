@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { MapContainer, Marker, TileLayer, useMap, useMapEvents } from 'react-leaflet'
-import { icon } from 'leaflet'
+import { icon, latLng } from 'leaflet'
 import type { Marker as LeafletMarker } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import marcador from 'leaflet/dist/images/marker-icon.png'
@@ -30,18 +30,21 @@ function Cliques({ aoClicar }: { aoClicar: (lat: number, lng: number) => void })
     return null
 }
 
-function Foco({ alvo }: { alvo: [number, number] | null }) {
+function Recentralizar({ valor }: { valor: Coordenada | null }) {
     const map = useMap()
     useEffect(() => {
-        if (alvo) map.flyTo(alvo, 14)
-    }, [alvo, map])
+        if (!valor) return
+        const ponto = latLng(valor.latitude, valor.longitude)
+        // ponto já bem visível (ex.: arrastar o pino): não mexe na tela
+        if (map.getZoom() >= 10 && map.getBounds().pad(-0.3).contains(ponto)) return
+        map.flyTo(ponto, Math.max(map.getZoom(), 13))
+    }, [valor, map])
     return null
 }
 
 export function SeletorLocalizacao({ valor, onChange }: Props) {
     const [aviso, setAviso] = useState('')
     const [buscando, setBuscando] = useState(false)
-    const [alvo, setAlvo] = useState<[number, number] | null>(null)
     const [precisao, setPrecisao] = useState<number | null>(null)
 
     function definir(lat: number, lng: number) {
@@ -71,7 +74,6 @@ export function SeletorLocalizacao({ valor, onChange }: Props) {
                 }
                 onChange({ latitude: arredondar(latitude), longitude: arredondar(longitude) })
                 setPrecisao(Math.round(accuracy))
-                setAlvo([latitude, longitude])
             },
             (err) => {
                 setBuscando(false)
@@ -114,7 +116,7 @@ export function SeletorLocalizacao({ valor, onChange }: Props) {
                         url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
                     <Cliques aoClicar={definir} />
-                    <Foco alvo={alvo} />
+                    <Recentralizar valor={valor} />
                     {valor && (
                         <Marker
                             position={[valor.latitude, valor.longitude]}
