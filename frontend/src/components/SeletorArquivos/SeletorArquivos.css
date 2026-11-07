@@ -1,0 +1,12 @@
+.seletor-arquivos { display: flex; flex-direction: column; gap: 6px; width: 590px; max-width: 100%; font-family: 'Afacad Flux', sans-serif; }
+.seletor-arquivos-input { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.seletor-arquivos-label { display: flex; align-items: center; justify-content: center; height: 70px; padding: 0 12px; background: #d9d9d9; border-radius: 8px; font-size: 20px; font-weight: 500; color: #333; text-align: center; cursor: pointer; }
+.seletor-arquivos-input:focus-visible + .seletor-arquivos-label { outline: 3px solid #D47E09; }
+.seletor-arquivos small { color: #444; }
+.seletor-arquivos-aviso { margin: 0; color: #b3261e; font-weight: 600; }
+.seletor-arquivos ul { list-style: none; margin: 0; padding: 0; }
+.seletor-arquivos li { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 4px; padding: 4px 10px; border: 1px solid #ccc; border-radius: 6px; background: #fff; }
+.seletor-arquivos li span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* o Denuncia.css estiliza todo botão dentro de .container-form; aqui corrigimos */
+.container-form .seletor-arquivos li button { width: auto; padding: 2px 10px; font-size: 1rem; background: #fff; border: 2px solid #8b1a1a; border-radius: 6px; color: #8b1a1a; }

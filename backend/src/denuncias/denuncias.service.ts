@@ -6,6 +6,10 @@ import { Denuncias } from './denuncias.entity.js';
 import { DenunciaHistorico } from '../denuncia_historico/denuncia_historico.entity.js';
 import { CreateDenunciaDto } from './dto/create-denuncias.dto.js';
 import { DenunciasRecebidasService } from '../orgao mock/denuncia recebida/denuncia-recebida.service.js';
+import { DenunciaRecebida } from '../orgao mock/denuncia recebida/Denuncia-Recebida.entity.js';
+import { DenunciaMidiasMockService } from '../orgao mock/denuncia midias/denuncia-midia.service.js';
+import { apagarArquivos, salvarArquivos } from '../common/uploads.js';
+import type { ArquivoEnviado } from '../common/uploads.js';
 
 const ALFABETO = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'; // sem O, 0, I, 1, L
 const STATUS_FINAIS = ['Concluida', 'Rejeitada'];
@@ -20,6 +24,7 @@ export class DenunciasService {
     @InjectRepository(DenunciaHistorico)
     private readonly historicoRepository: Repository<DenunciaHistorico>,
     private readonly orgao: DenunciasRecebidasService,
+    private readonly midiasOrgao: DenunciaMidiasMockService,
   ) {}
 
   private async gerarProtocolo(): Promise<string> {
@@ -28,7 +33,7 @@ export class DenunciasService {
       let codigo = '';
       for (let i = 0; i < 6; i++) codigo += ALFABETO[randomInt(ALFABETO.length)];
       const protocolo = `FA-${ano}-${codigo}`;
-      const existe = await this.orgao.existeProtocolo(protocolo);
+      const existe = await this.denunciasRepository.findOne({ where: { protocolo } });
       if (!existe) return protocolo;
     }
     throw new InternalServerErrorException('Não foi possível gerar o protocolo.');
@@ -38,45 +43,44 @@ export class DenunciasService {
     return await this.denunciasRepository.find({ order: { criadoEm: 'DESC' } });
   }
 
-  async create(dto: CreateDenunciaDto, usuarioId?: number) {
+  async create(dto: CreateDenunciaDto, usuarioId?: number, arquivos: ArquivoEnviado[] = []) {
     if ((dto.latitude == null) !== (dto.longitude == null)) {
       throw new BadRequestException('Informe latitude e longitude juntas.');
     }
 
-    const protocolo = await this.gerarProtocolo();
-    const local = [`${dto.municipio.trim()}/${dto.uf.toUpperCase()}`, dto.referencia?.trim()]
-      .filter(Boolean)
-      .join(' - ');
+    // Valida e grava os arquivos primeiro. Qualquer falha depois apaga tudo.
+    const midias = await salvarArquivos(arquivos);
+    let recebidaId: number | null = null;
 
-    // 1) Envia ao órgão primeiro. Se falhar, nada é salvo aqui.
-    let recebida;
     try {
-      recebida = await this.orgao.create({
-        protocolo,
-        tipo: dto.tipo,
-        descricao: dto.descricao,
-        localDescricao: local,
-        dataOcorrencia: dto.dataOcorrencia.slice(0, 10),
-        latitude: dto.latitude,
-        longitude: dto.longitude,
-      });
-    } catch (e) {
-      this.logger.error(`Falha ao enviar ao órgão (${protocolo}): ${e instanceof Error ? e.message : e}`);
-      throw new BadGatewayException('Não foi possível enviar a denúncia ao órgão agora. Tente novamente em instantes.');
-    }
+      const protocolo = await this.gerarProtocolo();
+      const local = [`${dto.municipio.trim()}/${dto.uf.toUpperCase()}`, dto.referencia?.trim()]
+        .filter(Boolean)
+        .join(' - ');
 
-    if (usuarioId == null) {
-      return {
-        protocolo,
-        statusAtual: recebida.statusDenun,
-        criadoEm: recebida.recebidaEm,
-        identificada: false,
-      };
-    }
+      // 1) Envia ao órgão primeiro. Se falhar, nada é salvo aqui.
+      let recebida: DenunciaRecebida;
+      try {
+        recebida = await this.orgao.create({
+          protocolo,
+          tipo: dto.tipo,
+          descricao: dto.descricao,
+          localDescricao: local,
+          dataOcorrencia: dto.dataOcorrencia.slice(0, 10),
+          latitude: dto.latitude,
+          longitude: dto.longitude,
+        });
+      } catch (e) {
+        this.logger.error(`Falha ao enviar ao órgão (${protocolo}): ${e instanceof Error ? e.message : e}`);
+        throw new BadGatewayException('Não foi possível enviar a denúncia ao órgão agora. Tente novamente em instantes.');
+      }
+      recebidaId = recebida.id;
 
-    
-    // 2) Registra no nosso banco. Se falhar, desfaz o envio ao órgão.
-    try {
+      for (const m of midias) {
+        await this.midiasOrgao.create({ denunciaId: recebida.id, tipo: m.tipo, url: m.url });
+      }
+
+      // 2) Registra no nosso banco.
       const nova = await this.denunciasRepository.save(
         this.denunciasRepository.create({
           protocolo,
@@ -94,9 +98,11 @@ export class DenunciasService {
           origem: 'SISTEMA',
         }),
       );
-      return { protocolo: nova.protocolo, statusAtual: nova.statusAtual, criadoEm: nova.criadoEm, identificada: true };
+      return { protocolo: nova.protocolo, statusAtual: nova.statusAtual, criadoEm: nova.criadoEm };
     } catch (e) {
-      await this.orgao.remover(recebida.id).catch(() => undefined);
+      // desfaz o envio ao órgão (as mídias dele somem junto) e apaga os arquivos
+      if (recebidaId !== null) await this.orgao.remover(recebidaId).catch(() => undefined);
+      await apagarArquivos(midias.map((m) => m.url));
       throw e;
     }
   }
@@ -109,37 +115,42 @@ export class DenunciasService {
       take: limit,
     });
 
+    let remotos: DenunciaRecebida[] = [];
     try {
-      await this.sincronizar(data);
+      remotos = await this.orgao.resumoPorProtocolo(data.map((d) => d.protocolo));
+      await this.sincronizar(data, remotos);
     } catch (e) {
       // se o órgão estiver fora do ar, mostra o que já temos
       this.logger.warn(`Sincronização com o órgão falhou: ${e instanceof Error ? e.message : e}`);
     }
+    const porProtocolo = new Map(remotos.map((r) => [r.protocolo, r]));
 
     return {
-      data: data.map((d) => ({
-        id: d.id,
-        protocolo: d.protocolo,
-        tipo: d.tipo,
-        statusAtual: d.statusAtual,
-        criadoEm: d.criadoEm,
-        atualizadoEm: d.atualizadoEm,
-      })),
+      data: data.map((d) => {
+        const midias = porProtocolo.get(d.protocolo)?.midias ?? [];
+        const principal = midias.find((m) => m.tipo === 'FOTO') ?? midias[0];
+        return {
+          id: d.id,
+          protocolo: d.protocolo,
+          tipo: d.tipo,
+          statusAtual: d.statusAtual,
+          criadoEm: d.criadoEm,
+          atualizadoEm: d.atualizadoEm,
+          midia: principal ? { tipo: principal.tipo, url: principal.url } : null,
+        };
+      }),
       total,
       page,
       limit,
     };
   }
 
-  private async sincronizar(denuncias: Denuncias[]) {
-    const abertas = denuncias.filter((d) => !STATUS_FINAIS.includes(d.statusAtual));
-    if (abertas.length === 0) return;
+  private async sincronizar(denuncias: Denuncias[], remotos: DenunciaRecebida[]) {
+    const statusRemoto = new Map(remotos.map((r) => [r.protocolo, r.statusDenun]));
 
-    const remotos = await this.orgao.statusPorProtocolo(abertas.map((d) => d.protocolo));
-    const porProtocolo = new Map(remotos.map((r) => [r.protocolo, r.statusDenun]));
-
-    for (const d of abertas) {
-      const novo = porProtocolo.get(d.protocolo);
+    for (const d of denuncias) {
+      if (STATUS_FINAIS.includes(d.statusAtual)) continue;
+      const novo = statusRemoto.get(d.protocolo);
       if (novo && novo !== d.statusAtual) {
         d.statusAtual = novo;
         await this.denunciasRepository.save(d);

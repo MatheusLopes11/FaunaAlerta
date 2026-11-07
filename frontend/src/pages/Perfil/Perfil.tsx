@@ -6,7 +6,8 @@ import '../../global/global.css'
 import { atualizarSessao, lerSessao, sair } from '../../services/auth'
 import type { UsuarioLogado } from '../../services/auth'
 import { STATUS_DENUNCIA, TIPOS_DENUNCIA, minhasDenuncias } from '../../services/denuncias'
-import type { ListaMinhasDenuncias } from '../../services/denuncias'
+import type { DenunciaResumo, ListaMinhasDenuncias } from '../../services/denuncias'
+import { urlMidia } from '../../services/midias'
 
 const POR_PAGINA = 5
 
@@ -18,6 +19,15 @@ function paginasVisiveis(atual: number, total: number) {
     const inicio = Math.max(1, Math.min(atual - 2, total - 4))
     const fim = Math.min(total, inicio + 4)
     return Array.from({ length: fim - inicio + 1 }, (_, i) => inicio + i)
+}
+
+function Miniatura({ midia }: { midia: DenunciaResumo['midia'] }) {
+    const foto = midia?.tipo === 'FOTO' ? urlMidia(midia.url) : ''
+    return (
+        <div className="perfil-thumb" aria-hidden="true">
+            {foto ? <img src={foto} alt="" /> : <i className={`bi ${midia ? 'bi-camera-video' : 'bi-image-alt'}`}></i>}
+        </div>
+    )
 }
 
 function PerfilConteudo({ inicial }: { inicial: UsuarioLogado }) {
@@ -81,7 +91,7 @@ function PerfilConteudo({ inicial }: { inicial: UsuarioLogado }) {
                 const st = STATUS_DENUNCIA[d.statusAtual]
                 return (
                     <article className="perfil-item" key={d.id}>
-                        <div className="perfil-thumb" aria-hidden="true"><i className="bi bi-image-alt"></i></div>
+                        <Miniatura midia={d.midia} />
                         <div className="perfil-item-dados">
                             <p>Feito em: {formatarData(d.criadoEm)}</p>
                             <p>Última atualização: {formatarData(d.atualizadoEm)}</p>

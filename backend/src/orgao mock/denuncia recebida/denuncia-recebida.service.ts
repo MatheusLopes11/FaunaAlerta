@@ -32,6 +32,15 @@ export class DenunciasRecebidasService {
     });
   }
 
+  // Status e mídias das denúncias do usuário (usado no histórico do perfil).
+  async resumoPorProtocolo(protocolos: string[]): Promise<DenunciaRecebida[]> {
+    if (protocolos.length === 0) return [];
+    return await this.denunciaRecebidaRepository.find({
+      where: { protocolo: In(protocolos) },
+      relations: { midias: true },
+    });
+  }
+
   async atualizarStatus(protocolo: string, status: DenunciaRecebida['statusDenun']) {
     const denuncia = await this.denunciaRecebidaRepository.findOne({ where: { protocolo } });
     if (!denuncia) throw new NotFoundException('Protocolo não encontrado no órgão.');
@@ -41,9 +50,5 @@ export class DenunciasRecebidasService {
 
   async remover(id: number): Promise<void> {
     await this.denunciaRecebidaRepository.delete(id);
-  }
-
-  async existeProtocolo(protocolo: string): Promise<boolean> {
-    return (await this.denunciaRecebidaRepository.count({ where: { protocolo } })) > 0;
   }
 }
