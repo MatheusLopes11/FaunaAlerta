@@ -37,6 +37,7 @@ export interface DenunciaResumo {
     statusAtual: string
     criadoEm: string
     atualizadoEm: string
+    midia: { tipo: 'FOTO' | 'VIDEO'; url: string } | null
 }
 
 export interface ListaMinhasDenuncias {
@@ -46,12 +47,21 @@ export interface ListaMinhasDenuncias {
     limit: number
 }
 
-export async function enviarDenuncia(d: NovaDenuncia): Promise<{ protocolo: string; identificada: boolean }> {
-    const res = await fetch(`${API}/denuncias`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', ...authHeaders() },
-        body: JSON.stringify(d),
-    })
+// Vai como formulário (multipart) para poder levar fotos e vídeos junto.
+export async function enviarDenuncia(d: NovaDenuncia, arquivos: File[] = []): Promise<{ protocolo: string }> {
+    const f = new FormData()
+    f.append('tipo', d.tipo)
+    f.append('dataOcorrencia', d.dataOcorrencia)
+    f.append('municipio', d.municipio)
+    f.append('uf', d.uf)
+    if (d.referencia) f.append('referencia', d.referencia)
+    f.append('descricao', d.descricao)
+    if (d.latitude != null) f.append('latitude', String(d.latitude))
+    if (d.longitude != null) f.append('longitude', String(d.longitude))
+    for (const arq of arquivos) f.append('arquivos', arq)
+
+    const res = await fetch(`${API}/denuncias`, { method: 'POST', headers: { ...authHeaders() }, body: f })
+    if (res.status === 413) throw new Error('Um dos arquivos é grande demais.')
     if (!res.ok) throw new Error(await lerErro(res, 'Não foi possível enviar a denúncia. Tente novamente.'))
     return res.json()
 }

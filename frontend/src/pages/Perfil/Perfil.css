@@ -45,3 +45,6 @@
     .perfil-lateral { flex: none; border-radius: 6px 6px 0 0; }
     .perfil-item { flex-wrap: wrap; }
 }
+
+.perfil-thumb { overflow: hidden; }
+.perfil-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }

@@ -1,4 +1,5 @@
 import { IsDateString, IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, Length, Max, MaxLength, Min } from 'class-validator';
+import { Type } from 'class-transformer';
 import { TIPOS_DENUNCIA, type TipoDenuncia } from '../tipos.js';
 
 export class CreateDenunciaDto {
@@ -20,9 +21,11 @@ export class CreateDenunciaDto {
     @IsString() @IsNotEmpty() @MaxLength(5000)
     descricao: string;
 
+    @Type(() => Number)
     @IsNumber() @Min(-34.5) @Max(6) @IsOptional()
     latitude?: number;
 
+    @Type(() => Number)
     @IsNumber() @Min(-74.5) @Max(-28) @IsOptional()
     longitude?: number;
 }

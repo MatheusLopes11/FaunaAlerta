@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Patch, Body, Param, ParseIntPipe, Query, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Patch, Body, Param, ParseIntPipe, Query, Req, UploadedFiles, UseGuards, UseInterceptors } from '@nestjs/common';
+import { FilesInterceptor } from '@nestjs/platform-express';
 import { AlertasService } from './alertas.service.js';
 import { CreateAlertaDto } from './dto/create-alertas.dto.js';
 import { AlterarSituacaoDto, MunicipiosQueryDto, RelatorioAlertasQueryDto } from './dto/relatorio-alertas.dto.js';
@@ -7,6 +8,8 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard.js';
 import { OptionalJwtAuthGuard } from '../auth/optional-jwt-auth.guard.js';
 import { RolesGuard } from '../auth/roles.guard.js';
 import { Roles } from '../auth/roles.decorator.js';
+import { LIMITE_VIDEO, MAX_ARQUIVOS } from '../common/uploads.js';
+import type { ArquivoEnviado } from '../common/uploads.js';
 
 @Controller('alertas')
 export class AlertaController {
@@ -45,10 +48,22 @@ export class AlertaController {
         return this.alertaService.alterarSituacao(req.user.sub, id, dto.situacao);
     }
 
-    // Qualquer pessoa pode avisar. Se estiver logada, o alerta fica vinculado a ela.
+    @Post('recalcular-biomas')
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles('Admin')
+    recalcularBiomas() {
+        return this.alertaService.recalcularBiomas();
+    }
+
+    // Qualquer pessoa pode avisar (com até 3 fotos ou vídeos). Se estiver logada, o alerta fica vinculado a ela.
     @Post()
     @UseGuards(OptionalJwtAuthGuard)
-    async create(@Body() dto: CreateAlertaDto, @Req() req: { user?: { sub: number } }): Promise<Alerta> {
-        return await this.alertaService.create(dto, req.user?.sub);
+    @UseInterceptors(FilesInterceptor('arquivos', MAX_ARQUIVOS, { limits: { fileSize: LIMITE_VIDEO, files: MAX_ARQUIVOS } }))
+    async create(
+        @Body() dto: CreateAlertaDto,
+        @UploadedFiles() arquivos: ArquivoEnviado[] | undefined,
+        @Req() req: { user?: { sub: number } },
+    ): Promise<Alerta> {
+        return await this.alertaService.create(dto, req.user?.sub, arquivos ?? []);
     }
 }
