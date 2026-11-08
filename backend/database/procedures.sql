@@ -99,3 +99,17 @@ DELIMITER ;
 
 CALL sp_resumo_relatorio(NULL, NULL, NULL);
 CALL sp_resumo_relatorio('2026-01-01', '2026-12-31', 'RS');
+
+USE FaunaAlerta;
+DELIMITER //
+CREATE PROCEDURE sp_alterar_status_pesquisador(IN p_usuario INT UNSIGNED, IN p_status VARCHAR(10))
+BEGIN
+  UPDATE Usuario SET status_cadastro = p_status
+  WHERE id = p_usuario AND perfil = 'Pesquisador';
+END //
+CREATE PROCEDURE sp_resumo_denuncias_usuario(IN p_usuario INT UNSIGNED)
+BEGIN
+  SELECT status_atual, COUNT(*) AS total
+  FROM Denuncias WHERE usuario_id = p_usuario GROUP BY status_atual;
+END //
+DELIMITER ;

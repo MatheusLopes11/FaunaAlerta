@@ -3,6 +3,7 @@
 Plataforma web para **registrar alertas de avistamento de fauna** e **fazer denúncias de crimes ambientais** (caça ilegal, pesca ilegal, maus-tratos, tráfico de animais), conectando cidadãos, pesquisadores, ONGs e órgãos ambientais.
 
 > Projeto integrador interdisciplinar (P.I) desenvolvido em grupo.
+> Professor de Engenharia de Software - Luiz Antonio de Lima
 
 ---
 
@@ -23,6 +24,19 @@ Plataforma web para **registrar alertas de avistamento de fauna** e **fazer den�
 - [Equipe](#-equipe)
 
 ---
+
+## Telas
+![Home com mapa de biomas](docs/imagens/paginicial.png)
+
+## Diagramas
+### BPMN
+![BPMN](docs/diagramas/bpmn.jpeg)
+### Casos de uso
+![Casos de uso](docs/diagramas/uc.jpeg)
+### Classes
+![Diagrama de classes](docs/diagramas/DiagramaClasseFauna.png)
+## Atividade
+![Diagrama de classes](docs/diagramas/DiagramaAtividadeFauna.png)
 
 ## Sobre o projeto
 

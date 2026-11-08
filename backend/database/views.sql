@@ -58,3 +58,19 @@ GROUP BY uf, municipio;
 
 -- USO
 SELECT * FROM vw_ranking_locais;
+
+USE FaunaAlerta;
+CREATE OR REPLACE VIEW vw_pesquisadores_pendentes AS
+SELECT u.id, u.nome, u.email, p.instituicao, p.area_pesquisa
+FROM Usuario u INNER JOIN Pesquisador p ON p.usuario_id = u.id
+WHERE u.status_cadastro = 'Pendente';
+
+CREATE OR REPLACE VIEW vw_alertas_por_bioma AS
+SELECT a.bioma, COUNT(*) AS total_alertas,
+       SUM(a.situacao = 'VERIFICADO') AS verificados
+FROM Alertas a WHERE a.bioma IS NOT NULL GROUP BY a.bioma;
+
+CREATE OR REPLACE VIEW vw_especies_ameacadas AS
+SELECT e.nome_popular, e.status_conservacao, eb.bioma
+FROM Especies e INNER JOIN Especie_biomas eb ON eb.especie_id = e.id
+WHERE e.status_conservacao IN ('NT','VU','EN','CR','EW');
