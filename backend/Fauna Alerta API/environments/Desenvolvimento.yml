@@ -1,4 +1,0 @@
-name: base_url
-variables:
-  - name: base_url
-    value: http://localhost:3000
