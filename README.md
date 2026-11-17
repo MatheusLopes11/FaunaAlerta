@@ -5,6 +5,18 @@ Plataforma web para **registrar alertas de avistamento de fauna** e **fazer den�
 > Projeto integrador interdisciplinar (P.I) desenvolvido em grupo.
 > Professor de Engenharia de Software - Luiz Antonio de Lima
 
+## Equipe
+
+
+| Nome | GitHub |
+| --- | --- |
+| Gustavo Fernández Ferreira | [@gustavo-ferndez](https://github.com/gustavo-ferndez) |
+| Kevin Afonso de Jesus | [@kevingms-dev](https://github.com/Kevingms-dev) |
+| Marcelo de Souza Siciliano | [@MarceloFatec2450](https://github.com/MarceloFatec2450) |
+| Matheus Ferreira Lopes | [@MatheusLopes11](https://github.com/MatheusLopes11) |
+| Sophia Santoro Rodrigues | [@SophiaRodrigues-S](https://github.com/SophiaRodrigues-S) |
+| Wagner Acácio da Silva | [@pequetux](https://github.com/pequetux) |
+
 ---
 
 ## Sumário
@@ -310,19 +322,6 @@ Em desenvolvimento. Próximos passos:
 3. Abra um Pull Request para a `main` e aguarde a revisão de outro integrante.
 4. Não faça commit de arquivos `.env` nem de `node_modules`.
 
----
-
-## Equipe
-
-
-| Nome | GitHub |
-| --- | --- |
-| Gustavo Fernández Ferreira | [@gustavo-ferndez](https://github.com/gustavo-ferndez) |
-| Kevin Afonso de Jesus | [@kevingms-dev](https://github.com/Kevingms-dev) |
-| Marcelo de Souza Siciliano | [@MarceloFatec2450](https://github.com/MarceloFatec2450) |
-| Matheus Ferreira Lopes | [@MatheusLopes11](https://github.com/MatheusLopes11) |
-| Sophia Santoro Rodrigues | [@SophiaRodrigues-S](https://github.com/SophiaRodrigues-S) |
-| Wagner Acácio da Silva | [@pequetux](https://github.com/pequetux) |
 ---
 
 ## Licença
