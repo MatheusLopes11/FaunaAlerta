@@ -25,3 +25,17 @@ DELIMITER ;
 -- teste-
 SELECT classificacao_especie('EXOTICA', 'LC');
 SELECT classificacao_especie('NATIVA', 'VU');
+
+USE FaunaAlerta;
+DELIMITER //
+CREATE FUNCTION fn_total_alertas_especie(p_especie INT UNSIGNED) RETURNS INT
+READS SQL DATA
+BEGIN
+  RETURN (SELECT COUNT(*) FROM Alertas WHERE especie_id = p_especie);
+END //
+CREATE FUNCTION fn_tem_risco(p_nivel VARCHAR(10)) RETURNS BOOLEAN
+DETERMINISTIC
+BEGIN
+  RETURN p_nivel IN ('MODERADO','ALTO');
+END //
+DELIMITER ;

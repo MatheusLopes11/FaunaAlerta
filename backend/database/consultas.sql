@@ -48,3 +48,41 @@ FROM vw_alertas_relatorio
 WHERE situacao = 'VERIFICADO'
 GROUP BY 1
 ORDER BY total DESC;
+
+USE FaunaAlerta;
+-- 1. Catálogo com biomas (página /especies e mapa da home)
+SELECT e.nome_popular, e.status_conservacao, GROUP_CONCAT(eb.bioma) AS biomas
+FROM Especies e LEFT JOIN Especie_biomas eb ON eb.especie_id = e.id
+GROUP BY e.id ORDER BY e.nome_popular;
+
+-- 2. Espécies ameaçadas por bioma (mapa da home)
+SELECT eb.bioma, COUNT(*) AS especies_ameacadas
+FROM Especie_biomas eb JOIN Especies e ON e.id = eb.especie_id
+WHERE e.status_conservacao IN ('VU','EN','CR','EW')
+GROUP BY eb.bioma ORDER BY especies_ameacadas DESC;
+
+-- 3. Relatório do pesquisador: alertas por espécie e situação
+SELECT e.nome_popular, a.situacao, COUNT(*) AS total
+FROM Alertas a JOIN Especies e ON e.id = a.especie_id
+WHERE a.data_avistamento BETWEEN '2026-01-01' AND '2026-12-31'
+GROUP BY e.nome_popular, a.situacao ORDER BY total DESC;
+
+-- 4. Histórico de denúncias de um usuário (perfil)
+SELECT d.protocolo, d.tipo, d.status_atual, d.criado_em
+FROM Denuncias d JOIN Usuario u ON u.id = d.usuario_id
+WHERE u.email = 'maria@email.com' ORDER BY d.criado_em DESC;
+
+-- 5. Cadastros de pesquisadores para análise do admin
+SELECT u.nome, p.instituicao, p.area_pesquisa, u.status_cadastro
+FROM Usuario u JOIN Pesquisador p ON p.usuario_id = u.id
+ORDER BY FIELD(u.status_cadastro,'Pendente','Aprovado','Negado');
+
+-- 6. Linha do tempo de uma denúncia
+SELECT h.criado_em, h.status_denun, h.origem, h.observacao
+FROM Denuncia_historico h JOIN Denuncias d ON d.id = h.denuncia_id
+WHERE d.protocolo = 'FA-2026-CD5N9P' ORDER BY h.criado_em;
+
+-- 7. Uso das views, funções e procedures
+SELECT * FROM vw_alertas_por_bioma;
+SELECT nome_popular, fn_total_alertas_especie(id) AS alertas FROM Especies;
+CALL sp_resumo_denuncias_usuario((SELECT id FROM Usuario WHERE email='maria@email.com'));
